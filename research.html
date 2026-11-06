@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Evidence-focused research summaries on peptides, mitochondrial biology, cellular signaling, investigational compounds, and current regulatory developments." name="description"/>
+<meta content="index, follow" name="robots"/>
+<title>Peptide Research &amp; References | Laboratori Massa Kritikal</title>
+<style>
+.notice {
+  background:#c9a653;color:#151515;padding:11px 15px;text-align:center;
+  font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;
+}
+:root {
+  --black:#101113;--panel:#191a1d;--gold:#c9a653;--gold-light:#e5cd91;
+  --white:#f5f4f0;--muted:#b5b5b5;--line:rgba(201,166,83,.32);
+  --paper:#f0eee8;--ink:#171717;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:25px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--black);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;line-height:1.75}
+a{color:var(--gold-light);overflow-wrap:anywhere}
+a:hover{color:white}
+.container{width:min(1120px,90%);margin:0 auto}
+
+/* STANDARD LMK HEADER */
+.lmk-site-header{width:100%;border-bottom:1px solid var(--line);background:#101113}
+.lmk-header-inner{width:min(1120px,calc(100% - 40px));min-height:76px;margin:0 auto;padding:10px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.lmk-brand-row{display:flex;align-items:center;gap:12px;flex:0 1 auto;min-width:0}
+.lmk-brand-row>a{display:flex;align-items:center;flex:0 0 50px}
+.lmk-brand-logo{display:block;width:50px;height:50px;flex-shrink:0;object-fit:contain}
+.lmk-brand-text{margin:0;color:#f5f4f0;font-family:Georgia,"Times New Roman",serif;font-size:17px;font-weight:normal;line-height:1.3;letter-spacing:2px;white-space:nowrap}
+.lmk-brand-text span{display:block;margin-top:5px;color:var(--gold);font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:normal;line-height:1.5;letter-spacing:2px;white-space:nowrap}
+.lmk-nav-links{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:6px 14px;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:normal;line-height:1.4;letter-spacing:.5px;text-transform:uppercase}
+.lmk-nav-links a{display:inline-block;margin:0;padding:4px 0;color:#f5f4f0;font-family:inherit;font-size:inherit;font-weight:normal;line-height:inherit;letter-spacing:inherit;text-decoration:none;white-space:nowrap;transition:color .2s ease}
+.lmk-nav-links a:hover,.lmk-nav-links a.active{color:var(--gold-light)}
+.lmk-nav-links a.active{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+
+/* HERO */
+.hero{padding:85px 0;background:radial-gradient(ellipse at 80% 40%,rgba(201,166,83,.13),transparent 48%),linear-gradient(120deg,#101113,#1b1b1b);border-bottom:1px solid var(--line)}
+.eyebrow{margin-bottom:15px;color:var(--gold-light);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:normal}
+h1{font-size:clamp(39px,6vw,68px);line-height:1.15}
+h1 span{color:var(--gold-light);font-style:italic}
+.hero p{max-width:760px;margin-top:22px;color:#c6c6c6}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}
+.button{display:inline-block;padding:11px 18px;border:1px solid var(--gold);font-size:10px;font-weight:bold;letter-spacing:1px;text-decoration:none;text-transform:uppercase}
+.primary{background:var(--gold);color:#151515}
+.secondary{color:var(--white)}
+
+/* SECTIONS AND TABLE OF CONTENTS */
+.section{padding:45px 0}
+.section-heading h2{font-size:clamp(30px,4vw,43px)}
+.section-heading p{max-width:760px;margin:12px auto 0;color:var(--muted);font-size:13px}
+.toc-grid,.research-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.toc-card,.research-card,.reference-card{padding:23px;border:1px solid var(--line);background:var(--panel)}
+.toc-card a{text-decoration:none}
+.toc-card h3{margin-bottom:7px;font-size:20px}
+.toc-card p,.research-card p,.reference-card p{margin-top:10px;color:#c0c0c0;font-size:13px}
+.toc-card .number,.number{color:var(--gold);font-size:10px;letter-spacing:2px}
+
+/* RESEARCH CARDS */
+.research-card{margin-bottom:18px;scroll-margin-top:20px}
+.research-card h2{margin:7px 0 16px;font-size:31px}
+.research-card h3{margin-top:23px;color:var(--gold-light);font-size:20px}
+.research-card ul,.research-card ol{margin-top:10px;padding-left:22px}
+.research-card li{margin:7px 0;color:#d1d0cb;font-size:13px}
+.meta{display:inline-block;margin:4px 5px 5px 0;padding:4px 9px;border:1px solid var(--line);font-size:10px;letter-spacing:.4px}
+.status-note{margin-top:18px;padding:14px 17px;border-left:3px solid var(--gold);background:#211e17;color:#dedbd2;font-size:12px}
+
+/* LIGHT REFERENCE PAPER SECTION */
+.paper{padding:60px 0;background:var(--paper);color:var(--ink)}
+.paper h2{font-size:35px}
+.paper h3{margin-top:28px;font-size:22px}
+.paper p{margin-top:14px;color:#45433e;font-size:13px}
+.paper a{color:#74551c}
+.reference-list{margin-top:22px;padding-left:24px}
+.reference-list li{margin:14px 0;font-size:13px}
+
+/* DISCLAIMER */
+.disclaimer{padding:55px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#191816}
+.disclaimer-box{padding:28px;border:1px solid var(--gold)}
+.disclaimer-box h2{color:var(--gold-light);font-size:29px}
+.disclaimer-box p{margin-top:13px;color:#d0cec8;font-size:12px}
+
+/* FOOTER */
+footer{padding:32px 0;background:#0b0b0b}
+.footer-brand{color:var(--gold-light);font:16px Georgia,"Times New Roman",serif;letter-spacing:2px}
+.footer-copy,.copyright{margin-top:12px;color:#999;font-size:11px}
+.copyright{padding-top:17px;border-top:1px solid #302c24}
+
+/* TABLET */
+@media(max-width:1000px){
+  .lmk-header-inner{align-items:flex-start;flex-direction:column;gap:12px;padding:12px 0}
+  .lmk-nav-links{justify-content:flex-start;gap:8px 14px}
+  .toc-grid,.research-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* MOBILE */
+@media(max-width:560px){
+  .lmk-header-inner{width:calc(100% - 28px);min-height:auto;gap:10px;padding:10px 0}
+  .lmk-brand-row{gap:9px}
+  .lmk-brand-row>a{flex-basis:42px}
+  .lmk-brand-logo{width:42px;height:42px}
+  .lmk-brand-text{font-size:14px;letter-spacing:1px}
+  .lmk-brand-text span{font-size:8px;letter-spacing:1px}
+  .lmk-nav-links{gap:7px 12px;font-size:9px;letter-spacing:.3px}
+  .toc-grid,.research-grid{grid-template-columns:1fr}
+  .hero{padding:60px 0}
+  .section{padding:45px 0}
+  .research-card{padding:20px}
+}
+.history-image[hidden],.history-visual-fallback[hidden]{display:none!important}
+.history-visual-fallback{width:100%;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.history-visual-fallback svg{display:block;width:100%;height:auto}
+/* HISTORY OF PEPTIDE SCIENCE — INTRODUCTION */
+.lmk-peptide-history{padding:58px 0;background:linear-gradient(135deg,#151619 0%,#1c1b18 100%);border-bottom:1px solid var(--line)}
+.lmk-peptide-history .history-kicker{margin-bottom:10px;color:var(--gold);font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase}
+.lmk-peptide-history h2{margin:0 0 14px;color:var(--gold-light);font-family:Georgia,"Times New Roman",serif;font-size:clamp(27px,4vw,38px);font-weight:normal;line-height:1.2}
+.lmk-peptide-history .history-subtitle{margin:0 0 18px;color:#d4c49d;font-family:Georgia,"Times New Roman",serif;font-size:16px;font-style:italic}
+.lmk-peptide-history .history-copy{color:#c6c6c6;font-size:13px;line-height:1.8}
+.lmk-peptide-history .history-copy p{margin:0 0 13px}
+.lmk-peptide-history .history-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);align-items:center;gap:30px}
+.lmk-peptide-history .history-image{display:block;width:100%;max-height:330px;object-fit:cover;border:1px solid var(--line);border-radius:3px;box-shadow:0 12px 35px rgba(0,0,0,.28)}
+.lmk-peptide-history .history-milestones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:25px}
+.lmk-peptide-history .history-milestone{padding:14px 15px;border:1px solid var(--line);background:rgba(10,10,10,.25)}
+.lmk-peptide-history .history-year{display:block;margin-bottom:5px;color:var(--gold-light);font-family:Georgia,"Times New Roman",serif;font-size:23px}
+.lmk-peptide-history .history-milestone p{margin:0;color:#bdbdbd;font-size:11px;line-height:1.55}
+.lmk-peptide-history .history-sources{margin-top:15px;color:#999;font-size:10px}
+.lmk-peptide-history .history-sources a{color:var(--gold-light);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:700px){
+  .lmk-peptide-history{padding:42px 0}
+  .lmk-peptide-history .history-layout{grid-template-columns:1fr;gap:18px}
+  .lmk-peptide-history .history-image{max-height:240px}
+  .lmk-peptide-history .history-milestones{grid-template-columns:1fr;gap:9px}
+  .lmk-peptide-history .history-milestone{display:grid;grid-template-columns:76px 1fr;align-items:center;gap:10px}
+  .lmk-peptide-history .history-year{margin:0}
+}
+
+/* LMK STANDARD INTERIOR WEBSITE HEADER — scrolls with page */
+.lmk-site-header {position:static!important;top:auto!important;z-index:auto;width:100%;background:#101113!important;border-bottom:1px solid rgba(201,166,83,.32);backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+.lmk-site-header .lmk-header-inner {width:min(1120px,calc(100% - 40px));min-height:76px;margin:0 auto;padding:10px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-direction:row;}
+.lmk-site-header .lmk-brand-row {display:flex;align-items:center;gap:12px;flex:0 1 auto;min-width:0;}
+.lmk-site-header .lmk-brand-row>a {display:flex;align-items:center;flex:0 0 50px;}
+.lmk-site-header .lmk-brand-logo {display:block;width:50px;height:50px;flex-shrink:0;object-fit:contain;}
+.lmk-site-header .lmk-brand-text {margin:0;color:#f5f4f0;font-family:Georgia,"Times New Roman",serif;font-size:17px;font-weight:400;line-height:1.3;letter-spacing:2px;white-space:nowrap;text-align:left;}
+.lmk-site-header .lmk-brand-text span {display:block;margin-top:5px;color:#c9a653;font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:400;line-height:1.5;letter-spacing:2px;white-space:nowrap;}
+.lmk-site-header nav.lmk-nav-links {display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:6px 14px;width:auto;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:400;line-height:1.4;letter-spacing:.5px;text-transform:uppercase;}
+.lmk-site-header nav.lmk-nav-links a {display:inline-block;margin:0;padding:4px 0;color:#f5f4f0;font-family:inherit;font-size:inherit;font-weight:400;line-height:inherit;letter-spacing:inherit;text-decoration:none;white-space:nowrap;transition:color .2s ease;}
+.lmk-site-header nav.lmk-nav-links a:hover,.lmk-site-header nav.lmk-nav-links a.active {color:#e5cd91;}
+.lmk-site-header nav.lmk-nav-links a.active {text-decoration:underline;text-decoration-color:#c9a653;text-underline-offset:4px;}
+@media(max-width:1000px){.lmk-site-header .lmk-header-inner{align-items:flex-start;flex-direction:column;gap:12px;padding:12px 0}.lmk-site-header nav.lmk-nav-links{justify-content:flex-start;gap:8px 14px}}
+@media(max-width:560px){.lmk-site-header .lmk-header-inner{width:calc(100% - 28px);min-height:auto;gap:10px;padding:10px 0}.lmk-site-header .lmk-brand-row{gap:9px}.lmk-site-header .lmk-brand-row>a{flex-basis:42px}.lmk-site-header .lmk-brand-logo{width:42px;height:42px}.lmk-site-header .lmk-brand-text{font-size:14px;letter-spacing:1px}.lmk-site-header .lmk-brand-text span{font-size:8px;letter-spacing:1px}.lmk-site-header nav.lmk-nav-links{gap:7px 12px;font-size:9px;letter-spacing:.3px}}
+
+</style>
+<style>
+/* LMK iPhone-friendly expandable research interface */
+.lmk-expandable{width:100%;border:0;background:transparent;color:inherit}
+.lmk-expandable>summary{position:relative;display:flex;flex-direction:column;gap:7px;cursor:pointer;list-style:none;padding:4px 36px 4px 0;min-height:48px;justify-content:center}
+.lmk-expandable>summary::-webkit-details-marker{display:none}
+.lmk-expandable>summary::after{content:'+';position:absolute;right:2px;top:50%;transform:translateY(-50%);font:26px Arial,sans-serif;color:#c9a653}
+.lmk-expandable[open]>summary::after{content:'−'}
+.lmk-exp-kicker{font:700 10px Arial,sans-serif;letter-spacing:1.5px;color:#c9a653;text-transform:uppercase}
+.lmk-exp-title{font:normal clamp(21px,4vw,29px) Georgia,serif;color:#e5cd91;line-height:1.3}
+.lmk-exp-body{padding-top:18px;margin-top:15px;border-top:1px solid rgba(201,166,83,.32)}
+.lmk-search-wrap{width:min(1120px,90%);margin:20px auto}
+#lmkResearchSearch{display:block;width:100%;padding:14px 16px;border:1px solid rgba(201,166,83,.4);border-radius:8px;background:#191a1d;color:#f5f4f0;font:15px Arial,sans-serif}
+#lmkResearchSearch:focus{outline:2px solid #c9a653;outline-offset:2px}
+article.research-card[hidden]{display:none!important}
+@media(max-width:560px){.lmk-exp-title{font-size:23px}.lmk-exp-body{padding-top:12px}}
+</style></head>
+<body>
+<div class="notice">Research Information Only | No Medical Advice</div>
+<!-- STANDARD WEBSITE HEADER -->
+<header class="lmk-site-header">
+<div class="lmk-header-inner">
+<div class="lmk-brand-row">
+<a aria-label="Laboratori Massa Kritikal home" href="index.html"><img alt="Laboratori Massa Kritikal logo" class="lmk-brand-logo" src="images/logo.jpeg"/></a>
+<div class="lmk-brand-text">LABORATORI MASSA KRITIKAL<span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span></div>
+</div>
+<nav aria-label="Main navigation" class="lmk-nav-links">
+<a href="index.html">Home</a>
+<a href="products.html">Catalog</a>
+<a href="dosing.html">Dosing</a>
+<a aria-current="page" class="active" href="research.html">Research</a>
+<a href="perspective.html">Our Perspective</a>
+</nav>
+</div>
+</header>
+<main>
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="eyebrow">Scientific Literature &amp; Evidence Review</div>
+<h1>Research.<br/><span>Without the Hype.</span></h1>
+<p>
+      An evidence-focused overview of peptides, peptide combinations,
+      mitochondrial biology, metabolic signaling, and investigational
+      compounds represented in our research product catalog. This page
+      distinguishes laboratory observations, animal research, and human
+      clinical evidence. It also addresses FDA and HHS regulatory
+      developments relevant to peptide research.
+    </p>
+<div class="hero-actions">
+<a class="button primary" href="#research-index">Explore Research</a>
+<a class="button secondary" href="#references">Scientific References</a>
+<a class="button secondary" href="#evidence-guide">Understanding the Evidence</a>
+</div>
+</div>
+</section>
+<!-- HISTORY OF PEPTIDE SCIENCE -->
+<section class="lmk-peptide-history" id="peptide-history">
+<div class="container">
+<div class="history-layout">
+<div class="history-copy">
+<div class="history-kicker">A Scientific Perspective</div>
+<h2>The History of Peptide Science</h2>
+<div class="history-subtitle">
+          More than a century of scientific discovery.
+        </div>
+<p>
+          Peptides are chains of amino acids joined by peptide bonds.
+          They occur naturally throughout living systems, but understanding
+          how to identify and build them in the laboratory has taken
+          generations of scientific work.
+        </p>
+<p>
+          Early peptide-synthesis research dates to the work of Theodor
+          Curtius in 1882. In 1901, Emil Fischer and Ernest Fourneau
+          synthesized glycylglycine, a landmark in the development of
+          modern peptide chemistry. In 1953, Vincent du Vigneaud and
+          his team achieved the laboratory synthesis of the biologically
+          active hormone oxytocin. A decade later, Robert Bruce Merrifield
+          introduced solid-phase peptide synthesis, making it more
+          practical to assemble and study longer peptide chains.
+        </p>
+<p>
+          Today, advances in chemistry, biotechnology, and analytical
+          science continue to expand research into peptides and their
+          roles in biology and medicine.
+        </p>
+</div>
+<img alt="Scientific visualization of peptide and amino-acid structures" class="history-image" src="images/peptide-science-history.jpeg" onerror="this.hidden=true;this.nextElementSibling.hidden=false"/>
+<div class="history-visual-fallback" hidden aria-label="Illustration of an amino acid peptide chain">
+<svg viewBox="0 0 560 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized molecular peptide chain">
+<rect width="560" height="340" fill="#151619"/>
+<g stroke="#c9a653" stroke-width="3" opacity=".8"><path d="M65 180 L155 120 L245 180 L335 120 L425 180 L505 125" fill="none"/><path d="M155 120 L155 55 M245 180 L245 255 M335 120 L335 55 M425 180 L425 255"/></g>
+<g fill="#c9a653" stroke="#e5cd91" stroke-width="3"><circle cx="65" cy="180" r="18"/><circle cx="155" cy="120" r="23"/><circle cx="245" cy="180" r="22"/><circle cx="335" cy="120" r="23"/><circle cx="425" cy="180" r="22"/><circle cx="505" cy="125" r="18"/></g>
+<g fill="#e5cd91"><circle cx="155" cy="55" r="13"/><circle cx="245" cy="255" r="13"/><circle cx="335" cy="55" r="13"/><circle cx="425" cy="255" r="13"/></g>
+<text x="280" y="314" fill="#e5cd91" font-size="17" text-anchor="middle" font-family="Georgia,serif" letter-spacing="3">PEPTIDE SCIENCE</text>
+</svg>
+</div>
+</div>
+<div aria-label="Selected milestones in peptide science" class="history-milestones">
+<div class="history-milestone">
+<span class="history-year">1901</span>
+<p>Glycylglycine synthesis marks a major milestone in modern peptide chemistry.</p>
+</div>
+<div class="history-milestone">
+<span class="history-year">1953</span>
+<p>Laboratory synthesis of biologically active oxytocin.</p>
+</div>
+<div class="history-milestone">
+<span class="history-year">1963</span>
+<p>Solid-phase peptide synthesis transforms laboratory peptide production.</p>
+</div>
+</div>
+<div class="history-sources">
+      Historical references:
+      <a href="https://www.nobelprize.org/prizes/chemistry/1955/du-vigneaud/facts/" rel="noopener" target="_blank">Vincent du Vigneaud — Nobel Prize</a>
+      ·
+      <a href="https://www.nobelprize.org/prizes/chemistry/1984/merrifield/facts/" rel="noopener" target="_blank">Robert Bruce Merrifield — Nobel Prize</a>
+</div>
+</div>
+</section>
+<!-- RESEARCH DIRECTORY -->
+<section class="section" id="research-index">
+<div class="container">
+<div class="section-heading">
+<div class="eyebrow">Research Directory</div>
+<h2>Explore the Compounds</h2>
+<p>
+        Select a topic to review its proposed biological role,
+        available evidence, limitations, and relevant sources.
+        A research hypothesis is not proof of clinical benefit.
+      </p>
+</div>
+<div class="toc-grid">
+<div class="toc-card">
+<div class="number">01 / METABOLISM</div>
+<h3><a href="#retatrutide">Retatrutide</a></h3>
+<p>Investigational multi-receptor metabolic therapy.</p>
+</div>
+<div class="toc-card">
+<div class="number">02 / METABOLISM</div>
+<h3><a href="#aod9604">AOD-9604</a></h3>
+<p>Modified growth-hormone fragment studied in obesity research.</p>
+</div>
+<div class="toc-card">
+<div class="number">03 / GROWTH SIGNALING</div>
+<h3><a href="#tesamorelin">Tesamorelin</a></h3>
+<p>Growth-hormone-releasing factor analogue.</p>
+</div>
+<div class="toc-card">
+<div class="number">04 / GROWTH SIGNALING</div>
+<h3><a href="#cjc1295">CJC-1295 with DAC</a></h3>
+<p>Longer-acting growth-hormone-releasing hormone analogue.</p>
+</div>
+<div class="toc-card">
+<div class="number">05 / GROWTH SIGNALING</div>
+<h3><a href="#ipamorelin">Ipamorelin</a></h3>
+<p>Investigational ghrelin-receptor agonist.</p>
+</div>
+<div class="toc-card">
+<div class="number">06 / MITOCHONDRIA</div>
+<h3><a href="#ss31">SS-31</a></h3>
+<p>Elamipretide and mitochondrial membrane research.</p>
+</div>
+<div class="toc-card">
+<div class="number">07 / MITOCHONDRIA</div>
+<h3><a href="#motsc">MOTS-C</a></h3>
+<p>Mitochondrial-derived peptide research.</p>
+</div>
+<div class="toc-card">
+<div class="number">08 / CELLULAR METABOLISM</div>
+<h3><a href="#nad">NAD+</a></h3>
+<p>Cellular redox biology and energy metabolism.</p>
+</div>
+<div class="toc-card">
+<div class="number">09 / CELLULAR AGING</div>
+<h3><a href="#fox04dri">FOXO4-DRI</a></h3>
+<p>Experimental senescence and cell-survival research.</p>
+</div>
+<div class="toc-card">
+<div class="number">10 / COMBINATIONS</div>
+<h3><a href="#glow">GLOW</a></h3>
+<p>A multi-ingredient research combination.</p>
+</div>
+<div class="toc-card">
+<div class="number">11 / COMBINATIONS</div>
+<h3><a href="#klow">KLOW</a></h3>
+<p>A multi-ingredient research combination.</p>
+</div>
+<div class="toc-card">
+<div class="number">12 / SAFETY &amp; SOURCES</div>
+<h3><a href="#evidence-guide">Evidence Limitations</a></h3>
+<p>Interpretation, quality, regulatory status, and safety.</p>
+</div>
+</div>
+</div>
+</section><div class="lmk-search-wrap"><input aria-label="Search research compounds" id="lmkResearchSearch" placeholder="Search compound names and research topics…" type="search"/></div>
+<!-- INDIVIDUAL RESEARCH SUMMARIES -->
+<section class="section">
+<div class="container">
+<div class="section-heading">
+<div class="eyebrow">Individual Research Summaries</div>
+<h2>What the Evidence Actually Says</h2>
+<p>
+        These summaries describe scientific areas of investigation.
+        They are not product endorsements, treatment recommendations,
+        or proof that a catalog formulation has the same characteristics
+        as a substance used in a published study.
+      </p>
+</div>
+<!-- RETATRUTIDE -->
+<article class="research-card" id="retatrutide"><details class="lmk-expandable lmk-research-expandable" data-topic="retatrutide"><summary><span class="lmk-exp-kicker">01 / METABOLIC RESEARCH</span><span class="lmk-exp-title">Retatrutide</span></summary><div class="lmk-exp-body">
+
+
+<span class="meta">Investigational medicine</span>
+<span class="meta">Phase 3 clinical research</span>
+<h3>What it is</h3>
+<p>
+        Retatrutide is an investigational peptide-based medicine designed
+        to activate three receptors involved in metabolic regulation:
+        GIP, GLP-1, and glucagon receptors. These pathways influence
+        glucose regulation, appetite, energy intake, and energy metabolism.
+      </p>
+<h3>What current research investigates</h3>
+<ul>
+<li>Changes in body weight and measures of adiposity.</li>
+<li>Glycemic control and other metabolic outcomes.</li>
+<li>Cardiometabolic risk factors and outcomes in defined populations.</li>
+<li>Safety, tolerability, and dose-related adverse events.</li>
+</ul>
+<h3>Updated clinical evidence</h3>
+<p>
+        Retatrutide has advanced into large Phase 3 clinical trials.
+        These studies are investigating weight management, metabolic
+        outcomes, and safety across defined populations.
+        Results from individual trials should be evaluated according
+        to their study design, endpoints, publication status,
+        and regulatory review.
+      </p>
+<h3>Evidence and limitations</h3>
+<p>
+        Retatrutide remains investigational. Clinical trial material
+        is manufactured and administered under controlled study conditions.
+        It must not be equated with unapproved online products or
+        materials with unverified identity, concentration, purity,
+        sterility, or storage history.
+      </p>
+<h3>Scientific references</h3>
+<ul>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=retatrutide+clinical+trial" rel="noopener" target="_blank">
+            PubMed: Retatrutide clinical research and publications
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=retatrutide" rel="noopener" target="_blank">
+            ClinicalTrials.gov: Retatrutide clinical studies
+          </a>
+</li>
+</ul>
+</div></details></article>
+<!-- AOD-9604 -->
+<article class="research-card" id="aod9604"><details class="lmk-expandable lmk-research-expandable" data-topic="aod-9604"><summary><span class="lmk-exp-kicker">02 / METABOLIC RESEARCH</span><span class="lmk-exp-title">AOD-9604</span></summary><div class="lmk-exp-body">
+
+
+<span class="meta">Metabolic research</span>
+<span class="meta">Limited human clinical evidence</span>
+<h3>What it is</h3>
+<p>
+        AOD-9604 is a modified peptide fragment derived from the
+        C-terminal region of human growth hormone. It was developed
+        to investigate whether selected metabolic activities associated
+        with growth hormone could be studied independently of its
+        broader growth-promoting effects.
+      </p>
+<h3>Mechanisms under investigation</h3>
+<p>
+        Early experimental studies explored the relationship between
+        AOD-9604 and lipid metabolism, including the mobilization
+        and breakdown of stored fat. These investigations helped
+        establish the compound as a subject of metabolic research,
+        particularly in relation to obesity and adipose tissue.
+      </p>
+<h3>Research areas</h3>
+<ul>
+<li>Regulation of lipid metabolism and lipolysis.</li>
+<li>Adipose tissue signaling and metabolic activity.</li>
+<li>Body-weight outcomes in clinical investigations.</li>
+<li>Metabolic selectivity compared with intact growth hormone.</li>
+<li>Pharmacological characterization and tolerability.</li>
+</ul>
+<h3>Human clinical research</h3>
+<p>
+        AOD-9604 underwent clinical investigation as a potential
+        obesity treatment. Although earlier laboratory and animal
+        findings generated scientific interest, human development
+        did not establish consistent, clinically meaningful
+        weight-loss efficacy.
+      </p>
+<p>
+        This distinction illustrates an important principle in
+        translational research: a compound may influence biological
+        pathways under controlled experimental conditions without
+        producing the anticipated clinical outcome in humans.
+      </p>
+<h3>Research perspective</h3>
+<p>
+        AOD-9604 remains relevant to investigations of peptide
+        structure, metabolic signaling, and the relationship
+        between growth hormone fragments and lipid regulation.
+        Further clinical evidence would be required to establish
+        additional therapeutic applications.
+      </p>
+<h3>Scientific references</h3>
+<ul>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=AOD-9604" rel="noopener" target="_blank">
+            PubMed: AOD-9604 research publications
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=AOD-9604" rel="noopener" target="_blank">
+            ClinicalTrials.gov: AOD-9604 clinical research
+          </a>
+</li>
+</ul>
+</div></details></article>
+<!-- TESAMORELIN -->
+<article class="research-card" id="tesamorelin"><details class="lmk-expandable lmk-research-expandable" data-topic="tesamorelin"><summary><span class="lmk-exp-kicker">03 / GROWTH-HORMONE SIGNALING</span><span class="lmk-exp-title">Tesamorelin</span></summary><div class="lmk-exp-body">
+
+
+<span class="meta">Growth-hormone-releasing factor analogue</span>
+<span class="meta">Human clinical evidence</span>
+<h3>What it is</h3>
+<p>
+        Tesamorelin is a synthetic analogue of growth
+        hormone-releasing hormone (GHRH). It interacts with
+        receptors in the anterior pituitary gland, stimulating
+        the release of endogenous growth hormone and influencing
+        downstream insulin-like growth factor 1 (IGF-1) signaling.
+      </p>
+<h3>Mechanism of action</h3>
+<p>
+        Growth hormone participates in numerous physiological
+        processes, including lipid metabolism, tissue growth,
+        and metabolic regulation. Tesamorelin acts upstream
+        of growth hormone secretion rather than directly
+        replacing growth hormone itself.
+      </p>
+<p>
+        Research has examined how stimulation of this pathway
+        affects visceral adipose tissue, metabolic markers,
+        and related endocrine responses.
+      </p>
+<h3>Research areas</h3>
+<ul>
+<li>Visceral adipose tissue and abdominal fat distribution.</li>
+<li>Growth hormone and IGF-1 signaling.</li>
+<li>Changes in body composition.</li>
+<li>Hepatic fat and metabolic characteristics in selected populations.</li>
+<li>Glucose metabolism and endocrine responses.</li>
+</ul>
+<h3>Human clinical evidence</h3>
+<p>
+        Tesamorelin has been evaluated in controlled human
+        clinical studies, particularly among adults with
+        HIV-associated excess abdominal visceral fat.
+        These studies demonstrated reductions in visceral
+        adipose tissue in the populations investigated.
+      </p>
+<p>
+        Additional research has explored relationships between
+        visceral fat reduction, liver fat, and metabolic
+        outcomes. Results from these populations should not
+        automatically be generalized to healthy individuals
+        or unrelated conditions.
+      </p>
+<h3>Scientific considerations</h3>
+<p>
+        The growth hormone–IGF-1 axis affects several
+        interconnected biological systems. Research involving
+        tesamorelin therefore includes evaluation of glucose
+        regulation, fluid balance, musculoskeletal symptoms,
+        and changes in circulating IGF-1.
+      </p>
+<h3>Research perspective</h3>
+<p>
+        Tesamorelin provides a useful example of how
+        targeted endocrine signaling can influence
+        regional adipose tissue. Its clinical research
+        also demonstrates the importance of distinguishing
+        changes in visceral fat from overall body-weight loss.
+      </p>
+<h3>Scientific references</h3>
+<ul>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=tesamorelin+visceral+adipose+tissue" rel="noopener" target="_blank">
+            PubMed: Tesamorelin and visceral adipose tissue
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=tesamorelin+liver+fat" rel="noopener" target="_blank">
+            PubMed: Tesamorelin and hepatic fat research
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=tesamorelin" rel="noopener" target="_blank">
+            ClinicalTrials.gov: Tesamorelin studies
+          </a>
+</li>
+</ul>
+</div></details></article>
+<!-- CJC-1295 WITH DAC -->
+<article class="research-card" id="cjc1295"><details class="lmk-expandable lmk-research-expandable" data-topic="cjc-1295 with dac"><summary><span class="lmk-exp-kicker">04 / GROWTH-HORMONE SIGNALING</span><span class="lmk-exp-title">CJC-1295 with DAC</span></summary><div class="lmk-exp-body">
+
+
+<span class="meta">Investigational peptide</span>
+<span class="meta">Early human clinical research</span>
+<h3>What it is</h3>
+<p>
+        CJC-1295 is a synthetic analogue of growth
+        hormone-releasing hormone designed to influence
+        the body's endogenous growth hormone signaling
+        system.
+      </p>
+<p>
+        The designation DAC refers to a Drug Affinity
+        Complex, a chemical modification intended to
+        extend the compound's duration of activity
+        through interaction with circulating albumin.
+      </p>
+<h3>Mechanism under investigation</h3>
+<p>
+        CJC-1295 interacts with the growth
+        hormone-releasing hormone receptor, stimulating
+        pituitary growth hormone secretion and
+        influencing circulating IGF-1 concentrations.
+      </p>
+<p>
+        The DAC modification changes the compound's
+        pharmacokinetic characteristics. Consequently,
+        CJC-1295 with DAC and similarly named peptides
+        without DAC should be evaluated as distinct
+        research materials.
+      </p>
+<h3>Research areas</h3>
+<ul>
+<li>Growth hormone secretion and endocrine signaling.</li>
+<li>Circulating IGF-1 responses.</li>
+<li>Pharmacokinetics and duration of biological activity.</li>
+<li>Receptor-mediated endocrine regulation.</li>
+<li>Consequences of prolonged growth hormone pathway stimulation.</li>
+</ul>
+<h3>Human clinical research</h3>
+<p>
+        Early human studies demonstrated sustained
+        increases in circulating growth hormone
+        and IGF-1 following administration of
+        CJC-1295 with DAC.
+      </p>
+<p>
+        These investigations contributed to understanding
+        the pharmacology of longer-acting GHRH analogues.
+        However, changes in hormone concentrations do
+        not independently establish improvements in
+        muscle development, exercise performance,
+        recovery, or longevity.
+      </p>
+<h3>Scientific considerations</h3>
+<p>
+        Endocrine research must distinguish measurable
+        hormonal responses from meaningful clinical
+        outcomes. Longer exposure to a signaling
+        compound may also introduce different
+        pharmacological considerations than
+        short-duration stimulation.
+      </p>
+<h3>Research perspective</h3>
+<p>
+        CJC-1295 with DAC remains a useful research
+        subject for understanding sustained
+        growth hormone-releasing hormone receptor
+        activation and the relationship between
+        peptide modification and biological duration.
+      </p>
+<h3>Scientific references</h3>
+<ul>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=CJC-1295+growth+hormone+IGF-1" rel="noopener" target="_blank">
+            PubMed: CJC-1295, growth hormone, and IGF-1
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=CJC-1295" rel="noopener" target="_blank">
+            ClinicalTrials.gov: CJC-1295 studies
+          </a>
+</li>
+</ul>
+</div></details></article>
+<!-- IPAMORELIN -->
+<article class="research-card" id="ipamorelin"><details class="lmk-expandable lmk-research-expandable" data-topic="ipamorelin"><summary><span class="lmk-exp-kicker">05 / GROWTH-HORMONE SIGNALING</span><span class="lmk-exp-title">Ipamorelin</span></summary><div class="lmk-exp-body">
+
+
+<span class="meta">Growth hormone secretagogue</span>
+<span class="meta">Investigational research</span>
+<h3>What it is</h3>
+<p>
+        Ipamorelin is a synthetic pentapeptide
+        investigated for its ability to stimulate
+        growth hormone secretion through activation
+        of the growth hormone secretagogue receptor,
+        commonly known as GHS-R1a.
+      </p>
+<h3>Mechanism under investigation</h3>
+<p>
+        The GHS-R1a receptor is associated with
+        ghrelin signaling and participates in
+        physiological pathways involving growth
+        hormone secretion, appetite regulation,
+        and gastrointestinal function.
+      </p>
+<p>
+        Ipamorelin has been studied for its
+        growth hormone-releasing activity and
+        receptor selectivity relative to certain
+        other growth hormone secretagogues.
+      </p>
+<h3>Research areas</h3>
+<ul>
+<li>Growth hormone secretagogue receptor activation.</li>
+<li>Pituitary growth hormone secretion.</li>
+<li>Ghrelin-related physiological signaling.</li>
+<li>Gastrointestinal motility research.</li>
+<li>Pharmacokinetics and receptor selectivity.</li>
+<li>Endocrine responses and tolerability.</li>
+</ul>
+<h3>Preclinical and clinical evidence</h3>
+<p>
+        Experimental studies have characterized
+        ipamorelin's receptor activity and its
+        effects on growth hormone release.
+        Human investigations have also examined
+        selected pharmacological and gastrointestinal
+        outcomes.
+      </p>
+<p>
+        The available evidence does not establish
+        broad clinical benefits for muscle growth,
+        athletic performance, accelerated recovery,
+        or age-related changes in otherwise
+        healthy individuals.
+      </p>
+<h3>Scientific considerations</h3>
+<p>
+        Growth hormone secretagogues may differ
+        in receptor selectivity, pharmacokinetics,
+        and downstream hormonal responses.
+        Findings involving one compound should
+        not automatically be transferred to
+        another compound within the same
+        general research category.
+      </p>
+<h3>Research perspective</h3>
+<p>
+        Ipamorelin contributes to research on
+        ghrelin-receptor pharmacology and the
+        regulation of endogenous growth hormone.
+        Further controlled human studies would
+        be necessary to establish additional
+        clinically meaningful outcomes.
+      </p>
+<h3>Scientific references</h3>
+<ul>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=ipamorelin+growth+hormone" rel="noopener" target="_blank">
+            PubMed: Ipamorelin and growth hormone research
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=ipamorelin+gastrointestinal+motility" rel="noopener" target="_blank">
+            PubMed: Ipamorelin and gastrointestinal motility
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=ipamorelin" rel="noopener" target="_blank">
+            ClinicalTrials.gov: Ipamorelin research
+          </a>
+</li>
+</ul>
+</div></details></article>
+<!-- SS-31 / ELAMIPRETIDE -->
+<article class="research-card" id="ss31"><details class="lmk-expandable lmk-research-expandable" data-topic="ss-31 / elamipretide"><summary><span class="lmk-exp-kicker">06 / MITOCHONDRIAL RESEARCH</span><span class="lmk-exp-title">SS-31 / Elamipretide</span></summary><div class="lmk-exp-body">
+
+
+<span class="meta">Mitochondrial-targeting peptide</span>
+<span class="meta">Human clinical research</span>
+<h3>What it is</h3>
+<p>
+        SS-31, also known as elamipretide, is a synthetic
+        tetrapeptide investigated for its interactions
+        with mitochondrial membranes and their role
+        in cellular energy production.
+      </p>
+<p>
+        Unlike compounds that primarily influence
+        hormone receptors, elamipretide is designed
+        to interact with structures associated with
+        the inner mitochondrial membrane.
+      </p>
+<h3>Mechanism under investigation</h3>
+<p>
+        Elamipretide interacts with cardiolipin,
+        a phospholipid concentrated in the inner
+        mitochondrial membrane. Cardiolipin plays
+        an important role in the organization
+        and stability of proteins involved in
+        mitochondrial energy production.
+      </p>
+<p>
+        Experimental research has investigated
+        whether this interaction can influence
+        mitochondrial membrane organization,
+        electron transport, and cellular
+        responses to mitochondrial stress.
+      </p>
+<h3>Research areas</h3>
+<ul>
+<li>Mitochondrial membrane structure and cardiolipin interactions.</li>
+<li>Electron transport chain organization and efficiency.</li>
+<li>Cellular ATP production and energy metabolism.</li>
+<li>Oxidative stress and mitochondrial dysfunction.</li>
+<li>Mitochondrial disorders and selected muscle-related outcomes.</li>
+<li>Cardiac, skeletal muscle, and metabolic tissue research.</li>
+</ul>
+<h3>Preclinical evidence</h3>
+<p>
+        Laboratory and animal studies have explored
+        elamipretide in models involving mitochondrial
+        dysfunction, tissue injury, and altered
+        cellular energy metabolism.
+      </p>
+<p>
+        Some experimental findings suggest changes
+        in mitochondrial function and tissue
+        responses under specific research conditions.
+        These findings remain dependent on the
+        experimental model, treatment conditions,
+        and outcomes measured.
+      </p>
+<h3>Human clinical research</h3>
+<p>
+        Elamipretide has been evaluated in human
+        clinical studies involving mitochondrial
+        disorders, including primary mitochondrial
+        myopathy and Barth syndrome.
+      </p>
+<p>
+        These studies have examined functional
+        outcomes, exercise capacity, symptoms,
+        and other disease-specific measures.
+        Results have varied across studies
+        and endpoints, demonstrating the
+        complexity of translating mitochondrial
+        mechanisms into clinical benefit.
+      </p>
+<h3>Scientific considerations</h3>
+<p>
+        Mitochondrial function involves numerous
+        interconnected processes, including
+        substrate utilization, electron transport,
+        ATP synthesis, and cellular signaling.
+        Improving a laboratory measure of
+        mitochondrial activity does not necessarily
+        establish improved physical performance
+        or clinical outcomes in humans.
+      </p>
+<h3>Research perspective</h3>
+<p>
+        Elamipretide represents an important
+        approach to mitochondrial research
+        because it targets membrane-associated
+        processes rather than relying solely
+        on changes in cellular metabolism
+        or hormonal signaling.
+      </p>
+<h3>Scientific references</h3>
+<ul>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=elamipretide+cardiolipin" rel="noopener" target="_blank">
+            PubMed: Elamipretide and cardiolipin research
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=elamipretide+mitochondrial+myopathy" rel="noopener" target="_blank">
+            PubMed: Elamipretide and mitochondrial myopathy
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=elamipretide" rel="noopener" target="_blank">
+            ClinicalTrials.gov: Elamipretide clinical studies
+          </a>
+</li>
+</ul>
+</div></details></article>
+<!-- MOTS-C -->
+<article class="research-card" id="motsc"><details class="lmk-expandable lmk-research-expandable" data-topic="mots-c"><summary><span class="lmk-exp-kicker">07 / MITOCHONDRIAL RESEARCH</span><span class="lmk-exp-title">MOTS-C</span></summary><div class="lmk-exp-body">
+
+
+<span class="meta">Mitochondrial-derived peptide</span>
+<span class="meta">Primarily preclinical evidence</span>
+<h3>What it is</h3>
+<p>
+        MOTS-C is a short peptide encoded within
+        the mitochondrial genome. It belongs to
+        a growing category of mitochondrial-derived
+        peptides investigated for their possible
+        roles in cellular communication,
+        metabolic adaptation, and responses
+        to physiological stress.
+      </p>
+<h3>Mechanism under investigation</h3>
+<p>
+        Experimental studies suggest that MOTS-C
+        may influence metabolic signaling pathways
+        associated with cellular energy balance.
+        Research has examined relationships
+        involving AMP-activated protein kinase
+        (AMPK), metabolic stress responses,
+        and the regulation of cellular metabolism.
+      </p>
+<p>
+        Some studies have also investigated
+        the movement of MOTS-C into the
+        cell nucleus during metabolic stress
+        and its potential involvement in
+        the regulation of stress-responsive
+        gene expression.
+      </p>
+<h3>Research areas</h3>
+<ul>
+<li>AMPK-associated metabolic signaling.</li>
+<li>Cellular adaptation to metabolic stress.</li>
+<li>Glucose metabolism and insulin sensitivity.</li>
+<li>Mitochondrial-to-nuclear communication.</li>
+<li>Exercise-related metabolic adaptation.</li>
+<li>Age-associated changes in metabolic regulation.</li>
+</ul>
+<h3>Preclinical evidence</h3>
+<p>
+        Animal and cellular studies have
+        investigated MOTS-C in models of
+        metabolic dysfunction, aging,
+        and physical activity.
+      </p>
+<p>
+        Certain experimental findings suggest
+        changes in metabolic regulation,
+        insulin sensitivity, and exercise-related
+        outcomes under specific conditions.
+        These observations provide a foundation
+        for further investigation but do not
+        establish comparable effects in humans.
+      </p>
+<h3>Human research</h3>
+<p>
+        Human observational research has
+        examined circulating MOTS-C levels,
+        genetic variation, and possible
+        associations with metabolic
+        characteristics and aging.
+      </p>
+<p>
+        Such findings are valuable for
+        understanding biological relationships,
+        but associations do not demonstrate
+        that administering synthetic MOTS-C
+        produces the same outcomes.
+      </p>
+<h3>Scientific considerations</h3>
+<p>
+        Endogenous mitochondrial-derived
+        peptides and externally administered
+        synthetic compounds must be evaluated
+        separately. Differences in concentration,
+        distribution, metabolism, and exposure
+        may influence their biological effects.
+      </p>
+<h3>Research perspective</h3>
+<p>
+        MOTS-C illustrates the expanding
+        understanding of mitochondria as
+        participants in cellular communication,
+        rather than solely as structures
+        responsible for energy production.
+      </p>
+<p>
+        Its greatest scientific relevance
+        currently lies in the study of
+        metabolic signaling, cellular stress,
+        and mitochondrial-derived communication.
+      </p>
+<h3>Scientific references</h3>
+<ul>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=MOTS-c+mitochondrial+derived+peptide" rel="noopener" target="_blank">
+            PubMed: MOTS-C mitochondrial-derived peptide research
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=MOTS-c+AMPK+metabolism" rel="noopener" target="_blank">
+            PubMed: MOTS-C, AMPK, and metabolic signaling
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=MOTS-c" rel="noopener" target="_blank">
+            ClinicalTrials.gov: MOTS-C studies
+          </a>
+</li>
+</ul>
+</div></details></article>
+<!-- NAD+ -->
+<article class="research-card" id="nad"><details class="lmk-expandable lmk-research-expandable" data-topic="nad+ — nicotinamide adenine dinucleotide"><summary><span class="lmk-exp-kicker">08 / CELLULAR METABOLISM</span><span class="lmk-exp-title">NAD+ — Nicotinamide Adenine Dinucleotide</span></summary><div class="lmk-exp-body">
+
+
+<span class="meta">Essential cellular coenzyme</span>
+<span class="meta">Extensive biological research</span>
+<h3>What it is</h3>
+<p>
+        Nicotinamide adenine dinucleotide,
+        commonly abbreviated NAD+, is an
+        essential coenzyme found in living cells.
+        It participates in numerous biochemical
+        reactions associated with cellular
+        metabolism, energy production,
+        and signaling.
+      </p>
+<p>
+        NAD+ is not itself a peptide.
+        It is included in this research
+        directory because of its important
+        relationship to mitochondrial biology
+        and cellular metabolic function.
+      </p>
+<h3>Role in cellular energy metabolism</h3>
+<p>
+        NAD+ participates in oxidation-reduction
+        reactions by accepting electrons and
+        becoming NADH. The NAD+/NADH relationship
+        is central to metabolic processes
+        including glycolysis, the citric acid
+        cycle, and mitochondrial oxidative
+        phosphorylation.
+      </p>
+<p>
+        Through these processes, NAD+ helps
+        connect nutrient metabolism with
+        the biochemical systems responsible
+        for cellular ATP production.
+      </p>
+<h3>Role in cellular signaling</h3>
+<p>
+        In addition to its metabolic functions,
+        NAD+ serves as a substrate for enzymes
+        involved in cellular signaling
+        and maintenance.
+      </p>
+<p>
+        These include sirtuins, poly(ADP-ribose)
+        polymerases (PARPs), and other
+        NAD+-consuming enzymes associated
+        with stress responses, DNA repair,
+        and cellular regulation.
+      </p>
+<h3>Research areas</h3>
+<ul>
+<li>Cellular redox balance and energy metabolism.</li>
+<li>Mitochondrial oxidative phosphorylation.</li>
+<li>Sirtuin-associated cellular signaling.</li>
+<li>DNA damage responses and PARP activity.</li>
+<li>Age-associated changes in NAD+ metabolism.</li>
+<li>NAD+ biosynthesis and salvage pathways.</li>
+<li>Metabolic responses to NAD+ precursor supplementation.</li>
+</ul>
+<h3>Preclinical research</h3>
+<p>
+        Experimental studies have examined
+        how changes in NAD+ availability
+        influence metabolic regulation,
+        mitochondrial function,
+        and cellular stress responses.
+      </p>
+<p>
+        Animal studies involving NAD+
+        precursors have reported changes
+        in selected metabolic and
+        physiological outcomes.
+        However, the results vary
+        according to the experimental
+        model, precursor, dose,
+        and biological endpoint.
+      </p>
+<h3>Human clinical research</h3>
+<p>
+        Human studies have investigated
+        NAD+ precursors such as
+        nicotinamide riboside (NR)
+        and nicotinamide mononucleotide (NMN).
+      </p>
+<p>
+        Some clinical studies demonstrate
+        increases in measured NAD-related
+        metabolites following precursor
+        supplementation. Whether these
+        biochemical changes consistently
+        translate into meaningful improvements
+        in physical function, metabolic
+        health, or age-related outcomes
+        remains an active research question.
+      </p>
+<h3>Direct NAD+ versus NAD+ precursors</h3>
+<p>
+        Direct NAD+ administration and
+        supplementation with NAD+
+        precursors are different
+        research approaches.
+      </p>
+<p>
+        Their absorption, distribution,
+        metabolism, cellular uptake,
+        and clinical evidence cannot
+        be assumed to be interchangeable.
+        Findings from oral NR or NMN
+        studies do not automatically
+        establish the effects of
+        injectable or intravenous NAD+.
+      </p>
+<h3>Scientific considerations</h3>
+<p>
+        NAD+ metabolism is regulated
+        by multiple pathways, including
+        synthesis, recycling,
+        and enzymatic consumption.
+      </p>
+<p>
+        Changes in blood NAD-related
+        measurements may not accurately
+        represent NAD+ availability
+        within every tissue or
+        cellular compartment.
+      </p>
+<h3>Research perspective</h3>
+<p>
+        NAD+ occupies a central position
+        in the relationship between
+        cellular energy metabolism
+        and biological signaling.
+      </p>
+<p>
+        Research into NAD+ continues
+        to provide important insights
+        into mitochondrial biology,
+        metabolic regulation,
+        cellular maintenance,
+        and age-associated physiology.
+      </p>
+<h3>Scientific references</h3>
+<ul>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=NAD+metabolism+mitochondria" rel="noopener" target="_blank">
+            PubMed: NAD+ metabolism and mitochondrial biology
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=nicotinamide+riboside+human+clinical+trial" rel="noopener" target="_blank">
+            PubMed: Nicotinamide riboside human clinical research
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=nicotinamide+mononucleotide+human+clinical+trial" rel="noopener" target="_blank">
+            PubMed: Nicotinamide mononucleotide human studies
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=NAD%20metabolism" rel="noopener" target="_blank">
+            ClinicalTrials.gov: NAD metabolism research
+          </a>
+</li>
+</ul>
+</div></details></article>
+<!-- FOXO4-DRI -->
+<article class="research-card" id="fox04dri"><details class="lmk-expandable lmk-research-expandable" data-topic="foxo4-dri"><summary><span class="lmk-exp-kicker">09 / CELLULAR AGING RESEARCH</span><span class="lmk-exp-title">FOXO4-DRI</span></summary><div class="lmk-exp-body">
+
+
+<span class="meta">Experimental senolytic peptide</span>
+<span class="meta">Preclinical research</span>
+<h3>What it is</h3>
+<p>
+        FOXO4-DRI is an experimental peptide developed
+        to investigate cellular senescence and the
+        mechanisms that allow certain senescent cells
+        to resist programmed cell death.
+      </p>
+<p>
+        Cellular senescence is a biological state in
+        which cells undergo a generally stable
+        withdrawal from the cell cycle while
+        remaining metabolically active.
+      </p>
+<p>
+        Senescence can serve protective functions,
+        including limiting the proliferation of
+        damaged cells. However, persistent
+        accumulation of some senescent cell
+        populations may contribute to chronic
+        inflammation and impaired tissue function.
+      </p>
+<h3>Mechanism under investigation</h3>
+<p>
+        FOXO4 is a transcription factor belonging
+        to the forkhead box O family. Experimental
+        research has identified interactions
+        between FOXO4 and the tumor-suppressor
+        protein p53 in certain senescent cells.
+      </p>
+<p>
+        FOXO4-DRI was designed to interfere with
+        this protein-protein interaction.
+        The peptide uses a D-retro-inverso
+        configuration intended to alter its
+        molecular stability and biological
+        characteristics.
+      </p>
+<p>
+        In experimental models, disruption of
+        FOXO4-p53 interactions has promoted
+        p53-associated apoptosis in selected
+        senescent cell populations.
+      </p>
+<h3>Research areas</h3>
+<ul>
+<li>Cellular senescence and apoptosis.</li>
+<li>FOXO4-p53 protein interactions.</li>
+<li>Senescence-associated secretory phenotype (SASP).</li>
+<li>Cellular responses to accumulated DNA damage.</li>
+<li>Tissue homeostasis during biological aging.</li>
+<li>Experimental approaches to selective senescent-cell elimination.</li>
+</ul>
+<h3>Foundational preclinical research</h3>
+<p>
+        A landmark study published in Cell in
+        2017 investigated a FOXO4-derived peptide
+        designed to disrupt the interaction
+        between FOXO4 and p53.
+      </p>
+<p>
+        Researchers observed selective reductions
+        in the viability of certain senescent
+        cells under laboratory conditions.
+        In mouse models of accelerated and
+        natural aging, the experimental
+        approach was associated with
+        improvements in selected measures
+        of tissue function.
+      </p>
+<p>
+        These findings helped establish
+        FOXO4-p53 interactions as a subject
+        of senolytic research, but the
+        results remain specific to the
+        experimental systems studied.
+      </p>
+<h3>Current scientific questions</h3>
+<p>
+        Further research is needed to determine
+        how selectively FOXO4-DRI acts across
+        different tissues and senescent-cell
+        populations.
+      </p>
+<p>
+        Important unanswered questions include
+        tissue distribution, intracellular
+        delivery, pharmacokinetics, repeated
+        exposure, and possible effects on
+        normal p53-dependent cellular
+        functions.
+      </p>
+<h3>Human clinical evidence</h3>
+<p>
+        Published evidence supporting FOXO4-DRI
+        remains predominantly laboratory
+        and animal-based. Controlled human
+        clinical trials have not established
+        its efficacy for age-related
+        conditions or longevity.
+      </p>
+<h3>Research perspective</h3>
+<p>
+        FOXO4-DRI represents a mechanistically
+        distinctive approach to senescence
+        research because it investigates
+        the survival pathways of senescent
+        cells rather than simply attempting
+        to modify metabolic or inflammatory
+        signaling.
+      </p>
+<p>
+        Its scientific importance lies in
+        advancing understanding of
+        FOXO4-p53 interactions, selective
+        apoptosis, and the complex
+        biological roles of cellular
+        senescence.
+      </p>
+<h3>Scientific references</h3>
+<ul>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/28340339/" rel="noopener" target="_blank">
+            Baar et al. (2017): Targeted Apoptosis of Senescent Cells
+            Restores Tissue Homeostasis in Response to
+            Chemotoxicity and Aging — Cell
+          </a>
+</li>
+<li>
+<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5556182/" rel="noopener" target="_blank">
+            Full-text research: FOXO4-p53 interactions
+            and experimental senescent-cell elimination
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=FOXO4-DRI+senescence" rel="noopener" target="_blank">
+            PubMed: Additional FOXO4-DRI
+            and cellular senescence research
+          </a>
+</li>
+</ul>
+</div></details></article>
+<!-- GLOW -->
+<article class="research-card" id="glow"><details class="lmk-expandable lmk-research-expandable" data-topic="glow"><summary><span class="lmk-exp-kicker">10 / COMBINATION PEPTIDE RESEARCH</span><span class="lmk-exp-title">GLOW</span></summary><div class="lmk-exp-body">
+
+
+<span class="meta">Multi-ingredient research formulation</span>
+<span class="meta">Ingredient-specific evidence</span>
+<h3>What it is</h3>
+<p>
+        GLOW is a multi-ingredient research
+        formulation associated with scientific
+        interest in tissue remodeling,
+        extracellular matrix biology,
+        and cellular repair mechanisms.
+      </p>
+<p>
+        The term GLOW describes a formulation
+        rather than a single universally
+        standardized peptide molecule.
+        Its scientific interpretation
+        therefore depends on the exact
+        ingredients, their chemical identities,
+        and their respective quantities.
+      </p>
+<h3>Research areas</h3>
+<ul>
+<li>Cellular signaling associated with tissue remodeling.</li>
+<li>Extracellular matrix organization and collagen biology.</li>
+<li>Experimental wound-healing mechanisms.</li>
+<li>Inflammatory signaling during tissue repair.</li>
+<li>Angiogenesis and vascular responses in experimental models.</li>
+<li>Interactions between multiple research compounds.</li>
+</ul>
+<h3>Individual ingredient research</h3>
+<p>
+        Compounds commonly discussed in
+        tissue-repair peptide research
+        include GHK-Cu, BPC-157, and
+        thymosin beta-4-related peptides.
+      </p>
+<p>
+        GHK-Cu is a copper-binding
+        tripeptide investigated for
+        its relationships with
+        extracellular matrix regulation,
+        collagen-associated processes,
+        and tissue remodeling.
+      </p>
+<p>
+        BPC-157 has been investigated
+        primarily in preclinical models
+        involving tissue injury,
+        gastrointestinal biology,
+        and inflammatory responses.
+      </p>
+<p>
+        Thymosin beta-4 and related
+        peptide fragments have been
+        studied in connection with
+        actin regulation, cell migration,
+        and tissue repair mechanisms.
+      </p>
+<h3>Research involving combinations</h3>
+<p>
+        Combining biologically active
+        research compounds introduces
+        questions that cannot be answered
+        by studying each ingredient
+        independently.
+      </p>
+<p>
+        These include possible changes
+        in chemical stability, molecular
+        interactions, biological activity,
+        and the interpretation of
+        experimental outcomes.
+      </p>
+<p>
+        Evidence involving an individual
+        ingredient does not establish
+        that a finished combination
+        produces equivalent, additive,
+        or synergistic effects.
+      </p>
+<h3>Formulation-specific considerations</h3>
+<p>
+        Meaningful scientific evaluation
+        of a GLOW formulation requires
+        confirmation of its exact
+        ingredient composition,
+        concentration, identity,
+        and analytical characteristics.
+      </p>
+<p>
+        Formulations marketed under
+        the same general name may
+        differ between suppliers.
+        Published findings involving
+        one composition should not
+        automatically be applied
+        to another.
+      </p>
+<h3>Research perspective</h3>
+<p>
+        GLOW is best understood as
+        a formulation-level research
+        subject involving multiple
+        biological pathways associated
+        with tissue organization
+        and repair.
+      </p>
+<p>
+        Its scientific value depends
+        on careful distinction between
+        established ingredient-specific
+        mechanisms, preclinical
+        observations, and direct
+        evidence involving the
+        complete formulation.
+      </p>
+<h3>Scientific references</h3>
+<ul>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=GHK-Cu+collagen+wound+healing" rel="noopener" target="_blank">
+            PubMed: GHK-Cu and extracellular matrix research
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=BPC-157+tissue+repair" rel="noopener" target="_blank">
+            PubMed: BPC-157 and experimental tissue repair
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+beta+4+wound+healing" rel="noopener" target="_blank">
+            PubMed: Thymosin beta-4 and wound-healing research
+          </a>
+</li>
+</ul>
+</div></details></article>
+<!-- KLOW -->
+<article class="research-card" id="klow"><details class="lmk-expandable lmk-research-expandable" data-topic="klow"><summary><span class="lmk-exp-kicker">11 / COMBINATION PEPTIDE RESEARCH</span><span class="lmk-exp-title">KLOW</span></summary><div class="lmk-exp-body">
+
+
+<span class="meta">Multi-ingredient research formulation</span>
+<span class="meta">Formulation-specific investigation</span>
+<h3>What it is</h3>
+<p>
+        KLOW is a multi-ingredient research
+        formulation intended to be examined
+        as a defined combination of
+        peptide-related research compounds.
+      </p>
+<p>
+        As with other named research
+        combinations, KLOW should not
+        be treated as a single,
+        universally standardized
+        molecular entity.
+      </p>
+<p>
+        The biological characteristics
+        of a specific formulation
+        depend on its verified
+        ingredients, their quantities,
+        and the analytical properties
+        of the finished material.
+      </p>
+<h3>Scientific framework</h3>
+<p>
+        Research involving combinations
+        of peptides may explore
+        interactions between
+        biological signaling pathways,
+        cellular responses,
+        and tissue-specific
+        mechanisms.
+      </p>
+<p>
+        However, a combination's
+        scientific rationale must
+        be distinguished from
+        experimentally demonstrated
+        effects.
+      </p>
+<h3>Research areas</h3>
+<ul>
+<li>Biological activity of individual formulation ingredients.</li>
+<li>Interactions between peptide-associated signaling pathways.</li>
+<li>Cellular and tissue-specific responses.</li>
+<li>Compound compatibility and formulation stability.</li>
+<li>Analytical verification of ingredient identity.</li>
+<li>Comparisons between individual compounds and complete combinations.</li>
+</ul>
+<h3>Ingredient-level evidence</h3>
+<p>
+        Individual peptides may have
+        published laboratory,
+        animal, or human research
+        describing particular
+        molecular mechanisms.
+      </p>
+<p>
+        The strength of that evidence
+        varies substantially between
+        compounds. A biological effect
+        observed in one experimental
+        model may not occur in
+        another tissue, organism,
+        or formulation.
+      </p>
+<p>
+        Research findings should
+        therefore be evaluated
+        ingredient by ingredient
+        before considering
+        possible interactions
+        within a combination.
+      </p>
+<h3>Combination-level evidence</h3>
+<p>
+        Direct investigation of
+        a finished multi-ingredient
+        formulation is necessary
+        to characterize its
+        combined biological
+        activity.
+      </p>
+<p>
+        A mixture may produce
+        interactions that differ
+        from the responses
+        observed when its
+        ingredients are studied
+        separately.
+      </p>
+<p>
+        Such interactions could
+        be additive, antagonistic,
+        or otherwise dependent
+        on experimental conditions.
+        Synergy should not be
+        assumed without direct
+        supporting evidence.
+      </p>
+<h3>Analytical characterization</h3>
+<p>
+        Scientific evaluation of
+        KLOW requires attention
+        to the identity and
+        proportion of each
+        constituent compound.
+      </p>
+<p>
+        Relevant analytical
+        considerations may include
+        chromatographic separation,
+        mass spectrometric identity
+        testing, peptide purity,
+        degradation products,
+        and formulation stability.
+      </p>
+<p>
+        The appropriate methods
+        depend on the specific
+        ingredients and intended
+        experimental application.
+      </p>
+<h3>Research perspective</h3>
+<p>
+        KLOW illustrates the
+        distinction between
+        studying individual
+        biologically active
+        compounds and studying
+        a defined multi-ingredient
+        research formulation.
+      </p>
+<p>
+        A scientifically meaningful
+        assessment requires both
+        reliable characterization
+        of the material and
+        direct evidence supporting
+        claims about its
+        combined activity.
+      </p>
+<h3>Scientific references</h3>
+<ul>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=peptide+combination+drug+interactions" rel="noopener" target="_blank">
+            PubMed: Peptide combinations and biological interactions
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=peptide+analytical+characterization+mass+spectrometry" rel="noopener" target="_blank">
+            PubMed: Peptide identity and analytical characterization
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=peptide+formulation+stability" rel="noopener" target="_blank">
+            PubMed: Peptide formulation stability research
+          </a>
+</li>
+</ul>
+</div></details></article>
+</div>
+</section>
+<!-- SCIENTIFIC EVIDENCE GUIDE -->
+<section class="paper" id="evidence-guide">
+<div class="container">
+<div class="eyebrow">Understanding Scientific Evidence</div>
+<h2>How to Interpret Peptide Research</h2>
+<p>
+      Scientific findings are best understood in the context
+      of the methods used to produce them. Laboratory studies,
+      animal experiments, observational research, and
+      controlled human clinical trials answer different
+      questions and provide different levels of evidence.
+    </p>
+<h3>Laboratory and Cellular Research</h3>
+<p>
+      In vitro research examines biological processes
+      under controlled laboratory conditions. These
+      studies are valuable for identifying molecular
+      mechanisms, receptor interactions, and cellular
+      responses. However, laboratory observations
+      cannot independently establish clinical
+      outcomes in humans.
+    </p>
+<h3>Animal and Preclinical Research</h3>
+<p>
+      Animal studies investigate biological activity
+      in living systems and may help characterize
+      pharmacology, tissue responses, and potential
+      mechanisms. Differences between species,
+      metabolism, and experimental conditions
+      limit direct translation to human outcomes.
+    </p>
+<h3>Human Observational Research</h3>
+<p>
+      Observational studies examine relationships
+      between biological measurements, exposures,
+      and health outcomes. They may identify
+      important associations but generally cannot
+      establish causation on their own.
+    </p>
+<h3>Controlled Human Clinical Trials</h3>
+<p>
+      Randomized controlled trials can provide
+      stronger evidence of causal effects when
+      they are appropriately designed and conducted.
+      Interpretation requires attention to
+      participant characteristics, comparison
+      groups, study duration, endpoints,
+      adverse events, and statistical uncertainty.
+    </p>
+<h3>Peer Review and Reproducibility</h3>
+<p>
+      Peer review provides independent scientific
+      evaluation before publication, but it does
+      not guarantee that every finding is correct.
+      Reproducibility, independent confirmation,
+      transparent methods, and consistency across
+      studies strengthen confidence in a result.
+    </p>
+<h3>Research on Peptide Combinations</h3>
+<p>
+      A combination of research compounds should
+      be evaluated as a distinct formulation.
+      Evidence supporting an individual ingredient
+      does not automatically establish the
+      biological activity or effectiveness
+      of a multi-ingredient mixture.
+    </p>
+<p>
+      Important considerations include ingredient
+      identity, relative quantities, chemical
+      compatibility, stability, and interactions
+      between biological pathways.
+    </p>
+</div>
+</section>
+<!-- CONSOLIDATED SCIENTIFIC REFERENCES -->
+<section class="section" id="references">
+<div class="container">
+<div class="section-heading">
+<div class="eyebrow">Scientific Literature</div>
+<h2>Research References &amp; Resources</h2>
+<p>
+        The following scientific resources provide
+        access to peer-reviewed publications,
+        registered clinical studies, and
+        foundational research relevant to
+        the subjects presented on this page.
+      </p>
+</div>
+<div class="research-grid">
+<div class="reference-card">
+<div class="number">01 / SCIENTIFIC LITERATURE</div>
+<h3>PubMed</h3>
+<p>
+          A searchable database of biomedical
+          and life sciences literature maintained
+          by the National Library of Medicine.
+        </p>
+<a href="https://pubmed.ncbi.nlm.nih.gov/" rel="noopener" target="_blank">
+          Explore PubMed Research
+        </a>
+</div>
+<div class="reference-card">
+<div class="number">02 / CLINICAL RESEARCH</div>
+<h3>ClinicalTrials.gov</h3>
+<p>
+          A public registry providing information
+          about clinical studies, including
+          their design, status, and available
+          reported results.
+        </p>
+<a href="https://clinicaltrials.gov/" rel="noopener" target="_blank">
+          Explore Clinical Studies
+        </a>
+</div>
+<div class="reference-card">
+<div class="number">03 / FULL-TEXT RESEARCH</div>
+<h3>PubMed Central</h3>
+<p>
+          A free full-text archive of biomedical
+          and life sciences journal literature
+          maintained by the National Library
+          of Medicine.
+        </p>
+<a href="https://pmc.ncbi.nlm.nih.gov/" rel="noopener" target="_blank">
+          Explore Full-Text Publications
+        </a>
+</div>
+</div>
+<h3>Selected Research Topics</h3>
+<ol class="reference-list">
+<li>
+<strong>Retatrutide and metabolic signaling.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=retatrutide" rel="noopener" target="_blank">
+          Published clinical and pharmacological research
+        </a>
+</li>
+<li>
+<strong>AOD-9604 and lipid metabolism.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=AOD-9604" rel="noopener" target="_blank">
+          Research on growth hormone fragments
+        </a>
+</li>
+<li>
+<strong>Tesamorelin and visceral adipose tissue.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=tesamorelin+visceral+fat" rel="noopener" target="_blank">
+          Human clinical research
+        </a>
+</li>
+<li>
+<strong>CJC-1295 and growth hormone signaling.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=CJC-1295" rel="noopener" target="_blank">
+          Pharmacological and endocrine research
+        </a>
+</li>
+<li>
+<strong>Ipamorelin and ghrelin receptors.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=ipamorelin" rel="noopener" target="_blank">
+          Growth hormone secretagogue research
+        </a>
+</li>
+<li>
+<strong>Elamipretide and mitochondrial membranes.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=elamipretide" rel="noopener" target="_blank">
+          Mitochondrial and clinical research
+        </a>
+</li>
+<li>
+<strong>MOTS-C and metabolic adaptation.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=MOTS-c" rel="noopener" target="_blank">
+          Mitochondrial-derived peptide research
+        </a>
+</li>
+<li>
+<strong>NAD+ and cellular energy metabolism.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=NAD+metabolism" rel="noopener" target="_blank">
+          NAD+ metabolism and signaling research
+        </a>
+</li>
+<li>
+<strong>FOXO4-DRI and cellular senescence.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/28340339/" rel="noopener" target="_blank">
+          Baar et al. (2017), Cell
+        </a>
+</li>
+<li>
+<strong>GHK-Cu and extracellular matrix biology.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=GHK-Cu" rel="noopener" target="_blank">
+          Copper peptide and tissue-remodeling research
+        </a>
+</li>
+<li>
+<strong>BPC-157 and experimental tissue repair.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=BPC-157" rel="noopener" target="_blank">
+          Preclinical and emerging research
+        </a>
+</li>
+<li>
+<strong>Thymosin beta-4 and cell migration.</strong>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+beta+4" rel="noopener" target="_blank">
+          Tissue repair and cellular signaling research
+        </a>
+</li>
+</ol>
+</div>
+</section>
+</main>
+
+<!-- WEBSITE FOOTER -->
+<footer>
+<div class="container">
+<div class="footer-brand">
+      LABORATORI MASSA KRITIKAL
+    </div>
+<div class="footer-copy">
+      DRIVEN BY SCIENCE. DEFINED BY PRECISION.
+    </div>
+<nav aria-label="Footer navigation" class="lmk-nav-links" style="justify-content:flex-start;margin-top:22px;">
+<a href="index.html">Home</a>
+<a href="products.html">Catalog</a>
+<a href="dosing.html">Dosing</a>
+<a aria-current="page" class="active" href="research.html">Research</a>
+<a href="perspective.html">Our Perspective</a>
+</nav>
+<div class="footer-copy">
+<p>
+        Exploring peptide science, cellular biology,
+        metabolic signaling, and emerging biomedical
+        research through evidence-focused literature.
+      </p>
+<p>
+        Scientific topics and references are reviewed
+        as new research becomes available.
+      </p>
+</div>
+<div class="copyright">
+      © <span id="current-year">2026</span>
+      Laboratori Massa Kritikal, LLC.
+      All rights reserved.
+    </div>
+</div>
+</footer>
+<script>
+  document.getElementById("current-year").textContent =
+    new Date().getFullYear();
+</script>
+<script>(function(){const cards=[...document.querySelectorAll("article.research-card[id]")];const input=document.getElementById("lmkResearchSearch");function openHash(){const id=decodeURIComponent(location.hash.slice(1));const card=document.getElementById(id);if(card&&card.matches("article.research-card")){card.hidden=false;const d=card.querySelector("details.lmk-expandable");if(d)d.open=true;}}cards.forEach(c=>{const d=c.querySelector("details.lmk-expandable");if(d)d.addEventListener("toggle",()=>{if(d.open)cards.forEach(other=>{if(other!==c){const od=other.querySelector("details.lmk-expandable");if(od)od.open=false;}})});});if(input)input.addEventListener("input",()=>{const q=input.value.trim().toLocaleLowerCase();cards.forEach(c=>{c.hidden=!!q&&!c.textContent.toLocaleLowerCase().includes(q)});if(q){const matches=cards.filter(c=>!c.hidden);if(matches.length===1)matches[0].querySelector("details").open=true;}});window.addEventListener("hashchange",openHash);openHash();})();</script></body>
+</html>

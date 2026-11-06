@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Our Perspective | Labortori Massa Kritikal</title>
+<meta content="Discover the Labortori Massa Kritikal philosophy: scientific rigor, transparent communication, responsible research, and evidence before hype." name="description"/>
+<meta content="#101113" name="theme-color"/>
+<style>
+    
+
+.notice {
+  background: #c9a653;
+  color: #151515;
+  padding: 11px 15px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+:root {
+    --black: #101113;
+    --black-deep: #0b0c0e;
+    --black-soft: #17191c;
+    --panel: #1c1f22;
+    --gold: #c9a653;
+    --gold-light: #e5cd91;
+    --ivory: #f4f0e7;
+    --muted: #b8b6b0;
+    --line: rgba(201, 166, 83, .25);
+    --max-width: 1180px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    background: var(--black);
+    color: var(--ivory);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--gold-light);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 5px;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1, h2, h3, p {
+    margin-top: 0;
+}
+
+h1, h2, h3 {
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+h2 {
+    margin-bottom: 22px;
+    font-size: clamp(30px, 4vw, 46px);
+    letter-spacing: -.6px;
+}
+
+h3 {
+    margin-bottom: 12px;
+    font-size: 23px;
+}
+
+p {
+    color: var(--muted);
+}
+
+.container {
+    width: min(var(--max-width), calc(100% - 48px));
+    margin: 0 auto;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    line-height: 1.6;
+    text-transform: uppercase;
+}
+
+.gold {
+    color: var(--gold-light);
+}
+
+/* SHARED HEADER */
+
+.lmk-site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: rgba(16, 17, 19, .96);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.lmk-header-inner {
+    width: min(1120px, 90%);
+    min-height: 74px;
+    margin: 0 auto;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.lmk-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.lmk-brand-row > a {
+    display: block;
+    flex: 0 0 50px;
+}
+
+.lmk-brand-logo {
+    display: block;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.lmk-brand-text {
+    color: var(--ivory);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+}
+
+.lmk-brand-text span {
+    display: block;
+    margin-top: 4px;
+    color: var(--gold);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+}
+
+.lmk-nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+}
+
+.lmk-nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color .2s ease;
+}
+
+.lmk-nav-links a:hover,
+.lmk-nav-links a.active {
+    color: var(--gold-light);
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 118px 0 105px;
+    border-bottom: 1px solid var(--line);
+    background:
+        radial-gradient(
+            ellipse at 85% 25%,
+            rgba(201, 166, 83, .13),
+            transparent 43%
+        ),
+        linear-gradient(140deg, #1a1c1e, var(--black) 72%);
+}
+
+.hero::before,
+.hero::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+    border: 1px solid rgba(201, 166, 83, .17);
+    border-radius: 50%;
+}
+
+.hero::before {
+    width: 390px;
+    height: 390px;
+    right: -175px;
+    top: 20px;
+    box-shadow:
+        0 0 0 35px rgba(201,166,83,.025),
+        0 0 0 75px rgba(201,166,83,.02);
+}
+
+.hero::after {
+    width: 160px;
+    height: 160px;
+    right: 55px;
+    top: 130px;
+    border-color: rgba(201, 166, 83, .12);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+}
+
+.hero h1 {
+    margin: 23px 0 27px;
+    font-size: clamp(44px, 7.3vw, 80px);
+    letter-spacing: -1.8px;
+    line-height: 1.04;
+}
+
+.hero h1 em {
+    color: var(--gold-light);
+    font-weight: 400;
+}
+
+.hero-lead {
+    max-width: 730px;
+    color: #d5d1c8;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.8;
+}
+
+.hero-note {
+    margin-top: 34px;
+    padding-left: 17px;
+    border-left: 2px solid var(--gold);
+    color: var(--muted);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.7px;
+}
+
+/* GENERAL SECTIONS */
+
+.section {
+    padding: 88px 0;
+}
+
+.section + .section {
+    border-top: 1px solid rgba(201, 166, 83, .13);
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 72px;
+    align-items: start;
+}
+
+.intro-heading h2 {
+    margin-top: 16px;
+}
+
+.intro-copy p {
+    font-size: 15px;
+}
+
+.intro-copy p:first-child {
+    color: var(--ivory);
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+.signature {
+    margin-top: 28px;
+    color: var(--gold-light);
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+/* VALUES */
+
+.values-section {
+    background: var(--black-soft);
+}
+
+.section-heading {
+    max-width: 770px;
+    margin-bottom: 42px;
+}
+
+.section-heading h2 {
+    margin-top: 15px;
+}
+
+.section-heading p {
+    max-width: 690px;
+    font-size: 16px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.value-card {
+    min-height: 250px;
+    padding: 29px 27px;
+    background: linear-gradient(145deg, #202326, var(--panel));
+    border: 1px solid var(--line);
+    transition: transform .25s ease, border-color .25s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+}
+
+.value-number {
+    display: block;
+    margin-bottom: 23px;
+    color: var(--gold);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.value-card h3 {
+    color: var(--ivory);
+    font-size: 21px;
+}
+
+.value-card p {
+    margin-bottom: 0;
+    font-size: 13px;
+    line-height: 1.85;
+}
+
+/* STATEMENT */
+
+.statement {
+    position: relative;
+    overflow: hidden;
+    padding: 86px 0;
+    text-align: center;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(201, 166, 83, .14),
+            transparent 67%
+        ),
+        var(--black-deep);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.statement blockquote {
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--ivory);
+    font-size: clamp(27px, 4.5vw, 46px);
+    line-height: 1.4;
+}
+
+.statement blockquote em {
+    color: var(--gold-light);
+    font-weight: 400;
+}
+
+.statement-caption {
+    margin-top: 25px;
+    color: var(--gold);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* EVIDENCE STANDARD */
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.column-rule {
+    padding-top: 24px;
+    border-top: 2px solid var(--gold);
+}
+
+.column-rule h3 {
+    margin-top: 13px;
+    font-size: 25px;
+}
+
+.column-rule p {
+    font-size: 14px;
+}
+
+.belief-list {
+    margin: 23px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.belief-list li {
+    position: relative;
+    padding: 13px 0 13px 25px;
+    border-bottom: 1px solid rgba(201, 166, 83, .14);
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.belief-list li::before {
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    content: "—";
+}
+
+/* RESPONSIBLE PRACTICE */
+
+.practice-section {
+    background: var(--black-soft);
+}
+
+.practice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.practice-card {
+    padding: 27px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+}
+
+.practice-card h3 {
+    color: var(--gold-light);
+    font-size: 20px;
+}
+
+.practice-card p {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.practice-label {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--gold);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* RESEARCH CTA */
+
+.research-band {
+    background: var(--black);
+}
+
+.research-box {
+    padding: 44px;
+    border: 1px solid var(--line);
+    background:
+        linear-gradient(130deg, rgba(201,166,83,.09), transparent 65%),
+        var(--black-soft);
+}
+
+.research-box h2 {
+    max-width: 760px;
+    margin-top: 15px;
+}
+
+.research-box p {
+    max-width: 830px;
+    font-size: 15px;
+}
+
+.research-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 47px;
+    padding: 12px 21px;
+    border: 1px solid var(--gold);
+    color: var(--ivory);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background .2s ease, color .2s ease;
+}
+
+.button.primary {
+    background: var(--gold);
+    color: var(--black);
+}
+
+.button:hover {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+    color: var(--black);
+}
+
+/* COMMITMENT */
+
+.commitment-panel {
+    padding: 32px;
+    border-left: 2px solid var(--gold);
+    background: rgba(255, 255, 255, .025);
+}
+
+.commitment-panel p:last-child {
+    margin-bottom: 0;
+}
+
+/* DISCLAIMER */
+
+.disclaimer {
+    padding: 32px 0;
+    background: var(--black-deep);
+    border-top: 1px solid var(--line);
+}
+
+.disclaimer h2 {
+    margin-bottom: 14px;
+    color: var(--gold);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.disclaimer p {
+    max-width: 1050px;
+    margin-bottom: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+/* FOOTER */
+
+.site-footer {
+    padding: 38px 0 25px;
+    background: var(--black);
+}
+
+.footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.footer-brand {
+    color: var(--ivory);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+}
+
+.footer-brand span {
+    display: block;
+    margin-top: 7px;
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 1.4px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+.footer-links a {
+    color: var(--muted);
+}
+
+.footer-links a:hover {
+    color: var(--gold-light);
+}
+
+.copyright {
+    width: 100%;
+    margin: 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(201, 166, 83, .13);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .lmk-header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 0;
+    }
+
+    .lmk-nav-links {
+        justify-content: flex-start;
+        gap: 10px 16px;
+    }
+
+    .hero {
+        padding: 84px 0;
+    }
+
+    .intro-grid,
+    .two-column {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .section {
+        padding: 65px 0;
+    }
+}
+
+@media (max-width: 580px) {
+    .container {
+        width: calc(100% - 32px);
+    }
+
+    .lmk-header-inner {
+        width: 92%;
+    }
+
+    .lmk-brand-row {
+        gap: 9px;
+    }
+
+    .lmk-brand-row > a {
+        flex-basis: 42px;
+    }
+
+    .lmk-brand-logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .lmk-brand-text {
+        font-size: 14px;
+        letter-spacing: .8px;
+        white-space: normal;
+    }
+
+    .lmk-brand-text span {
+        font-size: 8px;
+        letter-spacing: .7px;
+    }
+
+    .lmk-nav-links {
+        gap: 9px 13px;
+        font-size: 9px;
+        letter-spacing: .5px;
+    }
+
+    .hero {
+        padding: 65px 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(42px, 12vw, 60px);
+        letter-spacing: -1px;
+    }
+
+    .hero-note {
+        font-size: 9px;
+        letter-spacing: 1px;
+        line-height: 1.8;
+    }
+
+    .values-grid,
+    .practice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .value-card {
+        min-height: auto;
+        padding: 25px 23px;
+    }
+
+    .statement {
+        padding: 65px 0;
+    }
+
+    .research-box {
+        padding: 27px 21px;
+    }
+
+    .research-links {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .commitment-panel {
+        padding: 23px;
+    }
+
+    .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
+
+/* LMK STANDARD INTERIOR WEBSITE HEADER — scrolls with page */
+.lmk-site-header {position:static!important;top:auto!important;z-index:auto;width:100%;background:#101113!important;border-bottom:1px solid rgba(201,166,83,.32);backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+.lmk-site-header .lmk-header-inner {width:min(1120px,calc(100% - 40px));min-height:76px;margin:0 auto;padding:10px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-direction:row;}
+.lmk-site-header .lmk-brand-row {display:flex;align-items:center;gap:12px;flex:0 1 auto;min-width:0;}
+.lmk-site-header .lmk-brand-row>a {display:flex;align-items:center;flex:0 0 50px;}
+.lmk-site-header .lmk-brand-logo {display:block;width:50px;height:50px;flex-shrink:0;object-fit:contain;}
+.lmk-site-header .lmk-brand-text {margin:0;color:#f5f4f0;font-family:Georgia,"Times New Roman",serif;font-size:17px;font-weight:400;line-height:1.3;letter-spacing:2px;white-space:nowrap;text-align:left;}
+.lmk-site-header .lmk-brand-text span {display:block;margin-top:5px;color:#c9a653;font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:400;line-height:1.5;letter-spacing:2px;white-space:nowrap;}
+.lmk-site-header nav.lmk-nav-links {display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:6px 14px;width:auto;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:400;line-height:1.4;letter-spacing:.5px;text-transform:uppercase;}
+.lmk-site-header nav.lmk-nav-links a {display:inline-block;margin:0;padding:4px 0;color:#f5f4f0;font-family:inherit;font-size:inherit;font-weight:400;line-height:inherit;letter-spacing:inherit;text-decoration:none;white-space:nowrap;transition:color .2s ease;}
+.lmk-site-header nav.lmk-nav-links a:hover,.lmk-site-header nav.lmk-nav-links a.active {color:#e5cd91;}
+.lmk-site-header nav.lmk-nav-links a.active {text-decoration:underline;text-decoration-color:#c9a653;text-underline-offset:4px;}
+@media(max-width:1000px){.lmk-site-header .lmk-header-inner{align-items:flex-start;flex-direction:column;gap:12px;padding:12px 0}.lmk-site-header nav.lmk-nav-links{justify-content:flex-start;gap:8px 14px}}
+@media(max-width:560px){.lmk-site-header .lmk-header-inner{width:calc(100% - 28px);min-height:auto;gap:10px;padding:10px 0}.lmk-site-header .lmk-brand-row{gap:9px}.lmk-site-header .lmk-brand-row>a{flex-basis:42px}.lmk-site-header .lmk-brand-logo{width:42px;height:42px}.lmk-site-header .lmk-brand-text{font-size:14px;letter-spacing:1px}.lmk-site-header .lmk-brand-text span{font-size:8px;letter-spacing:1px}.lmk-site-header nav.lmk-nav-links{gap:7px 12px;font-size:9px;letter-spacing:.3px}}
+
+</style>
+<style>
+/* Accessible expandable Perspective sections */
+.perspective-accordion{padding:0!important;border-top:1px solid rgba(201,166,83,.22)}
+.perspective-toggle{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:25px max(20px,calc((100% - 1120px)/2));border:0;background:#191a1d;color:#e5cd91;text-align:left;font:normal clamp(19px,3vw,26px) Georgia,serif;cursor:pointer}
+.perspective-toggle:hover,.perspective-toggle:focus-visible{background:#25231f;outline-offset:-3px}
+.perspective-toggle .perspective-sign{flex-shrink:0;font:normal 28px Arial,sans-serif;color:#c9a653}
+.perspective-accordion-content[hidden]{display:none!important}
+.perspective-accordion-content{padding:30px 0 48px}
+.perspective-accordion-content>.container{width:min(1180px,calc(100% - 48px));margin:auto}
+@media(max-width:600px){.perspective-toggle{padding:20px 18px}.perspective-accordion-content{padding:22px 0 35px}}
+</style></head>
+<body>
+<div class="notice">Research Information Only | No Medical Advice</div>
+<header class="lmk-site-header">
+<div class="lmk-header-inner">
+<div class="lmk-brand-row">
+<a aria-label="Laboratori Massa Kritikal home" href="index.html"><img alt="Laboratori Massa Kritikal logo" class="lmk-brand-logo" src="images/logo.jpeg"/></a>
+<div class="lmk-brand-text">LABORATORI MASSA KRITIKAL<span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span></div>
+</div>
+<nav aria-label="Main navigation" class="lmk-nav-links">
+<a href="index.html">Home</a>
+<a href="products.html">Catalog</a>
+<a href="dosing.html">Dosing</a>
+<a href="research.html">Research</a>
+<a aria-current="page" class="active" href="perspective.html">Our Perspective</a>
+</nav>
+</div>
+</header>
+<main>
+<!-- HERO -->
+<section class="hero">
+<div class="container hero-content">
+<div class="eyebrow">The Labortori Massa Kritikal Standard</div>
+<h1>
+                Science deserves<br/>
+<em>more than promises.</em>
+</h1>
+<p class="hero-lead">
+                We believe the future of scientific discovery depends on
+                rigorous questions, honest evidence, transparent communication,
+                and respect for the complexity of biological systems.
+                Curiosity moves science forward. Integrity keeps it grounded.
+            </p>
+<div class="hero-note">
+                SCIENTIFIC RIGOR  ·  TRANSPARENCY  ·  ACCOUNTABILITY
+            </div>
+</div>
+</section>
+<!-- OUR PURPOSE -->
+<section class="section perspective-accordion"><button aria-controls="perspective-panel-1" aria-expanded="false" class="perspective-toggle" type="button"><span>Curiosity with a conscience.</span><span aria-hidden="true" class="perspective-sign">+</span></button><div class="perspective-accordion-content" hidden="" id="perspective-panel-1">
+<div class="container intro-grid">
+<div class="intro-heading">
+<div class="eyebrow">Our Purpose</div>
+<h2>
+                    Curiosity with<br/>
+                    a <span class="gold">conscience.</span>
+</h2>
+</div>
+<div class="intro-copy">
+<p>
+                    At Labortori Massa Kritikal, our perspective begins with
+                    a simple conviction: meaningful scientific progress
+                    requires both intellectual ambition and disciplined
+                    responsibility.
+                </p>
+<p>
+                    Peptides, molecular signaling, cellular biology, and
+                    metabolic pathways are active areas of scientific
+                    investigation. They raise compelling questions about
+                    how biological systems function and how researchers
+                    might better understand them.
+                </p>
+<p>
+                    But a compelling question is not the same as an answer.
+                    A mechanism proposed in a laboratory is not proof of a
+                    clinical benefit. An early finding is not a guarantee
+                    that future research will confirm it.
+                </p>
+<p>
+                    We believe scientific information should make those
+                    distinctions easier to understand—not obscure them
+                    behind confident language, exaggerated expectations,
+                    or marketing-driven conclusions.
+                </p>
+<p>
+                    Our goal is to cultivate a research-minded environment
+                    where evidence is examined carefully, limitations are
+                    acknowledged, and questions are welcomed.
+                </p>
+<div class="signature">
+                    Credibility is not a slogan. It is a standard to uphold.
+                </div>
+</div>
+</div>
+</div></section>
+<!-- CORE VALUES -->
+<section class="section values-section perspective-accordion"><button aria-controls="perspective-panel-2" aria-expanded="false" class="perspective-toggle" type="button"><span>Six principles. One standard.</span><span aria-hidden="true" class="perspective-sign">+</span></button><div class="perspective-accordion-content" hidden="" id="perspective-panel-2">
+<div class="container">
+<div class="section-heading">
+<div class="eyebrow">The Principles Behind Our Name</div>
+<h2>Six principles. One standard.</h2>
+<p>
+                    These principles shape the way we present scientific
+                    information, describe research materials, and communicate
+                    the boundaries of what is currently known.
+                </p>
+</div>
+<div class="values-grid">
+<article class="value-card">
+<span class="value-number">01 / INTEGRITY</span>
+<h3>Evidence before hype.</h3>
+<p>
+                        We believe statements should be proportionate to the
+                        evidence supporting them. Preliminary observations
+                        should not be presented as established conclusions,
+                        and possibilities should never be framed as guarantees.
+                    </p>
+</article>
+<article class="value-card">
+<span class="value-number">02 / PRECISION</span>
+<h3>Details matter.</h3>
+<p>
+                        Scientific communication depends on accurate
+                        terminology, clear product identification, and
+                        careful distinctions between compounds, formulations,
+                        research models, and intended contexts.
+                    </p>
+</article>
+<article class="value-card">
+<span class="value-number">03 / TRANSPARENCY</span>
+<h3>Clarity earns trust.</h3>
+<p>
+                        Relevant documentation, known limitations, and
+                        unresolved questions should be communicated honestly.
+                        Where information is unavailable, that absence should
+                        not be disguised as certainty.
+                    </p>
+</article>
+<article class="value-card">
+<span class="value-number">04 / SCIENCE</span>
+<h3>Follow the evidence.</h3>
+<p>
+                        We value credible primary literature, sound
+                        methodology, and appropriate regulatory sources.
+                        We recognize that the strength of evidence varies
+                        and that individual studies must be considered
+                        in their broader scientific context.
+                    </p>
+</article>
+<article class="value-card">
+<span class="value-number">05 / RESPONSIBILITY</span>
+<h3>Knowledge requires care.</h3>
+<p>
+                        Research requires attention to quality, uncertainty,
+                        potential risks, and applicable requirements.
+                        Scientific interest does not remove the obligation
+                        to communicate responsibly or operate lawfully.
+                    </p>
+</article>
+<article class="value-card">
+<span class="value-number">06 / ACCOUNTABILITY</span>
+<h3>Stand behind the standard.</h3>
+<p>
+                        Trust must be supported by consistent practices,
+                        accurate records, and a willingness to correct
+                        mistakes. Our stated principles should guide
+                        our actions—not merely our presentation.
+                    </p>
+</article>
+</div>
+</div>
+</div></section>
+<!-- BRAND STATEMENT -->
+<section class="statement">
+<div class="container">
+<blockquote>
+                “The measure of discovery is not only what we learn,
+                but how <em>honestly and responsibly</em> we put that
+                knowledge into context.”
+            </blockquote>
+<div class="statement-caption">
+                The Labortori Massa Kritikal Perspective
+            </div>
+</div>
+</section>
+<!-- OUR EVIDENCE STANDARD -->
+<section class="section perspective-accordion"><button aria-controls="perspective-panel-3" aria-expanded="false" class="perspective-toggle" type="button"><span>Evidence has levels. Words should reflect them.</span><span aria-hidden="true" class="perspective-sign">+</span></button><div class="perspective-accordion-content" hidden="" id="perspective-panel-3">
+<div class="container two-column">
+<div class="column-rule">
+<div class="eyebrow">Our View of Science</div>
+<h3>Evidence has levels. Words should reflect them.</h3>
+<p>
+                    Scientific findings are meaningful only when interpreted
+                    in the context of their methods, limitations, and
+                    relevance to the question being asked.
+                </p>
+<p>
+                    Laboratory experiments can help researchers explore
+                    mechanisms. Animal studies can provide information
+                    about biological effects in particular models. Human
+                    clinical studies can investigate safety and outcomes
+                    in defined populations and conditions.
+                </p>
+<p>
+                    These forms of evidence are not interchangeable.
+                    Conclusions must remain within the limits of what
+                    the research actually demonstrates.
+                </p>
+</div>
+<div class="column-rule">
+<div class="eyebrow">Our Evidence Checklist</div>
+<h3>Ask what the evidence really supports.</h3>
+<ul class="belief-list">
+<li>
+                        What question did the study actually investigate?
+                    </li>
+<li>
+                        Was the work conducted in cells, animals, or humans?
+                    </li>
+<li>
+                        Was the research peer-reviewed, and what were its limitations?
+                    </li>
+<li>
+                        Do independent studies support or challenge the finding?
+                    </li>
+<li>
+                        Does the evidence apply to the specific compound and
+                        formulation being discussed?
+                    </li>
+<li>
+                        Are safety, clinical efficacy, and regulatory status
+                        being treated as separate questions?
+                    </li>
+</ul>
+</div>
+</div>
+</div></section>
+<!-- RESPONSIBLE PRACTICE -->
+<section class="section practice-section perspective-accordion"><button aria-controls="perspective-panel-4" aria-expanded="false" class="perspective-toggle" type="button"><span>Responsibility must be operational.</span><span aria-hidden="true" class="perspective-sign">+</span></button><div class="perspective-accordion-content" hidden="" id="perspective-panel-4">
+<div class="container">
+<div class="section-heading">
+<div class="eyebrow">From Principles to Practice</div>
+<h2>Responsibility must be operational.</h2>
+<p>
+                    A credible scientific organization must do more than
+                    communicate the right values. It must build practices
+                    that make accuracy, traceability, and accountability
+                    possible—and be honest about what has and has not
+                    been verified.
+                </p>
+</div>
+<div class="practice-grid">
+<article class="practice-card">
+<span class="practice-label">01 / PRODUCT IDENTITY</span>
+<h3>Know what is being represented.</h3>
+<p>
+                        Product names, stated quantities, identifiers,
+                        available specifications, and supplier documents
+                        should be checked for consistency. A label or
+                        product description alone is not independent
+                        proof of identity, purity, or potency.
+                    </p>
+</article>
+<article class="practice-card">
+<span class="practice-label">02 / DOCUMENTATION</span>
+<h3>Documentation should be meaningful.</h3>
+<p>
+                        Quality-related statements should be supported by
+                        records appropriate to the claim. Where analytical
+                        reports or other documentation are available,
+                        their source, scope, date, and limitations should
+                        be understood before drawing conclusions.
+                    </p>
+</article>
+<article class="practice-card">
+<span class="practice-label">03 / RESEARCH COMMUNICATION</span>
+<h3>Context belongs beside the claim.</h3>
+<p>
+                        Research summaries should distinguish observations
+                        from interpretations, identify material limitations,
+                        and avoid implying that a published study proves
+                        the safety or effectiveness of a marketed product.
+                    </p>
+</article>
+<article class="practice-card">
+<span class="practice-label">04 / COMPLIANCE</span>
+<h3>Scientific interest does not override the law.</h3>
+<p>
+                        Product classification, labeling, distribution,
+                        intended use, and applicable federal and state
+                        requirements must be assessed on their own merits.
+                        Research terminology or a disclaimer cannot, by
+                        itself, establish legal authorization.
+                    </p>
+</article>
+</div>
+</div>
+</div></section>
+<!-- OUR VIEW OF HEALTH -->
+<section class="section perspective-accordion"><button aria-controls="perspective-panel-5" aria-expanded="false" class="perspective-toggle" type="button"><span>Respect the difference between research and treatment.</span><span aria-hidden="true" class="perspective-sign">+</span></button><div class="perspective-accordion-content" hidden="" id="perspective-panel-5">
+<div class="container two-column">
+<div class="column-rule">
+<div class="eyebrow">Human Health</div>
+<h3>Respect the difference between research and treatment.</h3>
+<p>
+                    Human health is complex. Outcomes can depend on
+                    individual circumstances, underlying conditions,
+                    other treatments, study design, and many factors
+                    that cannot be inferred from a single experiment.
+                </p>
+<p>
+                    The existence of published research on a compound
+                    does not establish that every product containing
+                    that compound is safe, effective, or appropriate
+                    for a particular person.
+                </p>
+<p>
+                    Decisions about diagnosis, treatment, and personal
+                    medical care belong in an appropriate clinical
+                    setting with qualified healthcare professionals.
+                </p>
+</div>
+<div class="column-rule">
+<div class="eyebrow">Our Commitment to Clarity</div>
+<h3>What we will not confuse.</h3>
+<ul class="belief-list">
+<li>
+                        Biological plausibility with demonstrated benefit.
+                    </li>
+<li>
+                        Research interest with established clinical use.
+                    </li>
+<li>
+                        A supplier's assertion with independent verification.
+                    </li>
+<li>
+                        A research publication with product-specific validation.
+                    </li>
+<li>
+                        A disclaimer with regulatory authorization.
+                    </li>
+<li>
+                        Uncertainty with proof of safety or proof of harm.
+                    </li>
+</ul>
+</div>
+</div>
+</div></section>
+<!-- RESEARCH LIBRARY -->
+<section class="section research-band perspective-accordion"><button aria-controls="perspective-panel-6" aria-expanded="false" class="perspective-toggle" type="button"><span>Ask better questions. Examine the evidence.</span><span aria-hidden="true" class="perspective-sign">+</span></button><div class="perspective-accordion-content" hidden="" id="perspective-panel-6">
+<div class="container">
+<div class="research-box">
+<div class="eyebrow">Explore With Perspective</div>
+<h2>
+                    Ask better questions.<br/>
+                    Examine the evidence.
+                </h2>
+<p>
+                    The Labortori Massa Kritikal Research Library is intended
+                    to provide an organized starting point for examining
+                    selected compounds and relevant scientific literature.
+                    Its purpose is to help readers understand what has been
+                    studied, what the findings may suggest, and where
+                    important uncertainties remain.
+                </p>
+<p>
+                    Research summaries are not a substitute for reviewing
+                    original publications, assessing the quality of the
+                    evidence, or consulting appropriate scientific and
+                    regulatory expertise. Inclusion in the library does
+                    not imply product approval, clinical validation,
+                    or authorization for human or veterinary use.
+                </p>
+<div class="research-links">
+<a class="button primary" href="research.html">
+                        Explore the Research Library
+                    </a>
+<a class="button" href="products.html">
+                        View the Catalog page
+                    </a>
+</div>
+</div>
+</div>
+</div></section>
+<!-- OUR COMMITMENT -->
+<section class="section perspective-accordion"><button aria-controls="perspective-panel-7" aria-expanded="false" class="perspective-toggle" type="button"><span>Trust is earned through action.</span><span aria-hidden="true" class="perspective-sign">+</span></button><div class="perspective-accordion-content" hidden="" id="perspective-panel-7">
+<div class="container intro-grid">
+<div class="intro-heading">
+<div class="eyebrow">Our Commitment</div>
+<h2>
+                    Trust is earned<br/>
+                    through <span class="gold">action.</span>
+</h2>
+</div>
+<div class="intro-copy">
+<p>
+                    We want Labortori Massa Kritikal to stand for a
+                    thoughtful, disciplined approach to scientific
+                    exploration—one that values precision in language,
+                    integrity in presentation, and respect for the
+                    evidence.
+                </p>
+<p>
+                    That means acknowledging limitations, avoiding
+                    unsupported health promises, and ensuring that
+                    the strength of our language never exceeds the
+                    strength of the information supporting it.
+                </p>
+<p>
+                    It means treating documentation as something to
+                    examine rather than simply display, and treating
+                    questions as an opportunity to improve rather
+                    than a challenge to avoid.
+                </p>
+<div class="commitment-panel">
+<p>
+                        Our aspiration is clear: to build an organization
+                        whose credibility comes from its standards,
+                        whose communication respects scientific evidence,
+                        and whose growth never comes at the expense of
+                        accuracy or accountability.
+                    </p>
+</div>
+<div class="signature">
+                    Labortori Massa Kritikal<br/>
+                    Driven by Science. Defined by Precision.
+                </div>
+</div>
+</div>
+</div></section>
+<!-- DISCLAIMER -->
+<section class="disclaimer" id="disclaimer">
+<div class="container">
+<h2>Important Information</h2>
+<p>
+                Content on this website is provided for general
+                informational and scientific research reference purposes
+                only. It is not medical advice and is not intended to
+                diagnose, treat, cure, or prevent any disease. Descriptions
+                of scientific research do not establish clinical safety
+                or efficacy for any particular product. Unless expressly
+                authorized for a specific use under applicable law and
+                appropriately labeled, products discussed or listed on
+                this website are not represented as medicines approved
+                for human or veterinary use. A research-use statement
+                does not, by itself, establish that a product may lawfully
+                be marketed or distributed. Product status, labeling,
+                availability, and permitted uses depend on applicable
+                federal, state, and local requirements. Nothing on this
+                page is an endorsement of self-administration or a
+                substitute for advice from a qualified healthcare
+                professional.
+            </p>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="site-footer">
+<div class="container footer-inner">
+<div class="footer-brand">
+            LABORTORI MASSA KRITIKAL
+            <span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span>
+</div>
+<nav aria-label="Footer navigation" class="footer-links">
+<a href="index.html">Home</a>
+<a href="products.html">Catalog</a>
+<a href="research.html">Research Library</a>
+<a aria-current="page" href="perspective.html">Our Perspective</a>
+</nav>
+<p class="copyright">
+            © <span id="current-year">2026</span>
+            Labortori Massa Kritikal. All rights reserved.
+        </p>
+</div>
+</footer>
+<script>
+document.getElementById("current-year").textContent =
+    new Date().getFullYear();
+</script>
+
+<script>
+(function(){
+  const buttons = Array.from(document.querySelectorAll('.perspective-toggle'));
+  buttons.forEach(button => button.addEventListener('click', () => {
+    const opening = button.getAttribute('aria-expanded') !== 'true';
+    buttons.forEach(other => {
+      other.setAttribute('aria-expanded','false');
+      other.querySelector('.perspective-sign').textContent = '+';
+      document.getElementById(other.getAttribute('aria-controls')).hidden = true;
+    });
+    if(opening){
+      button.setAttribute('aria-expanded','true');
+      button.querySelector('.perspective-sign').textContent = '−';
+      document.getElementById(button.getAttribute('aria-controls')).hidden = false;
+    }
+  }));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1642 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#101113" name="theme-color"/>
+<title>Dosing &amp; Research Reference | Labortori Massa Kritikal</title>
+<style>
+     
+.notice {
+  background: #c9a653;
+  color: #151515;
+  padding: 11px 15px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+:root {
+    --bg: #101113;
+    --panel: #191a1d;
+    --panel2: #202125;
+    --gold: #c9a653;
+    --gold-light: #e5cd91;
+    --text: #f2f0e9;
+    --muted: #b8b5ac;
+    --line: rgba(201, 166, 83, 0.32);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+}
+
+a {
+    color: var(--gold-light);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   STANDARD LMK HEADER
+   Match the Products page header dimensions.
+   ========================================= */
+
+.site-header {
+    width: 100%;
+    padding: 0;
+    border-bottom: 1px solid var(--line);
+    background: #101113;
+}
+
+.header-inner {
+    width: min(1120px, calc(100% - 40px));
+    min-height: 76px;
+    margin: 0 auto;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.brand-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.brand-row > a {
+    display: flex;
+    align-items: center;
+    flex: 0 0 50px;
+}
+
+.brand-logo {
+    display: block;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.brand {
+    margin: 0;
+    color: #f5f4f0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 1.3;
+    letter-spacing: 2px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.brand span {
+    display: block;
+    margin-top: 5px;
+    color: var(--gold);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: normal;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.site-header nav.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.site-header nav.nav-links a {
+    display: inline-block;
+    margin: 0;
+    padding: 4px 0;
+    color: #f5f4f0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: normal;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.site-header nav.nav-links a:hover,
+.site-header nav.nav-links a.active {
+    color: var(--gold-light);
+}
+
+.site-header nav.nav-links a.active {
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 4px;
+}
+
+/* =========================================
+   DOSING PAGE CONTENT
+   ========================================= */
+
+.container {
+    width: min(calc(100% - 32px), 1000px);
+    margin: 0 auto;
+}
+
+.hero {
+    padding: 55px 0 32px;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.25;
+}
+
+h1 {
+    margin: 12px 0;
+    font-size: clamp(30px, 5vw, 46px);
+    letter-spacing: -0.7px;
+}
+
+.hero p {
+    max-width: 760px;
+    color: var(--muted);
+}
+
+.gold-rule {
+    width: 75px;
+    height: 3px;
+    margin: 24px 0;
+    background: var(--gold);
+}
+
+.quick-note {
+    margin: 24px 0;
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel);
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.quick-note strong {
+    color: var(--gold-light);
+}
+
+.search-wrap {
+    margin: 12px 0;
+}
+
+#compoundSearch {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    outline: none;
+    background: var(--panel);
+    color: var(--text);
+    font: inherit;
+}
+
+#compoundSearch:focus {
+    border-color: var(--gold);
+}
+
+.section-label {
+    margin: 34px 0 12px;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   COMPOUND CARDS
+   ========================================= */
+
+.compound-card {
+    overflow: hidden;
+    margin: 14px 0;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel);
+}
+
+.compound-card[open] {
+    background: #17181b;
+}
+
+.compound-card summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px;
+    color: var(--gold-light);
+    font-size: 17px;
+    font-weight: 750;
+    cursor: pointer;
+    list-style: none;
+}
+
+.compound-card summary::-webkit-details-marker {
+    display: none;
+}
+
+.compound-card summary::after {
+    content: "+";
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.compound-card[open] summary::after {
+    content: "−";
+}
+
+.compound-content {
+    padding: 0 20px 24px;
+    border-top: 1px solid var(--line);
+}
+
+.compound-content h3 {
+    margin: 24px 0 10px;
+    color: var(--gold-light);
+    font-size: 22px;
+}
+
+.compound-content h4 {
+    margin: 24px 0 10px;
+    color: var(--gold-light);
+    font-size: 16px;
+}
+
+.compound-content p,
+.compound-content li {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.compound-content strong {
+    color: var(--text);
+}
+
+/* =========================================
+   TABLES AND REFERENCES
+   ========================================= */
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 15px 0 20px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    min-width: 470px;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+th {
+    background: #242326;
+    color: var(--gold-light);
+    font-weight: 700;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    vertical-align: top;
+}
+
+td {
+    color: var(--muted);
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.reference-note {
+    margin: 18px 0;
+    padding: 10px 14px;
+    border-left: 3px solid var(--gold);
+    background: rgba(201, 166, 83, 0.07);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.sources {
+    padding-left: 20px;
+}
+
+.sources li {
+    margin: 7px 0;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.site-footer {
+    margin-top: 55px;
+    padding: 26px 16px 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+.site-footer strong {
+    color: var(--gold-light);
+    letter-spacing: 1.5px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1000px) {
+    .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 0;
+    }
+
+    .site-header nav.nav-links {
+        justify-content: flex-start;
+        gap: 8px 14px;
+    }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 560px) {
+    .header-inner {
+        width: calc(100% - 28px);
+        min-height: auto;
+        gap: 10px;
+        padding: 10px 0;
+    }
+
+    .brand-row {
+        gap: 9px;
+    }
+
+    .brand-row > a {
+        flex-basis: 42px;
+    }
+
+    .brand-logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .brand {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .brand span {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .site-header nav.nav-links {
+        gap: 7px 12px;
+        font-size: 9px;
+        letter-spacing: 0.3px;
+    }
+
+    .container {
+        width: calc(100% - 28px);
+    }
+
+    .hero {
+        padding-top: 38px;
+    }
+
+    .compound-card summary {
+        padding: 17px;
+        font-size: 16px;
+    }
+
+    .compound-content {
+        padding: 0 16px 20px;
+    }
+}
+
+/* LMK STANDARD INTERIOR WEBSITE HEADER — scrolls with page */
+.lmk-site-header {position:static!important;top:auto!important;z-index:auto;width:100%;background:#101113!important;border-bottom:1px solid rgba(201,166,83,.32);backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+.lmk-site-header .lmk-header-inner {width:min(1120px,calc(100% - 40px));min-height:76px;margin:0 auto;padding:10px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-direction:row;}
+.lmk-site-header .lmk-brand-row {display:flex;align-items:center;gap:12px;flex:0 1 auto;min-width:0;}
+.lmk-site-header .lmk-brand-row>a {display:flex;align-items:center;flex:0 0 50px;}
+.lmk-site-header .lmk-brand-logo {display:block;width:50px;height:50px;flex-shrink:0;object-fit:contain;}
+.lmk-site-header .lmk-brand-text {margin:0;color:#f5f4f0;font-family:Georgia,"Times New Roman",serif;font-size:17px;font-weight:400;line-height:1.3;letter-spacing:2px;white-space:nowrap;text-align:left;}
+.lmk-site-header .lmk-brand-text span {display:block;margin-top:5px;color:#c9a653;font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:400;line-height:1.5;letter-spacing:2px;white-space:nowrap;}
+.lmk-site-header nav.lmk-nav-links {display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:6px 14px;width:auto;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:400;line-height:1.4;letter-spacing:.5px;text-transform:uppercase;}
+.lmk-site-header nav.lmk-nav-links a {display:inline-block;margin:0;padding:4px 0;color:#f5f4f0;font-family:inherit;font-size:inherit;font-weight:400;line-height:inherit;letter-spacing:inherit;text-decoration:none;white-space:nowrap;transition:color .2s ease;}
+.lmk-site-header nav.lmk-nav-links a:hover,.lmk-site-header nav.lmk-nav-links a.active {color:#e5cd91;}
+.lmk-site-header nav.lmk-nav-links a.active {text-decoration:underline;text-decoration-color:#c9a653;text-underline-offset:4px;}
+@media(max-width:1000px){.lmk-site-header .lmk-header-inner{align-items:flex-start;flex-direction:column;gap:12px;padding:12px 0}.lmk-site-header nav.lmk-nav-links{justify-content:flex-start;gap:8px 14px}}
+@media(max-width:560px){.lmk-site-header .lmk-header-inner{width:calc(100% - 28px);min-height:auto;gap:10px;padding:10px 0}.lmk-site-header .lmk-brand-row{gap:9px}.lmk-site-header .lmk-brand-row>a{flex-basis:42px}.lmk-site-header .lmk-brand-logo{width:42px;height:42px}.lmk-site-header .lmk-brand-text{font-size:14px;letter-spacing:1px}.lmk-site-header .lmk-brand-text span{font-size:8px;letter-spacing:1px}.lmk-site-header nav.lmk-nav-links{gap:7px 12px;font-size:9px;letter-spacing:.3px}}
+
+</style>
+<style>
+/* LMK iPhone-friendly expandable research interface */
+.lmk-expandable{width:100%;border:0;background:transparent;color:inherit}
+.lmk-expandable>summary{position:relative;display:flex;flex-direction:column;gap:7px;cursor:pointer;list-style:none;padding:4px 36px 4px 0;min-height:48px;justify-content:center}
+.lmk-expandable>summary::-webkit-details-marker{display:none}
+.lmk-expandable>summary::after{content:'+';position:absolute;right:2px;top:50%;transform:translateY(-50%);font:26px Arial,sans-serif;color:#c9a653}
+.lmk-expandable[open]>summary::after{content:'−'}
+.lmk-exp-kicker{font:700 10px Arial,sans-serif;letter-spacing:1.5px;color:#c9a653;text-transform:uppercase}
+.lmk-exp-title{font:normal clamp(21px,4vw,29px) Georgia,serif;color:#e5cd91;line-height:1.3}
+.lmk-exp-body{padding-top:18px;margin-top:15px;border-top:1px solid rgba(201,166,83,.32)}
+.lmk-search-wrap{width:min(1120px,90%);margin:20px auto}
+#lmkResearchSearch{display:block;width:100%;padding:14px 16px;border:1px solid rgba(201,166,83,.4);border-radius:8px;background:#191a1d;color:#f5f4f0;font:15px Arial,sans-serif}
+#lmkResearchSearch:focus{outline:2px solid #c9a653;outline-offset:2px}
+article.research-card[hidden]{display:none!important}
+@media(max-width:560px){.lmk-exp-title{font-size:23px}.lmk-exp-body{padding-top:12px}}
+</style></head>
+<body>
+<div class="notice">Research Information Only | No Medical Advice</div>
+<!-- SHARED SITE HEADER: DOSING PAGE -->
+<header class="lmk-site-header">
+<div class="lmk-header-inner">
+<div class="lmk-brand-row">
+<a aria-label="Laboratori Massa Kritikal home" href="index.html"><img alt="Laboratori Massa Kritikal logo" class="lmk-brand-logo" src="images/logo.jpeg"/></a>
+<div class="lmk-brand-text">LABORATORI MASSA KRITIKAL<span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span></div>
+</div>
+<nav aria-label="Main navigation" class="lmk-nav-links">
+<a href="index.html">Home</a>
+<a href="products.html">Catalog</a>
+<a aria-current="page" class="active" href="dosing.html">Dosing</a>
+<a href="research.html">Research</a>
+<a href="perspective.html">Our Perspective</a>
+</nav>
+</div>
+</header>
+<main class="container">
+<section class="hero">
+<div class="eyebrow">Scientific Reference Library</div>
+<h1>Dosing &amp; Research Reference</h1>
+<div class="gold-rule"></div>
+<p>
+      A structured reference to published clinical protocols,
+      experimental research, commonly reported schedules, and
+      formulation considerations for selected peptides and
+      related compounds.
+    </p>
+<div class="quick-note">
+<strong>How to read these entries:</strong>
+      Clinical-study doses, labeled product doses, and online-reported
+      protocols are identified separately. A dose used in one study
+      should not automatically be transferred to another formulation
+      or purpose.
+    </div>
+<div class="search-wrap">
+<input aria-label="Search compounds" id="compoundSearch" placeholder="Search compounds..." type="search"/>
+</div>
+</section>
+<div class="section-label">Metabolic research</div>
+<!-- 01 RETATRUTIDE (LY3437943)-->
+<details class="compound-card" id="retatrutide (LY3437943)">
+<summary>01. Retatrutide (LY3437943)— Research, dosing evidence, and safety</summary>
+<div class="compound-content">
+<h3>Overview</h3>
+<p>
+        Retatrutide is an investigational triple-receptor agonist
+        targeting GIP, GLP-1, and glucagon receptors. Clinical
+        research has investigated its effects on body weight
+        and metabolic outcomes.
+      </p>
+<h4>Clinical-Trial Dosing Reference</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Trial Group</th>
+<th>Target Dose</th>
+<th>Frequency</th>
+<th>Escalation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lower-dose group</td>
+<td>2 mg</td>
+<td>Once or twice a week</td>
+<td>Trial-specific protocol</td>
+</tr>
+<tr>
+<td>Intermediate-dose group</td>
+<td>5 mg</td>
+<td>Once or tiwce a week</td>
+<td>Gradual escalation in the trial</td>
+</tr>
+<tr>
+<td>Intermediate-dose group</td>
+<td>8 mg</td>
+<td>Once or twice a week</td>
+<td>Gradual escalation in the trial</td>
+</tr>
+<tr>
+<td>Higher-dose group</td>
+<td>12 mg</td>
+<td>Once or twice a week</td>
+<td>Gradual escalation in the trial</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+<strong>Important:</strong> These entries identify target-dose groups
+      studied in clinical research. The starting dose and escalation schedule
+      varied by trial arm. A target dose is not necessarily the starting dose.
+      Milligrams (mg) describe the amount of drug, not its concentration
+      in a vial or the volume to administer.
+    </p>
+<h4>Research and practical considerations</h4>
+<ul>
+<li>Clinical-trial outcomes included substantial average weight reduction.</li>
+<li>Gastrointestinal adverse events were common and dose-related.</li>
+<li>Heart-rate changes were also observed in clinical research.</li>
+<li>Vial size alone does not establish drug concentration or an appropriate dose.</li>
+<li>Flu-like symptoms, including fatigue, chills, and body aches, may occur. Reduce the dose and hold off on increasing it until symptoms improve.</li>
+</ul>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2301972" rel="noopener noreferrer" target="_blank">
+            NEJM: Retatrutide Phase 2 obesity trial
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=retatrutide" rel="noopener noreferrer" target="_blank">
+            ClinicalTrials.gov: Retatrutide studies
+          </a>
+</li>
+</ul>
+</div>
+</details>
+<!-- 02 AOD-9604 -->
+<details class="compound-card" id="aod9604">
+<summary>02. AOD-9604 — Research, dosing evidence, and safety</summary>
+<div class="compound-content">
+<h3>Overview</h3>
+<p>
+        AOD-9604 is a modified fragment of human growth hormone
+        investigated primarily in obesity and fat-metabolism research.
+      </p>
+<h4>Source-Listed Dosing and Vial Strengths</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Vial Strength</th>
+<th>Source-Listed Amount</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 mg</td>
+<td>300–500 mcg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+<tr>
+<td>5 mg</td>
+<td>300–500 mcg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+<tr>
+<td>10 mg</td>
+<td>300–500 mcg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+        The amounts above reproduce the entries in the supplied
+        dosing chart; they are not independently validated clinical
+        dosing recommendations. Vial strength represents the total
+        amount in the vial, not the amount per administration.
+        The chart does not establish a validated injectable regimen
+        or an appropriate dose for an individual.
+      </p>
+<h4>Research Considerations</h4>
+<ul>
+<li>Route of administration and formulation matter when comparing studies.</li>
+<li>Online dosing tables should not be treated as equivalent to published clinical protocols.</li>
+<li>Claims about exercise timing and fat-burning effects require supporting clinical evidence.</li>
+<li>Research findings should be interpreted in the context of the original study.</li>
+</ul>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=AOD9604+clinical+trial" rel="noopener noreferrer" target="_blank">
+            PubMed: AOD-9604 clinical research
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=AOD-9604" rel="noopener noreferrer" target="_blank">
+            ClinicalTrials.gov: AOD-9604 studies
+          </a>
+</li>
+</ul>
+</div>
+</details>
+<!-- 03 TESAMORELIN (TH9507) -->
+<details class="compound-card" id="tesamorelin">
+<summary>03. Tesamorelin (TH9507)— Research, dosing evidence, and safety</summary>
+<div class="compound-content">
+<h3>Overview</h3>
+<p>
+       Tesamorelin (TH9507) is a growth-hormone-releasing factor analogue
+       investigated for its effects on growth-hormone signaling
+       and visceral abdominal fat.
+     </p>
+<h4>Source-Listed Dosing and Vial Strengths</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Vial Strength</th>
+<th>Source-Listed Amount</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 mg</td>
+<td>2 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+<tr>
+<td>10 mg</td>
+<td>2 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+<tr>
+<td>20 mg</td>
+<td>2 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+       Vial strength represents the total amount in the vial,
+       while the source-listed amount represents a separate
+       quantity. These chart entries are not interchangeable
+       with formulation-specific prescribing instructions.
+     </p>
+<h4>Research Considerations</h4>
+<ul>
+<li>Tesamorelin stimulates growth-hormone and IGF-1 signaling.</li>
+<li>Clinical research has evaluated visceral abdominal fat and metabolic outcomes.</li>
+<li>Glucose regulation, IGF-1 levels, fluid retention, and injection-site reactions are relevant monitoring topics.</li>
+</ul>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=Egrifta" rel="noopener noreferrer" target="_blank">
+           DailyMed: Egrifta product labeling
+         </a>
+</li>
+<li>
+<a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/022505s018lbl.pdf" rel="noopener noreferrer" target="_blank">
+           Egrifta SV prescribing information
+         </a>
+</li>
+</ul>
+</div>
+</details>
+<div class="section-label">Growth-hormone signaling</div>
+<!-- 04 CJC-1295 DAC (DAC:GRF) -->
+<details class="compound-card" id="cjc1295 (DAC:GRF)">
+<summary>04. CJC-1295 with DAC (DAC:GRF) — Research, dosing evidence, and safety</summary>
+<div class="compound-content">
+<h3>Overview</h3>
+<p>
+        CJC-1295 with DAC (DAC:GRF) is a long-acting growth-hormone-releasing
+        hormone analogue. The drug-affinity complex extends exposure
+        and distinguishes it from short-acting products marketed
+        as CJC-1295 without DAC.
+      </p>
+<h4>Source-Listed Dosing and Vial Strengths</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Vial Strength</th>
+<th>Source-Listed Amount</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 mg</td>
+<td>2 mg</td>
+<td>Weekly (as listed in source)</td>
+</tr>
+<tr>
+<td>5 mg</td>
+<td>300 mcg–1 mg</td>
+<td>Weekly (as listed in source)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Published Human Research</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Research Feature</th>
+<th>Study Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Participants</td>
+<td>Healthy adult volunteers</td>
+</tr>
+<tr>
+<td>Administration</td>
+<td>Single ascending doses and repeated weekly or biweekly dosing</td>
+</tr>
+<tr>
+<td>Measures</td>
+<td>Growth hormone, IGF-1, pharmacokinetics, and tolerability</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+        The foundational clinical study evaluated weight-based
+        research doses, including 30 and 60 micrograms/kg.
+        Those study doses are separate from the source-listed
+        entries in the table above and do not establish a
+        general-purpose bodybuilding or wellness schedule.
+      </p>
+<h4>Key Considerations</h4>
+<ul>
+<li>DAC changes the duration of exposure; it should not be confused with a no-DAC formulation.</li>
+<li>Growth hormone and IGF-1 changes are biological measures, not proof of improved performance.</li>
+<li>Repeated dosing can produce cumulative effects on IGF-1.</li>
+</ul>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/16352683/" rel="noopener noreferrer" target="_blank">
+            Teichman et al. — CJC-1295 human study
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=CJC-1295" rel="noopener noreferrer" target="_blank">
+            ClinicalTrials.gov: CJC-1295
+          </a>
+</li>
+</ul>
+</div>
+</details>
+<!-- 05 IPAMORELIN (NNC 26-0161) -->
+<details class="compound-card" id="ipamorelin (NNC 26-0161)">
+<summary>05. Ipamorelin (NNC 26-0161) — Research, dosing evidence, and safety</summary>
+<div class="compound-content">
+<h3>Overview</h3>
+<p>
+        Ipamorelin (NNC 26-0161) is a growth-hormone secretagogue that acts
+        through the ghrelin receptor. Research has examined
+        growth-hormone release and gastrointestinal applications.
+      </p>
+<h4>Source-Listed Dosing and Vial Strengths</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Vial Strength</th>
+<th>Source-Listed Amount</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 mg</td>
+<td>100–250 mcg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+<tr>
+<td>10 mg</td>
+<td>100–250 mcg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Research Considerations</h4>
+<ul>
+<li>Route of administration and study population affect interpretation of research findings.</li>
+<li>Growth-hormone release does not automatically demonstrate muscle gain or faster recovery.</li>
+<li>Combination protocols with CJC-1295 should not be assumed to have the same evidence as either ingredient alone.</li>
+</ul>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=ipamorelin+clinical+study" rel="noopener noreferrer" target="_blank">
+            PubMed: Ipamorelin clinical research
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=ipamorelin" rel="noopener noreferrer" target="_blank">
+            ClinicalTrials.gov: Ipamorelin studies
+          </a>
+</li>
+</ul>
+</div>
+</details>
+<div class="section-label">Mitochondrial research</div>
+<!-- 06 SS-31 / ELAMIPRETIDE -->
+<details class="compound-card" id="ss31">
+<summary>06. SS-31 (Elamipretide) — Research, dosing evidence, and safety</summary>
+<div class="compound-content">
+<h3>Overview</h3>
+<p>
+       SS-31, also known as elamipretide and previously studied
+       under the code name MTP-131, is a mitochondria-targeting
+       tetrapeptide studied for its interaction with cardiolipin
+       and mitochondrial membrane function.
+     </p>
+<h4>Source-Listed Dosing and Vial Strengths</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Vial Strength</th>
+<th>Source-Listed Amount</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 mg</td>
+<td>5–20 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+<tr>
+<td>30 mg</td>
+<td>5–10 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+<tr>
+<td>50 mg</td>
+<td>5–10 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Approved Product Dose and Indication</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Labeled Dose</th>
+<th>Population and Indication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FORZINITY (elamipretide)</td>
+<td>40 mg once daily</td>
+<td>
+               Adults and pediatric patients with Barth syndrome
+               weighing at least 30 kg
+             </td>
+</tr>
+<tr>
+<td>Severe renal impairment in adults, not on dialysis</td>
+<td>20 mg once daily</td>
+<td>Formulation-specific dose modification in the product label</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+       The labeled dose applies to FORZINITY, the regulated
+       elamipretide product. Its approved indication is specific
+       to Barth syndrome. The source-listed research vial amounts
+       above are separate entries and should not be interpreted
+       as FORZINITY dosing instructions.
+     </p>
+<h4>Research Considerations</h4>
+<ul>
+<li>Elamipretide has been studied for its effects on mitochondrial function and cardiolipin interactions.</li>
+<li>Research findings in specific diseases do not establish benefits for general wellness, anti-aging, exercise recovery, or athletic performance.</li>
+<li>Research protocols and regulated product labeling describe different contexts and should be evaluated separately.</li>
+</ul>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/215244s000lbl.pdf" rel="noopener noreferrer" target="_blank">
+           FDA: FORZINITY prescribing information
+         </a>
+</li>
+<li>
+<a href="https://www.fda.gov/drugs/drug-trials-snapshots/drug-trials-snapshots-forzinity" rel="noopener noreferrer" target="_blank">
+           FDA: FORZINITY trial snapshot
+         </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=elamipretide+SS-31" rel="noopener noreferrer" target="_blank">
+           PubMed: Elamipretide and SS-31 research
+         </a>
+</li>
+</ul>
+</div>
+</details>
+<!-- 07 MOTS-C -->
+<details class="compound-card" id="motsc">
+<summary>07. MOTS-C — Research, dosing evidence, and safety</summary>
+<div class="compound-content">
+<h3>Overview</h3>
+<p>
+        MOTS-C
+        is a mitochondrial-derived peptide investigated for its
+        role in metabolic regulation, cellular stress responses,
+        and pathways associated with insulin sensitivity.
+      </p>
+<h4>Source-Listed Dosing and Vial Strengths</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Vial Strength</th>
+<th>Source-Listed Amount</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 mg</td>
+<td>500 mcg–2 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+<tr>
+<td>10 mg</td>
+<td>200 mcg–1 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+<tr>
+<td>20 mg</td>
+<td>200 mcg–1 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+<tr>
+<td>40 mg</td>
+<td>200 mcg–1 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Research Considerations</h4>
+<ul>
+<li>AMPK signaling and glucose metabolism are key research topics.</li>
+<li>Animal findings do not establish human weight-loss, endurance, or longevity benefits.</li>
+<li>Human pharmacokinetics, safety, and an appropriate clinical dose remain insufficiently characterized.</li>
+</ul>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=MOTS-C+metabolism" rel="noopener noreferrer" target="_blank">
+            PubMed: MOTS-C metabolic research
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=MOTS-C" rel="noopener noreferrer" target="_blank">
+            ClinicalTrials.gov: MOTS-C studies
+          </a>
+</li>
+</ul>
+</div>
+</details>
+<div class="section-label">Cellular metabolism</div>
+<!-- 08 NAD+ / NICOTINAMIDE ADENINE DINUCLEOTIDE -->
+<details class="compound-card" id="nad">
+<summary>08. NAD+ (Nicotinamide Adenine Dinucleotide, Oxidized Form) — Research and evidence</summary>
+<div class="compound-content">
+<h3>Overview</h3>
+<p>
+        Nicotinamide adenine dinucleotide (NAD+) is a coenzyme
+        central to cellular redox reactions, energy metabolism,
+        and several enzymes involved in cellular maintenance.
+        NAD+ is the oxidized form; NADH is its reduced form.
+        NAD+ is not a peptide.
+      </p>
+<h4>Source-Listed Dosing and Vial Strengths</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Vial Strength</th>
+<th>Source-Listed Amount</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>500 mg</td>
+<td>50–100 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+<tr>
+<td>1,000 mg</td>
+<td>50–100 mg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Research Context by Form</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Dosing Reference</th>
+<th>Evidence Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oral NAD+ and related precursors</td>
+<td>Varies by compound and study</td>
+<td>Do not equate NAD+ with nicotinamide riboside (NR) or nicotinamide mononucleotide (NMN).</td>
+</tr>
+<tr>
+<td>Intravenous NAD+</td>
+<td>Protocols vary by clinic and formulation</td>
+<td>Evidence supporting many wellness claims remains limited.</td>
+</tr>
+<tr>
+<td>Subcutaneous NAD+</td>
+<td>No standardized general-purpose regimen established</td>
+<td>Formulation and route require separate evaluation.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Research Considerations</h4>
+<ul>
+<li>NAD+ biology does not by itself establish that NAD+ administration improves energy, aging, or cognition.</li>
+<li>Research on NR or NMN should not be presented as direct evidence for injected NAD+.</li>
+<li>Administration route, product formulation, and study endpoints matter when interpreting research.</li>
+</ul>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=NAD%2B+human+clinical+trial" rel="noopener noreferrer" target="_blank">
+            PubMed: NAD+ human clinical research
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=nicotinamide+riboside+randomized+clinical+trial" rel="noopener noreferrer" target="_blank">
+            PubMed: Nicotinamide riboside clinical trials
+          </a>
+</li>
+</ul>
+</div>
+</details>
+<div class="section-label">Cellular aging research</div>
+<!-- 09 FOXO4-DRI -->
+<details class="compound-card" id="foxo4dri">
+<summary>09. FOXO4-DRI (FOXO4 D-Retro-Inverso Peptide) — Research, dosing evidence, and safety</summary>
+<div class="compound-content">
+<h3>Overview</h3>
+<p>
+        FOXO4-DRI is an experimental D-retro-inverso peptide
+        designed to interfere with interactions between FOXO4
+        and p53. Research has investigated its potential effects
+        on senescent-cell survival pathways.
+      </p>
+<h4>Source-Listed Dosing and Vial Strength</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Vial Strength</th>
+<th>Source-Listed Amount</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 mg</td>
+<td>250–500 mcg</td>
+<td>Daily (as listed in source)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Research Evidence</h4>
+<ul>
+<li>Foundational research examined cellular systems and aged mice.</li>
+<li>Studies investigated senescent-cell survival pathways and tissue outcomes.</li>
+<li>These findings do not establish a human dose or prove human anti-aging effects.</li>
+</ul>
+<h4>Handling and Storage Considerations</h4>
+<p>
+        Storage conditions depend on the specific product, packaging,
+        and manufacturer documentation. Follow validated manufacturer
+        instructions for lyophilized material and any prepared solution.
+        Generic storage recommendations do not establish a validated
+        stability period.
+      </p>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://doi.org/10.1016/j.cell.2017.02.031" rel="noopener noreferrer" target="_blank">
+            Baar et al. — Targeted apoptosis of senescent cells
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=FOXO4-DRI" rel="noopener noreferrer" target="_blank">
+            PubMed: FOXO4-DRI research
+          </a>
+</li>
+<li>
+<a href="https://thepeptidecatalog.com/articles/foxo4-dri-dosing-guide" rel="noopener noreferrer" target="_blank">
+            Online reported protocol reference
+          </a>
+</li>
+</ul>
+</div>
+</details>
+<div class="section-label">Combination research materials</div>
+<!-- 10 GLOW -->
+<details class="compound-card" id="glow">
+<summary>10. GLOW (GHK-Cu / BPC-157 / TB-500 Blend) — Research, dosing evidence, and safety</summary>
+<div class="compound-content">
+<h3>Overview and composition</h3>
+<p>
+        GLOW is a marketing name commonly used for a combination of
+        GHK-Cu, BPC-157, and TB-500 or thymosin-related material.
+        It is not a single standardized compound and has no separate
+        established scientific or generic drug name. Composition,
+        ingredient identity, and amounts may vary among suppliers.
+        Verify the actual product specification before comparing
+        reported protocols.
+      </p>
+<h4>Source-listed vial strength and protocol</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Vial strength / formulation</th>
+<th>Source-listed amount per administration</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>70 mg total blend</td>
+<td>2,330 mcg total blend (2.33 mg)</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+        These values reproduce the supplied dosage-chart entry.
+        They are source-listed figures, not a clinically established
+        dosing recommendation for GLOW as a combined formulation.
+        The chart entry does not establish the amount of each
+        ingredient in an individual administration.
+      </p>
+<h4>Reported example of blend composition</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Reported amount per administration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GHK-Cu (copper peptide)</td>
+<td>1.67 mg</td>
+</tr>
+<tr>
+<td>BPC-157</td>
+<td>0.33 mg</td>
+</tr>
+<tr>
+<td>TB-500 / thymosin-related material</td>
+<td>0.33 mg</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>2.33 mg</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+        The component amounts above are a reported example and
+        should not be assumed to describe every product sold as
+        GLOW. The combined total is approximately 2.33 mg. Confirm
+        the manufacturer's stated composition and the identity of
+        each ingredient before treating this example as applicable
+        to a particular vial.
+      </p>
+<h4>Composition and concentration</h4>
+<p>
+        Blend ratios and total vial strengths can differ. A reported
+        concentration should be checked against the total vial
+        content, each ingredient's stated amount, and the final
+        solution volume. For example, a 70 mg total blend at
+        23.3 mg/mL corresponds to approximately 3 mL of final
+        solution. This arithmetic alone does not validate the
+        product's identity, preparation, stability, or suitability
+        for any particular use.
+      </p>
+<h4>Research considerations</h4>
+<ul>
+<li>Evidence relating to an individual ingredient does not establish the effectiveness or safety of the combined blend.</li>
+<li>GHK-Cu research involving topical formulations does not establish the effects of injectable use.</li>
+<li>TB-500 is a market name; confirm the exact molecular identity and specification with the manufacturer.</li>
+<li>Blend stability, ingredient compatibility, and sterility require product-specific data.</li>
+<li>The source-listed daily frequency should not be interpreted as a clinically validated regimen for the combined formulation.</li>
+</ul>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://www.peptidedosage.org/peptides/glow/dosage" rel="noopener noreferrer" target="_blank">
+            GLOW reported dosage protocol
+          </a>
+</li>
+<li>
+<a href="https://peptidedosages.com/peptide-blend-dosages/glow-peptide-blend-70-mg-vial-dosage-protocol" rel="noopener noreferrer" target="_blank">
+            GLOW blend protocol reference
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=GHK-Cu+BPC-157+TB-500" rel="noopener noreferrer" target="_blank">
+            PubMed: GLOW ingredient research
+          </a>
+</li>
+</ul>
+</div>
+</details>
+<!-- 11 KLOW -->
+<details class="compound-card" id="klow">
+<summary>11. KLOW (GHK-Cu / BPC-157 / TB-500 / KPV Blend) — Research, dosing evidence, and safety</summary>
+<div class="compound-content">
+<h3>Overview and composition</h3>
+<p>
+        KLOW is a marketing name for a multi-ingredient blend.
+        Commonly advertised formulations include GHK-Cu, BPC-157,
+        TB-500 or thymosin-related material, and KPV. KLOW is not
+        a single standardized compound and has no separate established
+        scientific or generic drug name. Ingredient identity, ratios,
+        and total vial content may differ among suppliers.
+        Verify the manufacturer's specification for the actual product.
+      </p>
+<h4>Source-listed vial strength and protocol</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Vial strength / formulation</th>
+<th>Source-listed amount per administration</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80 mg total blend</td>
+<td>2–6 mg total blend</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+        These figures reproduce the supplied dosage-chart entry.
+        They are source-listed values, not a clinically established
+        dosing recommendation for KLOW as a combined formulation.
+        The listed amount refers to the total blend, not to each
+        ingredient individually.
+      </p>
+<h4>Composition reference</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Ingredient</th>
+<th>Research area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GHK-Cu (copper peptide)</td>
+<td>Peptide signaling, skin biology, and tissue-related research</td>
+</tr>
+<tr>
+<td>BPC-157</td>
+<td>Preclinical gastrointestinal and musculoskeletal research</td>
+</tr>
+<tr>
+<td>TB-500 / thymosin-related material</td>
+<td>Identity-dependent tissue-related research</td>
+</tr>
+<tr>
+<td>KPV</td>
+<td>Experimental anti-inflammatory and gastrointestinal research</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Dosing reference</h4>
+<p>
+        The source-listed entry for KLOW is 2–6 mg of total blend
+        daily for an 80 mg vial. Online schedules may differ in
+        composition, total amount, frequency, and cycle length.
+        Do not assume that this entry applies to a product with
+        different ingredient quantities or ratios. The source-listed
+        schedule does not establish the safety or effectiveness of
+        the combined formulation.
+      </p>
+<h4>Research considerations</h4>
+<ul>
+<li>Individual ingredient studies do not establish the effects or safety of the combined product.</li>
+<li>Product identity, component ratios, and batch consistency are central to interpreting research.</li>
+<li>TB-500 is a market name; confirm the exact molecular identity and manufacturer specification.</li>
+<li>Concentration calculations must use the actual total amount and final solution volume, not a generic KLOW formula.</li>
+<li>Blend stability, compatibility, and sterility require product-specific evidence.</li>
+</ul>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=KPV+peptide+research" rel="noopener noreferrer" target="_blank">
+            PubMed: KPV research
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=BPC-157+research" rel="noopener noreferrer" target="_blank">
+            PubMed: BPC-157 research
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=GHK-Cu+peptide" rel="noopener noreferrer" target="_blank">
+            PubMed: GHK-Cu research
+          </a>
+</li>
+</ul>
+</div>
+</details>
+<!-- 12 BPC-157 -->
+<details class="compound-card" id="bpc157">
+<summary>12. BPC-157 (Body Protection Compound-157) — Research, dosing evidence, and safety</summary>
+<div class="compound-content">
+<h3>Overview</h3>
+<p>
+        BPC-157 is a synthetic 15-amino-acid peptide studied primarily
+        in preclinical gastrointestinal, tendon, ligament, and
+        musculoskeletal injury models. The name is commonly expanded
+        as "Body Protection Compound-157." It does not have an
+        established generic drug name.
+      </p>
+<h4>Source-listed vial strengths and dosing reference</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Vial strength</th>
+<th>Source-listed amount per administration</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 mg</td>
+<td>200–600 mcg</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>10 mg</td>
+<td>200–600 mcg</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>20 mg</td>
+<td>200–600 mcg</td>
+<td>Daily</td>
+</tr>
+<tr>
+<td>40 mg</td>
+<td>200–600 mcg</td>
+<td>Daily</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+        These entries reproduce the supplied dosage-chart values.
+        They are source-listed figures, not a clinically established
+        dosing recommendation. The chart entry does not establish
+        an optimal dose, route, or treatment duration, and the
+        listed amounts should not be interpreted as validated
+        human treatment protocols.
+      </p>
+<h4>Research evidence</h4>
+<ul>
+<li>Animal studies have investigated tendon, ligament, muscle, and gastrointestinal outcomes.</li>
+<li>Mechanistic studies have examined angiogenesis, fibroblast activity, and inflammatory pathways.</li>
+<li>Human evidence remains limited and does not establish an optimal dose, route, or treatment duration.</li>
+<li>Findings from preclinical studies cannot by themselves establish safety or effectiveness in humans.</li>
+</ul>
+<h4>Handling and product considerations</h4>
+<ul>
+<li>Follow the manufacturer's documented storage conditions for the specific formulation.</li>
+<li>Do not assign a universal refrigerated shelf life without formulation-specific stability evidence.</li>
+<li>For injectable products, identity and purity testing are distinct from sterility and endotoxin testing.</li>
+<li>Vial strength alone does not establish product quality, sterility, or suitability for human use.</li>
+</ul>
+<h4>References</h4>
+<ul class="sources">
+<li>
+<a href="https://theworkoutmag.com/supplements/bpc157-dosage-dosing-safety-guide" rel="noopener noreferrer" target="_blank">
+            The Workout Mag: BPC-157 dosage and safety guide
+          </a>
+</li>
+<li>
+<a href="https://pubmed.ncbi.nlm.nih.gov/?term=BPC-157+Sikiric" rel="noopener noreferrer" target="_blank">
+            PubMed: BPC-157 preclinical research
+          </a>
+</li>
+<li>
+<a href="https://clinicaltrials.gov/search?term=BPC-157" rel="noopener noreferrer" target="_blank">
+            ClinicalTrials.gov: BPC-157 studies
+          </a>
+</li>
+</ul>
+</div>
+</details>
+</main>
+<footer class="site-footer">
+<strong>LABORATORI MASSA KRITIKAL</strong>
+<p>Driven by Science. Defined by Precision.</p>
+<div class="main-disclaimer">
+<h3>Research Disclaimer</h3>
+<p>
+      All information presented on this website is provided for
+      educational, informational, and scientific research purposes
+      only. It is not intended to diagnose, treat, cure, or prevent
+      any disease, and it does not constitute medical advice.
+    </p>
+<p>
+      Research compounds and experimental materials are not intended
+      for human or veterinary consumption or administration.
+      Information regarding reported doses, experimental protocols,
+      and research findings is provided for reference purposes and
+      should not be interpreted as a recommendation for personal use.
+    </p>
+<p>
+      Product descriptions, reported protocols, and research findings
+      may vary in quality and evidentiary support. Users are responsible
+      for independently evaluating applicable laws, product quality,
+      laboratory procedures, and relevant safety requirements.
+    </p>
+<p>
+      Labortori Massa Kritikal makes no representation that experimental
+      compounds are safe or effective for any particular purpose.
+      All trademarks and product names belong to their respective
+      owners.
+    </p>
+</div>
+<p class="copyright">
+    © <span id="copyright-year"></span> Labortori Massa Kritikal.
+    All rights reserved.
+  </p>
+</footer>
+<style>
+  .main-disclaimer {
+    max-width: 850px;
+    margin: 28px auto 20px;
+    padding: 22px;
+    border: 1px solid rgba(201,166,83,.32);
+    border-radius: 10px;
+    background: #191a1d;
+    text-align: left;
+  }
+
+  .main-disclaimer h3 {
+    margin-top: 0;
+    color: #e5cd91;
+    font-size: 17px;
+  }
+
+  .main-disclaimer p {
+    color: #b8b5ac;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .copyright {
+    font-size: 11px;
+    color: #b8b5ac;
+  }
+</style>
+<script>
+  document.getElementById("copyright-year").textContent =
+    new Date().getFullYear();
+</script>
+<script>
+  const searchInput = document.getElementById("compoundSearch");
+  const compoundCards = Array.from(
+    document.querySelectorAll(".compound-card")
+  );
+
+  searchInput.addEventListener("input", function () {
+    const query = this.value.trim().toLowerCase();
+
+    compoundCards.forEach(function (card) {
+      const matches = card.textContent.toLowerCase().includes(query);
+      card.hidden = !matches;
+
+      if (query && matches) {
+        card.open = true;
+      } else if (!query) {
+        card.open = false;
+      }
+    });
+  });
+</script>
+<script>(function(){const ds=[...document.querySelectorAll("details.compound-card")];ds.forEach(d=>d.addEventListener("toggle",()=>{if(d.open)ds.forEach(o=>{if(o!==d)o.open=false})}));})();</script></body>
+</html>
