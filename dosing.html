@@ -486,9 +486,21 @@ tbody tr:last-child td {
     }
 }
 
-/* LMK formulation information and safety notices */
-.lmk-safety-notice{margin:18px 0;padding:16px 18px;border:1px solid #c9a653;border-left:5px solid #c9a653;border-radius:8px;background:rgba(201,166,83,.10)}
-.lmk-safety-notice strong{color:#e5cd91}.lmk-safety-notice p{margin:8px 0 0}
+/* LMK STANDARD INTERIOR WEBSITE HEADER — scrolls with page */
+.lmk-site-header {position:static!important;top:auto!important;z-index:auto;width:100%;background:#101113!important;border-bottom:1px solid rgba(201,166,83,.32);backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+.lmk-site-header .lmk-header-inner {width:min(1120px,calc(100% - 40px));min-height:76px;margin:0 auto;padding:10px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-direction:row;}
+.lmk-site-header .lmk-brand-row {display:flex;align-items:center;gap:12px;flex:0 1 auto;min-width:0;}
+.lmk-site-header .lmk-brand-row>a {display:flex;align-items:center;flex:0 0 50px;}
+.lmk-site-header .lmk-brand-logo {display:block;width:50px;height:50px;flex-shrink:0;object-fit:contain;}
+.lmk-site-header .lmk-brand-text {margin:0;color:#f5f4f0;font-family:Georgia,"Times New Roman",serif;font-size:17px;font-weight:400;line-height:1.3;letter-spacing:2px;white-space:nowrap;text-align:left;}
+.lmk-site-header .lmk-brand-text span {display:block;margin-top:5px;color:#c9a653;font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:400;line-height:1.5;letter-spacing:2px;white-space:nowrap;}
+.lmk-site-header nav.lmk-nav-links {display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:6px 14px;width:auto;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:400;line-height:1.4;letter-spacing:.5px;text-transform:uppercase;}
+.lmk-site-header nav.lmk-nav-links a {display:inline-block;margin:0;padding:4px 0;color:#f5f4f0;font-family:inherit;font-size:inherit;font-weight:400;line-height:inherit;letter-spacing:inherit;text-decoration:none;white-space:nowrap;transition:color .2s ease;}
+.lmk-site-header nav.lmk-nav-links a:hover,.lmk-site-header nav.lmk-nav-links a.active {color:#e5cd91;}
+.lmk-site-header nav.lmk-nav-links a.active {text-decoration:underline;text-decoration-color:#c9a653;text-underline-offset:4px;}
+@media(max-width:1000px){.lmk-site-header .lmk-header-inner{align-items:flex-start;flex-direction:column;gap:12px;padding:12px 0}.lmk-site-header nav.lmk-nav-links{justify-content:flex-start;gap:8px 14px}}
+@media(max-width:560px){.lmk-site-header .lmk-header-inner{width:calc(100% - 28px);min-height:auto;gap:10px;padding:10px 0}.lmk-site-header .lmk-brand-row{gap:9px}.lmk-site-header .lmk-brand-row>a{flex-basis:42px}.lmk-site-header .lmk-brand-logo{width:42px;height:42px}.lmk-site-header .lmk-brand-text{font-size:14px;letter-spacing:1px}.lmk-site-header .lmk-brand-text span{font-size:8px;letter-spacing:1px}.lmk-site-header nav.lmk-nav-links{gap:7px 12px;font-size:9px;letter-spacing:.3px}}
+
 </style>
 <style>
 /* LMK iPhone-friendly expandable research interface */
@@ -509,17 +521,19 @@ article.research-card[hidden]{display:none!important}
 <body>
 <div class="notice">Research Information Only | No Medical Advice</div>
 <!-- SHARED SITE HEADER: DOSING PAGE -->
-<header class="site-header">
-<div class="header-inner">
-<div class="brand-row">
-<a aria-label="Laboratori Massa Kritikal home" href="index.html">
-<img alt="Laboratori Massa Kritikal logo" class="brand-logo" src="logo.jpeg"/>
-</a>
-<div class="brand">
-                LABORATORI MASSA KRITIKAL
-                <span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span>
+<header class="lmk-site-header">
+<div class="lmk-header-inner">
+<div class="lmk-brand-row">
+<a aria-label="Laboratori Massa Kritikal home" href="index.html"><img alt="Laboratori Massa Kritikal logo" class="lmk-brand-logo" src="images/logo.jpeg"/></a>
+<div class="lmk-brand-text">LABORATORI MASSA KRITIKAL<span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span></div>
 </div>
-</div>
+<nav aria-label="Main navigation" class="lmk-nav-links">
+<a href="index.html">Home</a>
+<a href="products.html">Catalog</a>
+<a aria-current="page" class="active" href="dosing.html">Dosing</a>
+<a href="research.html">Research</a>
+<a href="perspective.html">Our Perspective</a>
+</nav>
 </div>
 </header>
 <main class="container">
@@ -772,7 +786,7 @@ article.research-card[hidden]{display:none!important}
         and distinguishes it from short-acting products marketed
         as CJC-1295 without DAC.
       </p>
-<aside class="lmk-safety-notice" role="note" aria-label="CJC-1295 formulation safety notice">
+<aside aria-label="CJC-1295 formulation safety notice" class="lmk-safety-notice" role="note">
 <strong>Important: CJC-1295 with DAC versus without DAC</strong>
 <p>The drug-affinity complex (DAC) is designed to prolong systemic exposure. Short-acting products sold as “CJC-1295 without DAC” are often modified GRF(1-29), and are not necessarily the same chemical entity as CJC-1295 with DAC. They should not be treated as interchangeable.</p>
 <p>For first-time inquiries, Laboratori Massa Kritikal encourages customers to review the shorter-acting, no-DAC formulation and its distinct evidence and risks before considering the prolonged-exposure DAC formulation. This is a formulation-comparison precaution, <strong>not</strong> a recommendation to self-administer either investigational peptide.</p>
@@ -854,9 +868,7 @@ article.research-card[hidden]{display:none!important}
 </li>
 </ul>
 </div>
-</details>
-<!-- CJC-1295 without DAC formulation distinction -->
-<details class="compound-card" id="cjc1295-without-dac">
+</details><details class="compound-card" id="cjc1295-without-dac">
 <summary>CJC-1295 without DAC (often modified GRF(1-29)) — Formulation and safety reference</summary>
 <div class="compound-content">
 <h3>Overview</h3>
@@ -864,7 +876,7 @@ article.research-card[hidden]{display:none!important}
 <div class="lmk-safety-notice" role="note"><strong>Shorter exposure is not a guarantee of safety.</strong><p>No-DAC and DAC formulations have different exposure profiles, but neither is established as a safe self-directed first-dose regimen. A reaction may persist beyond the period of drug exposure. No clinically validated dosing schedule is supplied here.</p></div>
 <h4>Research considerations</h4>
 <ul><li>Verify exact molecular identity; marketing names can be inconsistent.</li><li>Do not assume that findings from DAC-containing CJC-1295 studies apply to modified GRF(1-29).</li><li>Clinical evidence for nonapproved uses and long-term safety remains limited.</li></ul>
-<h4>Research references</h4><ul class="sources"><li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=modified+GRF+1-29+pharmacokinetics" target="_blank" rel="noopener noreferrer">PubMed: modified GRF(1-29) research</a></li></ul>
+<h4>Research references</h4><ul class="sources"><li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=modified+GRF+1-29+pharmacokinetics" rel="noopener noreferrer" target="_blank">PubMed: modified GRF(1-29) research</a></li></ul>
 </div>
 </details>
 <!-- 05 IPAMORELIN (NNC 26-0161) -->
