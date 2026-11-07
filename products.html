@@ -471,6 +471,10 @@ footer {
 .coa-viewer-close{flex-shrink:0;min-width:88px;min-height:42px;padding:8px 13px;border:1px solid #c9a653;border-radius:8px;background:#c9a653;color:#101113;font:700 15px Arial,sans-serif;cursor:pointer}
 .coa-viewer-frame{width:100%;flex:1;min-height:0;border:0;background:#fff}
 body.coa-viewer-open{overflow:hidden}
+
+/* CJC formulation distinctions */
+.lmk-cjc-warning{margin:0 0 12px;padding:12px;border:1px solid #c9a653;border-radius:8px;background:rgba(201,166,83,.1);color:#e5cd91;font-size:12px;line-height:1.55}
+.lmk-cjc-warning strong{color:#f6f3ec}
 </style>
 </head>
 <body>
@@ -610,6 +614,18 @@ Please contact us for a shipping estimate before placing your inquiry.</p>
           "5 mg":{1:49.99,3:139.99},
           "10 mg":{1:79.99,3:229.99}
         }
+      },
+
+      {
+        id:"cjc1295nodac",
+name:"CJC 1295 without DAC",
+image:"images/CJC 1295 without DAC.jpeg",
+description:"Shorter-acting formulation for research.",
+        sizes:["5 mg","10 mg"],
+        prices:{
+	        "5 mg":{1:48.99,3:129.99},
+            "10 mg":{1:79.99,3:212.99}
+          }
       },
       {
         id:"ipamorelin", name:"Ipamorelin", image:"images/ipamorelin.jpeg?v=20261107-1", description:"Product listing",
@@ -751,17 +767,18 @@ Please contact us for a shipping estimate before placing your inquiry.</p>
         return `
           <article class="product-card" data-product="${product.id}">
             <div class="product-image-wrap">
-              <img class="product-image"
+              ${product.image ? `<img class="product-image"
                 src="${product.image}"
                 alt="${product.name} product image"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-              <div class="image-fallback">
-                Image not found<br><small>${product.image}</small>
+                onerror="this.style.display='none';this.nextElementSibling.style.display='block';">` : ''}
+              <div class="image-fallback" style="${product.image ? '' : 'display:block;color:#e5cd91;font-family:Georgia,serif;font-size:1.15rem;'}">
+                ${product.image ? `Image not found<br><small>${product.image}</small>` : `CJC-1295<br>WITHOUT DAC<br><small style="color:#b7b2a7;font-family:Arial,sans-serif">Product image coming soon</small>`}
               </div>
             </div>
 
             <h3>${product.name}</h3>
             <p class="product-description">${product.description}</p>
+            ${(product.id === "cjc1295dac" || product.id === "cjc1295nodac") ? `<div class="lmk-cjc-warning"><strong>Important Notice</strong> Laboratori Massa Kritikal recommends CJC-1295 without DAC for initial research due to its shorter duration of activity. If an adverse reaction occurs, the shorter exposure may limit prolonged effects compared with CJC-1295 with DAC, which remains active significantly longer. However, shorter exposure does not guarantee a shorter or less severe adverse reaction.</div>` : ""}
 
             <span class="field-label">
               ${product.sizes.length > 1 ? "Choose size" : "Size"}
