@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="#101113" name="theme-color"/>
+  <title>
+   Research Stack Consultation | Laboratori Massa Kritikal
+  </title>
+  <style>
+   :root{
+    --bg:#101113;
+    --panel:#191a1d;
+    --gold:#c9a653;
+    --light:#e5cd91;
+    --text:#f2f0e9;
+    --muted:#b8b5ac;
+    --line:rgba(201,166,83,.32)
+}
+*{
+    box-sizing:border-box
+}
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif
+}
+a{
+    color:var(--light)
+}
+.notice{
+    background:var(--gold);
+    color:#151515;
+    text-align:center;
+    font-size:11px;
+    letter-spacing:1.3px;
+    font-weight:800;
+    padding:10px
+}
+.lmk-site-header{
+    background:#101113;
+    border-bottom:1px solid var(--line)
+}
+.lmk-header-inner{
+    width:min(1120px,calc(100% - 40px));
+    margin:auto;
+    min-height:76px;
+    padding:10px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px
+}
+.lmk-brand-row{
+    display:flex;
+    align-items:center;
+    gap:12px
+}
+.lmk-brand-logo{
+    width:50px;
+    height:50px;
+    object-fit:contain
+}
+.lmk-brand-text{
+    font:17px Georgia,serif;
+    letter-spacing:2px;
+    white-space:nowrap
+}
+.lmk-brand-text span{
+    display:block;
+    color:var(--gold);
+    font:9px Arial,sans-serif;
+    letter-spacing:2px;
+    margin-top:5px
+}
+.lmk-nav-links{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    font:10px Arial,sans-serif;
+    text-transform:uppercase
+}
+.lmk-nav-links a{
+    text-decoration:none;
+    color:var(--text)
+}
+.lmk-nav-links .active{
+    color:var(--light);
+    text-decoration:underline;
+    text-underline-offset:4px
+}
+.app-header{
+    padding:22px 16px;
+    text-align:center;
+    border-bottom:1px solid var(--line)
+}
+.app-brand{
+    font:19px Georgia,serif;
+    letter-spacing:1.4px;
+    color:var(--light);
+    margin-top:14px
+}
+.app-motto{
+    font-size:9px;
+    color:var(--gold);
+    letter-spacing:1.5px
+}
+.back-link{
+    display:block;
+    text-align:left;
+    font-size:13px
+}
+.wrap{
+    width:min(920px,calc(100% - 28px));
+    margin:25px auto 60px
+}
+.hero{
+    text-align:center;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:28px 18px;
+    margin-bottom:24px
+}
+.eyebrow{
+    font-size:11px;
+    letter-spacing:2px;
+    color:var(--gold);
+    font-weight:800;
+    text-transform:uppercase
+}
+h1,h2{
+    font-family:Georgia,serif;
+    font-weight:normal;
+    color:var(--light)
+}
+h1{
+    font-size:clamp(27px,5vw,39px);
+    margin:10px 0
+}
+h2{
+    font-size:23px
+}
+.hero p{
+    max-width:660px;
+    margin:auto;
+    color:var(--muted)
+}
+.panel{
+    padding:22px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    margin-bottom:20px
+}
+.panel>p{
+    color:var(--muted)
+}
+fieldset{
+    border:1px solid #4b4435;
+    border-radius:9px;
+    padding:15px;
+    margin:16px 0
+}
+legend{
+    padding:0 8px;
+    color:var(--light);
+    font-weight:700
+}
+.choices{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px
+}
+.choice{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    padding:10px;
+    border:1px solid #3e3a31;
+    border-radius:7px;
+    cursor:pointer;
+    min-height:44px
+}
+.choice:has(input:checked){
+    background:#30291d;
+    border-color:var(--gold)
+}
+input[type=checkbox]{
+    accent-color:var(--gold);
+    width:18px;
+    height:18px;
+    flex-shrink:0;
+    margin:3px 0
+}
+label.field{
+    display:block;
+    margin:13px 0 6px;
+    color:var(--light);
+    font-weight:700
+}
+input[type=text],input[type=email],textarea,select{
+    width:100%;
+    padding:12px;
+    border:1px solid #60563e;
+    border-radius:7px;
+    background:#101113;
+    color:var(--text);
+    font:inherit
+}
+textarea{
+    min-height:110px;
+    resize:vertical
+}
+select{
+    min-height:45px
+}
+.small{
+    font-size:12px;
+    color:var(--muted)
+}
+.ack{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:13px;
+    border:1px solid var(--line);
+    border-radius:8px
+}
+.summary{
+    background:#111214;
+    border:1px solid var(--line);
+    padding:15px;
+    border-radius:9px;
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+    font-size:13px
+}
+.actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px
+}
+button,.button{
+    padding:13px 18px;
+    border:1px solid var(--gold);
+    border-radius:7px;
+    background:var(--gold);
+    color:#101113;
+    font-weight:800;
+    font-size:14px;
+    cursor:pointer;
+    text-decoration:none
+}
+button.secondary{
+    background:transparent;
+    color:var(--light)
+}
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed
+}
+#preview[hidden]{
+    display:none
+}
+footer{
+    text-align:center;
+    padding:24px;
+    color:var(--muted);
+    border-top:1px solid var(--line);
+    font-size:12px
+}
+@media(max-width:1000px){
+    .lmk-header-inner{
+        flex-direction:column;
+        align-items:flex-start
+    }
+}
+@media(max-width:560px){
+    .choices{
+        grid-template-columns:1fr
+    }
+    .panel{
+        padding:15px
+    }
+    .lmk-brand-text{
+        font-size:14px;
+        letter-spacing:1px
+    }
+    .lmk-brand-text span{
+        font-size:8px;
+        letter-spacing:1px
+    }
+    .lmk-nav-links{
+        gap:10px
+    }
+    .lmk-header-inner{
+        width:calc(100% - 28px)
+    }
+}
+.app-brand-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin-top:14px
+}
+.app-logo{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    flex-shrink:0
+}
+.app-brand-row .app-brand{
+    margin-top:0;
+    text-align:left
+}
+@media(max-width:390px){
+    .app-logo{
+        width:40px;
+        height:40px
+    }
+    .app-brand-row .app-brand{
+        font-size:15px
+    }
+}
+  </style>
+ </head>
+ <body>
+  <div class="notice">
+   RESEARCH INFORMATION ONLY | NO MEDICAL ADVICE
+  </div>
+  <header class="app-header">
+   <!-- LMK APP HEADER — logo uses logo.jpeg in the app bundle -->
+   <a class="back-link" href="dosing.html">
+    ← Dosing &amp; Research Reference
+   </a>
+   <div class="app-brand-row">
+    <img alt="Laboratori Massa Kritikal logo" class="app-logo" src="logo.jpeg"/>
+    <div class="app-brand">
+     LABORATORI MASSA KRITIKAL
+    </div>
+   </div>
+   <div class="app-motto">
+    DRIVEN BY SCIENCE. DEFINED BY PRECISION.
+   </div>
+   <!-- END LMK APP HEADER -->
+  </header>
+  <main class="wrap">
+   <section class="hero">
+    <div class="eyebrow">
+     LMK RESEARCH SERVICES
+    </div>
+    <h1>
+     Research Stack Consultation
+    </h1>
+    <p>
+     Choose scientific topics and compounds for an evidence-focused review. LMK can discuss published literature, study designs, uncertainties, and known safety concerns—not prescribe individual peptide stacks or injection protocols.
+    </p>
+   </section>
+   <form id="stackForm">
+    <section class="panel">
+     <h2>
+      1. Research objectives
+     </h2>
+     <p>
+      Select all areas you want the research team to investigate.
+     </p>
+     <fieldset>
+      <legend>
+       Weight &amp; Metabolic Health
+      </legend>
+      <div class="choices">
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Weight management"/>
+        <span>
+         Weight management
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Abdominal fat research"/>
+        <span>
+         Abdominal fat research
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Metabolic function"/>
+        <span>
+         Metabolic function
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Body composition"/>
+        <span>
+         Body composition
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Appetite regulation"/>
+        <span>
+         Appetite regulation
+        </span>
+       </label>
+      </div>
+     </fieldset>
+     <fieldset>
+      <legend>
+       Recovery &amp; Physical Performance
+      </legend>
+      <div class="choices">
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Tissue repair"/>
+        <span>
+         Tissue repair
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Muscle recovery"/>
+        <span>
+         Muscle recovery
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Joint and tendon research"/>
+        <span>
+         Joint and tendon research
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Exercise recovery"/>
+        <span>
+         Exercise recovery
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Endurance and performance"/>
+        <span>
+         Endurance and performance
+        </span>
+       </label>
+      </div>
+     </fieldset>
+     <fieldset>
+      <legend>
+       Skin &amp; Longevity
+      </legend>
+      <div class="choices">
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Skin appearance and collagen"/>
+        <span>
+         Skin appearance and collagen
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Healthy aging"/>
+        <span>
+         Healthy aging
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Cellular regeneration"/>
+        <span>
+         Cellular regeneration
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Mitochondrial function"/>
+        <span>
+         Mitochondrial function
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Oxidative stress"/>
+        <span>
+         Oxidative stress
+        </span>
+       </label>
+      </div>
+     </fieldset>
+     <fieldset>
+      <legend>
+       Additional Research
+      </legend>
+      <div class="choices">
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Inflammation pathways"/>
+        <span>
+         Inflammation pathways
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Sleep research"/>
+        <span>
+         Sleep research
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="Cognitive function"/>
+        <span>
+         Cognitive function
+        </span>
+       </label>
+       <label class="choice">
+        <input name="goals" type="checkbox" value="General peptide comparison"/>
+        <span>
+         General peptide comparison
+        </span>
+       </label>
+      </div>
+     </fieldset>
+    </section>
+    <section class="panel">
+     <h2>
+      2. Compounds of interest
+     </h2>
+     <p>
+      Optional. Choose compounds to compare, or leave these unchecked to request an open literature review.
+     </p>
+     <div class="choices">
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="Retatrutide"/>
+       <span>
+        Retatrutide
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="KLOW"/>
+       <span>
+        KLOW
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="GLOW"/>
+       <span>
+        GLOW
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="SS-31"/>
+       <span>
+        SS-31
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="AOD-9604"/>
+       <span>
+        AOD-9604
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="CJC-1295 with DAC"/>
+       <span>
+        CJC-1295 with DAC
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="CJC-1295 without DAC"/>
+       <span>
+        CJC-1295 without DAC
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="Ipamorelin"/>
+       <span>
+        Ipamorelin
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="MOTS-C"/>
+       <span>
+        MOTS-C
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="BPC-157"/>
+       <span>
+        BPC-157
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="Tesamorelin"/>
+       <span>
+        Tesamorelin
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="NAD+"/>
+       <span>
+        NAD+
+       </span>
+      </label>
+      <label class="choice">
+       <input name="compounds" type="checkbox" value="FOXO4-DRI"/>
+       <span>
+        FOXO4-DRI
+       </span>
+      </label>
+     </div>
+    </section>
+    <section class="panel">
+     <h2>
+      3. Preferred report
+     </h2>
+     <label class="field" for="reportType">
+      Research report scope
+     </label>
+     <select id="reportType">
+      <option value="Comprehensive evidence comparison and research timeline">
+       Comprehensive report — comparison and research timeline
+      </option>
+      <option value="Compound comparison and evidence review">
+       Compound comparison and evidence review
+      </option>
+      <option value="Published study timeline and duration overview">
+       Published study timeline and duration overview
+      </option>
+     </select>
+     <p class="small">
+      Timelines describe published research and evidence gaps; they are not schedules for personal administration.
+     </p>
+    </section>
+    <section class="panel">
+     <h2>
+      4. Contact &amp; questions
+     </h2>
+     <label class="field" for="customerName">
+      Name
+     </label>
+     <input autocomplete="name" id="customerName" maxlength="120" required="" type="text"/>
+     <label class="field" for="customerEmail">
+      Reply email
+     </label>
+     <input autocomplete="email" id="customerEmail" maxlength="254" required="" type="email"/>
+     <label class="field" for="questions">
+      Additional scientific questions (optional)
+     </label>
+     <textarea id="questions" maxlength="1500" placeholder="What scientific questions would you like the LMK team to research?"></textarea>
+     <p class="small">
+      Do not include medical records, diagnoses, medication lists, or other sensitive personal health details in this email form.
+     </p>
+    </section>
+    <section class="panel">
+     <h2>
+      5. Review &amp; prepare email
+     </h2>
+     <div aria-live="polite" class="summary" id="selectionSummary">
+      Select at least one research objective.
+     </div>
+     <label class="ack">
+      <input id="acknowledge" required="" type="checkbox"/>
+      <span>
+       I understand this request is for general scientific research information only, not individualized treatment, human-use stacking, injection schedules, or dosing instructions.
+      </span>
+     </label>
+     <div class="actions">
+      <button id="reviewButton" type="button">
+       Review Email
+      </button>
+      <button class="secondary" type="reset">
+       Clear Selections
+      </button>
+     </div>
+     <div hidden="" id="preview">
+      <h2>
+       Email preview
+      </h2>
+      <p class="small">
+       To: stack@labortorimassakritikal.com
+       <br/>
+       Subject: LMK Research Stack Consultation Request
+      </p>
+      <pre class="summary" id="emailPreview"></pre>
+      <div class="actions">
+       <button id="emailButton" type="button">
+        Open Email Application
+       </button>
+      </div>
+      <p class="small">
+       Your email application will open with the draft populated. Review and press Send. This webpage does not automatically transmit or store your request.
+      </p>
+     </div>
+    </section>
+   </form>
+  </main>
+  <footer>
+   LABORATORI MASSA KRITIKAL · Driven by Science. Defined by Precision.
+   <br/>
+   Research information only. Not medical advice.
+  </footer>
+  <script>
+   (function(){
+    'use strict';const form=document.getElementById('stackForm'),preview=document.getElementById('preview'),summary=document.getElementById('selectionSummary');let emailText='';const checked=name=>Array.from(form.querySelectorAll('input[name="'+name+'"]:checked')).map(el=>el.value);function update(){
+        const goals=checked('goals'),compounds=checked('compounds');summary.textContent='Research objectives ('+goals.length+'):\n'+(goals.length?goals.map(x=>'• '+x).join('\n'):'None selected')+'\n\nCompounds ('+compounds.length+'):\n'+(compounds.length?compounds.map(x=>'• '+x).join('\n'):'Open literature review')+'\n\nReport: '+document.getElementById('reportType').value;preview.hidden=true;
+    }form.addEventListener('change',update);form.addEventListener('input',()=>{
+        preview.hidden=true
+    });form.addEventListener('reset',()=>setTimeout(update,0));document.getElementById('reviewButton').addEventListener('click',()=>{
+        if(!checked('goals').length){
+            alert('Please select at least one research objective.');return;
+        }if(!form.reportValidity())return;const goals=checked('goals'),compounds=checked('compounds'),name=document.getElementById('customerName').value.trim(),reply=document.getElementById('customerEmail').value.trim(),questions=document.getElementById('questions').value.trim();emailText='LABORATORI MASSA KRITIKAL\nRESEARCH STACK CONSULTATION REQUEST\n\nName: '+name+'\nReply email: '+reply+'\n\nResearch objectives:\n'+goals.map(x=>'- '+x).join('\n')+'\n\nCompounds of interest:\n'+(compounds.length?compounds.map(x=>'- '+x).join('\n'):'Please identify relevant published research')+'\n\nRequested report: '+document.getElementById('reportType').value+'\n\nAdditional scientific questions:\n'+(questions||'None provided')+'\n\nAcknowledgment: I understand that LMK provides scientific research information only, not personalized medical advice, human-use dosing, or stacking instructions.\n\nPlease review the published evidence, limitations, potential interactions, and safety considerations.';document.getElementById('emailPreview').textContent=emailText;preview.hidden=false;preview.scrollIntoView({
+            behavior:'smooth',block:'start'
+        });
+    });document.getElementById('emailButton').addEventListener('click',()=>{
+        if(!emailText)return;const url='mailto:stack@labortorimassakritikal.com?subject='+encodeURIComponent('LMK Research Stack Consultation Request')+'&body='+encodeURIComponent(emailText);window.location.href=url;
+    });update();
+})();
+  </script>
+ </body>
+</html>
+
