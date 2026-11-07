@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Product Catalog | Laboratori Massa Kritikal</title>
+<style>
+.notice {
+  background: #c9a653;
+  color: #151515;
+  padding: 11px 15px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+:root {
+    --black: #0b0b0c;
+    --panel: #151517;
+    --panel-2: #1d1d20;
+    --gold: #c7a45a;
+    --gold-light: #e4cb8b;
+    --white: #f6f3ec;
+    --muted: #b7b2a7;
+    --line: #38352e;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0;
+    background: var(--black);
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+img { max-width: 100%; }
+
+.lmk-site-header {
+    width: 100%;
+    background: #101113;
+    border-bottom: 1px solid rgba(201, 166, 83, 0.32);
+}
+.lmk-header-inner {
+    width: min(1120px, calc(100% - 40px));
+    min-height: 76px;
+    margin: 0 auto;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+.lmk-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 0 1 auto;
+    min-width: 0;
+}
+.lmk-brand-row > a {
+    display: flex;
+    align-items: center;
+    flex: 0 0 50px;
+}
+.lmk-brand-logo {
+    display: block;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+.lmk-brand-text {
+    margin: 0;
+    color: #f5f4f0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 1.3;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+.lmk-brand-text span {
+    display: block;
+    margin-top: 5px;
+    color: var(--gold);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: normal;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+.lmk-nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+.lmk-nav-links a {
+    display: inline-block;
+    margin: 0;
+    padding: 4px 0;
+    color: #e4cb8b;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: normal;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+.lmk-nav-links a:hover,
+.lmk-nav-links a.active { color: var(--gold-light); }
+.lmk-nav-links a.active {
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 4px;
+}
+.lmk-site-header nav { margin-top: 0; }
+.lmk-site-header .lmk-brand-text,
+.lmk-site-header .lmk-nav-links { text-align: left; }
+
+main {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+}
+.intro {
+    width: 100%;
+    max-width: 780px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+.intro > h2, .intro > p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.intro > p:not(.bulk-pricing-note) {
+    max-width: 720px;
+    line-height: 1.7;
+}
+.intro h2,
+.cart h2,
+h2,
+h3 { font-family: Georgia, "Times New Roman", serif; }
+.intro h2 {
+    margin: 0 0 8px;
+    color: var(--gold-light);
+    font-size: 2rem;
+}
+.intro p { margin: 0; color: var(--muted); }
+.bulk-pricing-note {
+    margin: 14px auto 0;
+    padding: 10px 14px;
+    max-width: 720px;
+    border: 1px solid rgba(201, 166, 83, 0.45);
+    border-radius: 8px;
+    background: #151517;
+    color: var(--gold-light);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 265px), 1fr));
+    align-items: stretch;
+    gap: 20px;
+}
+.product-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+.product-image-wrap {
+    display: flex;
+    height: 210px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border: 1px solid #2b2924;
+    border-radius: 8px;
+    background: #101012;
+}
+.product-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    object-fit: contain;
+}
+.image-fallback {
+    display: none;
+    padding: 15px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-align: center;
+}
+.product-card h3 {
+    margin: 0 0 4px;
+    color: var(--gold-light);
+    font-size: 1.25rem;
+}
+.product-description {
+    min-height: 2.5em;
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+.field-label {
+    display: block;
+    margin: 10px 0 7px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.size-options,
+.quantity-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+.option-button {
+    flex: 1 1 auto;
+    padding: 9px 11px;
+    border: 1px solid #4a463b;
+    border-radius: 7px;
+    background: var(--panel-2);
+    color: var(--white);
+    cursor: pointer;
+    font-size: 0.87rem;
+}
+.option-button:hover { border-color: var(--gold); }
+.option-button[aria-pressed="true"] {
+    border-color: var(--gold);
+    background: #3a3020;
+    color: var(--gold-light);
+}
+.price-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 13px;
+    border-top: 1px solid var(--line);
+}
+.price-label { color: var(--muted); font-size: 0.85rem; }
+.price-value {
+    color: var(--gold-light);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.price-note {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+.add-button {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px 14px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--gold);
+    color: #17130a;
+    font-weight: 700;
+    cursor: pointer;
+}
+.add-button:hover,
+.order-button:hover { background: var(--gold-light); }
+.add-button:disabled {
+    background: #625b4a;
+    color: #ddd4c0;
+    cursor: not-allowed;
+}
+
+.cart {
+    margin-top: 38px;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #141415;
+}
+.cart h2 { margin: 0 0 12px; color: var(--gold-light); }
+.cart-empty { color: var(--muted); }
+.cart-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+}
+.cart-item-name { font-weight: 700; }
+.cart-item-detail { color: var(--muted); font-size: 0.85rem; }
+.cart-item-price {
+    color: var(--gold-light);
+    font-weight: 700;
+    white-space: nowrap;
+}
+.remove-button {
+    padding: 5px 8px;
+    border: 1px solid #665d4a;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+}
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 18px;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+.cart-total strong { color: var(--gold-light); }
+
+.checkout-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+.checkout-form label {
+    display: block;
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+.checkout-form input,
+.checkout-form textarea {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 11px;
+    border: 1px solid #4a463b;
+    border-radius: 6px;
+    background: #0d0d0e;
+    color: var(--white);
+    font: inherit;
+}
+.checkout-form textarea { min-height: 90px; resize: vertical; }
+.full-width { grid-column: 1 / -1; }
+.order-button {
+    padding: 13px 16px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--gold);
+    color: #17130a;
+    font-weight: 700;
+    cursor: pointer;
+}
+.small-print { margin-top: 12px; color: var(--muted); font-size: 0.78rem; }
+
+footer {
+    padding: 22px 18px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
+    .lmk-header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 0;
+    }
+    .lmk-nav-links { justify-content: flex-start; gap: 8px 14px; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    main { padding-right: 18px; padding-left: 18px; }
+}
+@media (min-width: 561px) and (max-width: 1000px) {
+    .product-image-wrap { height: 190px; }
+    .product-card { padding: 15px; }
+}
+@media (max-width: 560px) {
+    body { overflow-wrap: anywhere; }
+    .lmk-header-inner {
+        width: calc(100% - 28px);
+        min-height: auto;
+        gap: 10px;
+        padding: 10px 0;
+    }
+    .lmk-brand-row { gap: 9px; }
+    .lmk-brand-row > a { flex-basis: 42px; }
+    .lmk-brand-logo { width: 42px; height: 42px; }
+    .lmk-brand-text { font-size: 14px; letter-spacing: 1px; }
+    .lmk-brand-text span { font-size: 8px; letter-spacing: 1px; }
+    .lmk-nav-links { gap: 7px 12px; font-size: 9px; letter-spacing: 0.3px; }
+    main { width: 100%; padding: 22px 12px 36px; }
+    .intro { margin-bottom: 22px; }
+    .intro h2 { font-size: 1.65rem; line-height: 1.2; }
+    .grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .product-card { width: 100%; min-width: 0; padding: 14px; }
+    .product-image-wrap { height: clamp(190px, 58vw, 250px); }
+    .product-card h3 { font-size: 1.2rem; }
+    .product-description { min-height: 0; }
+    .size-options, .quantity-options { gap: 8px; }
+    .option-button { min-height: 44px; padding: 10px 9px; font-size: 0.9rem; }
+    .price-line { align-items: flex-start; flex-wrap: wrap; }
+    .price-value { font-size: 1.2rem; }
+    .add-button, .order-button, .remove-button { min-height: 44px; }
+    .cart { margin-top: 26px; padding: 15px 13px; }
+    .cart h2 { font-size: 1.45rem; }
+    .cart-item {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 8px 10px;
+    }
+    .cart-item-name, .cart-item-detail { overflow-wrap: anywhere; }
+    .cart-item .remove-button { grid-column: 2; grid-row: 1 / span 2; }
+    .cart-item-price { grid-column: 1; grid-row: 2; }
+    .cart-total { font-size: 1rem; }
+    .checkout-form { grid-template-columns: minmax(0, 1fr); }
+    .checkout-form input, .checkout-form textarea { font-size: 16px; }
+    .full-width { grid-column: auto; }
+    footer { padding: 18px 12px; }
+}
+
+/* LMK STANDARD INTERIOR WEBSITE HEADER — scrolls with page */
+.lmk-site-header {position:static!important;top:auto!important;z-index:auto;width:100%;background:#101113!important;border-bottom:1px solid rgba(201,166,83,.32);backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+.lmk-site-header .lmk-header-inner {width:min(1120px,calc(100% - 40px));min-height:76px;margin:0 auto;padding:10px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-direction:row;}
+.lmk-site-header .lmk-brand-row {display:flex;align-items:center;gap:12px;flex:0 1 auto;min-width:0;}
+.lmk-site-header .lmk-brand-row>a {display:flex;align-items:center;flex:0 0 50px;}
+.lmk-site-header .lmk-brand-logo {display:block;width:50px;height:50px;flex-shrink:0;object-fit:contain;}
+.lmk-site-header .lmk-brand-text {margin:0;color:#f5f4f0;font-family:Georgia,"Times New Roman",serif;font-size:17px;font-weight:400;line-height:1.3;letter-spacing:2px;white-space:nowrap;text-align:left;}
+.lmk-site-header .lmk-brand-text span {display:block;margin-top:5px;color:#c9a653;font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:400;line-height:1.5;letter-spacing:2px;white-space:nowrap;}
+.lmk-site-header nav.lmk-nav-links {display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:6px 14px;width:auto;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:400;line-height:1.4;letter-spacing:.5px;text-transform:uppercase;}
+.lmk-site-header nav.lmk-nav-links a {display:inline-block;margin:0;padding:4px 0;color:#f5f4f0;font-family:inherit;font-size:inherit;font-weight:400;line-height:inherit;letter-spacing:inherit;text-decoration:none;white-space:nowrap;transition:color .2s ease;}
+.lmk-site-header nav.lmk-nav-links a:hover,.lmk-site-header nav.lmk-nav-links a.active {color:#e5cd91;}
+.lmk-site-header nav.lmk-nav-links a.active {text-decoration:underline;text-decoration-color:#c9a653;text-underline-offset:4px;}
+@media(max-width:1000px){.lmk-site-header .lmk-header-inner{align-items:flex-start;flex-direction:column;gap:12px;padding:12px 0}.lmk-site-header nav.lmk-nav-links{justify-content:flex-start;gap:8px 14px}}
+@media(max-width:560px){.lmk-site-header .lmk-header-inner{width:calc(100% - 28px);min-height:auto;gap:10px;padding:10px 0}.lmk-site-header .lmk-brand-row{gap:9px}.lmk-site-header .lmk-brand-row>a{flex-basis:42px}.lmk-site-header .lmk-brand-logo{width:42px;height:42px}.lmk-site-header .lmk-brand-text{font-size:14px;letter-spacing:1px}.lmk-site-header .lmk-brand-text span{font-size:8px;letter-spacing:1px}.lmk-site-header nav.lmk-nav-links{gap:7px 12px;font-size:9px;letter-spacing:.3px}}
+
+
+/* PRODUCT CERTIFICATE OF ANALYSIS */
+.coa-panel{margin-top:18px;padding:15px;border:1px solid rgba(201,166,83,.48);border-radius:9px;background:#1b1a17}
+.coa-heading{margin:0 0 10px;color:#e5cd91;font-family:Georgia,"Times New Roman",serif;font-size:17px}
+.coa-details{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:12px}
+.coa-details span{color:#b7b2a7}.coa-details strong{color:#f6f3ec;text-align:right}
+.coa-link{display:block;margin-top:13px;padding:10px 12px;border:1px solid #c9a653;border-radius:6px;color:#e5cd91;text-align:center;text-decoration:none;font-size:12px;font-weight:700}
+.coa-link:hover,.coa-link:focus-visible{background:#c9a653;color:#101113}
+.coa-note{margin:10px 0 0;color:#b7b2a7;font-size:11px;line-height:1.5}
+
+.coa-viewer[hidden]{display:none!important}
+.coa-viewer{position:fixed;inset:0;z-index:9999;background:#101113;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.coa-viewer-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;padding:10px 16px;background:#191a1d;border-bottom:1px solid #c9a653}
+.coa-viewer-title{color:#e5cd91;font:600 14px Arial,sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.coa-viewer-close{flex-shrink:0;min-width:88px;min-height:42px;padding:8px 13px;border:1px solid #c9a653;border-radius:8px;background:#c9a653;color:#101113;font:700 15px Arial,sans-serif;cursor:pointer}
+.coa-viewer-frame{width:100%;flex:1;min-height:0;border:0;background:#fff}
+body.coa-viewer-open{overflow:hidden}
+</style>
+</head>
+<body>
+    <div class="notice">Research Information Only | No Medical Advice</div>
+<header class="lmk-site-header">
+  <div class="lmk-header-inner">
+    <div class="lmk-brand-row">
+      <a href="index.html" aria-label="Laboratori Massa Kritikal home"><img class="lmk-brand-logo" src="images/logo.jpeg" alt="Laboratori Massa Kritikal logo"></a>
+      <div class="lmk-brand-text">LABORATORI MASSA KRITIKAL<span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span></div>
+    </div>
+    <nav class="lmk-nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="products.html" class="active" aria-current="page">Catalog</a>
+      <a href="dosing.html">Dosing</a>
+      <a href="research.html">Research</a>
+      <a href="perspective.html">Our Perspective</a>
+    </nav>
+  </div>
+</header>
+    <main>
+      <section class="intro">
+        <h2>Product Catalog</h2>
+        <p>Choose a product, select a size and quantity, and review your selections before preparing an email inquiry.</p>
+        <p class="bulk-pricing-note">Need 4 or more vials? Bulk pricing is available upon request. Please include the product, strength, and quantity in your inquiry.</p>
+        <p class="bulk-pricing-note">Shipping Restrictions – Alaska, Hawaii & U.S. Territories. Due to shipping distance and transit requirements, all shipments to Alaska, Hawaii, and U.S. territories are restricted to FedEx Standard Overnight or FedEx 2Day service only. Standard ground shipping is not available for these destinations.<br>
+Additional shipping charges will apply based on the destination, package weight, and selected service. Shipping costs will be calculated and confirmed before the order is finalized.
+<br>
+Please contact us for a shipping estimate before placing your inquiry.</p>
+      </section>
+
+      <section class="grid" id="productGrid" aria-label="Catalog"></section>
+
+      <section class="cart" id="orderSummary">
+        <h2>Selection Summary</h2>
+        <div id="cartItems" class="cart-empty">No products added yet.</div>
+        <div class="cart-total">
+          <span>Estimated total</span>
+          <strong id="cartTotal">Price not configured</strong>
+        </div>
+
+        <form class="checkout-form" id="inquiryForm">
+          <label>
+            Name
+            <input type="text" id="customerName" name="name" autocomplete="name" required>
+          </label>
+
+          <div class="full-width" style="color:var(--gold-light);font-weight:700;margin-top:8px">
+            Shipping Address
+          </div>
+
+          <label class="full-width">
+            Street Address
+            <input type="text" id="streetAddress" name="streetAddress" autocomplete="address-line1" placeholder="Street address" required>
+          </label>
+
+          <label class="full-width">
+            Second Street Address (Optional)
+            <input type="text" id="streetAddress2" name="streetAddress2" autocomplete="address-line2" placeholder="Apartment, suite, unit, etc.">
+          </label>
+
+          <label>
+            City
+            <input type="text" id="customerCity" name="city" autocomplete="address-level2" placeholder="City" required>
+          </label>
+
+          <label>
+            State (2 letters)
+            <input type="text" id="customerState" name="state" autocomplete="address-level1"
+              maxlength="2" pattern="[A-Za-z]{2}" title="Enter the two-letter state abbreviation, such as FL."
+              autocapitalize="characters" oninput="this.value=this.value.toUpperCase().slice(0,2)" required>
+          </label>
+
+          <label>
+            ZIP Code
+            <input type="text" id="customerZip" name="zip" autocomplete="postal-code" inputmode="numeric"
+              pattern="[0-9]{5}(-[0-9]{4})?" title="Enter a 5-digit ZIP code or ZIP+4." required>
+          </label>
+
+          <label>
+            Email
+            <input type="email" id="customerEmail" name="email" autocomplete="email" required>
+          </label>
+
+          <label class="full-width">
+            Notes or questions
+            <textarea id="customerNotes" name="notes" placeholder="Optional notes or questions"></textarea>
+          </label>
+
+          <div class="full-width">
+            <button class="order-button" type="submit">Prepare Email Inquiry</button>
+            <p class="small-print">This opens an email draft for you to review and send. Please include your shipping address for a complete estimate including shipping costs. No order is transmitted automatically.</p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>Laboratori Massa Kritikal · Driven by Science. Defined by Precision.</footer>
+
+        <div id="coaViewer" class="coa-viewer" role="dialog" aria-modal="true" aria-labelledby="coaViewerTitle" hidden>
+      <div class="coa-viewer-toolbar">
+        <span class="coa-viewer-title" id="coaViewerTitle">Certificate of Analysis</span>
+        <button type="button" id="coaViewerClose" class="coa-viewer-close" aria-label="Close certificate and return to Catalog">✕ Close</button>
+      </div>
+      <iframe id="coaViewerFrame" class="coa-viewer-frame" title="Certificate of Analysis PDF"></iframe>
+    </div>
+
+
+<script>
+    const products = [
+      {
+        id:"klow", name:"KLOW", image:"images/klow.jpeg?v=20261107-1", description:"Product listing",
+        sizes:["80 mg"],
+        prices:{"80 mg":{1:99.99,3:284.99}}
+      },
+      {
+        id:"retatrutide", name:"Retatrutide", image:"images/retatrutide.jpeg?v=20261107-1", description:"Product listing",
+        sizes:["10 mg","20 mg","30 mg"],
+        prices:{
+          "10 mg":{1:49.99,3:139.99},
+          "20 mg":{1:79.99,3:229.99},
+          "30 mg":{1:99.99,3:284.99}
+        }
+      },
+      {
+        id:"motsc", name:"MOTS-C", image:"images/mots-c.jpeg?v=20261107-1", description:"Product listing",
+        sizes:["10 mg","20 mg"],
+        prices:{
+          "10 mg":{1:39.99,3:114.99},
+          "20 mg":{1:59.99,3:169.99}
+        }
+      },
+      {
+        id:"cjc1295dac", name:"CJC 1295 with DAC", image:"images/CJC 1295 with DAC.jpeg?v=20261107-1", description:"Product listing",
+        sizes:["2 mg","5 mg","10 mg"],
+        prices:{
+          "2 mg":{1:29.99,3:84.99},
+          "5 mg":{1:49.99,3:139.99},
+          "10 mg":{1:79.99,3:229.99}
+        }
+      },
+      {
+        id:"ipamorelin", name:"Ipamorelin", image:"images/ipamorelin.jpeg?v=20261107-1", description:"Product listing",
+        sizes:["2 mg","5 mg","10 mg"],
+        prices:{
+          "2 mg":{1:19.99,3:54.99},
+          "5 mg":{1:29.99,3:84.99},
+          "10 mg":{1:49.99,3:139.99}
+        }
+      },
+      {
+        id:"nadplus", name:"NAD+", image:"images/nad+.jpeg?v=20261107-1", description:"Product listing",
+        sizes:["500 mg","1000 mg"],
+        prices:{
+          "500 mg":{1:39.99,3:114.99},
+          "1000 mg":{1:59.99,3:169.99}
+        }
+      },
+      {
+        id:"tesamorelin", name:"Tesamorelin", image:"images/tesamorelin.jpeg?v=20261107-1", description:"Product listing",
+        sizes:["5 mg","10 mg"],
+        prices:{
+          "5 mg":{1:39.99,3:114.99},
+          "10 mg":{1:69.99,3:199.99}
+        }
+      },
+      {
+        id:"aod9604", name:"AOD 9604", image:"images/aod 9604.jpeg?v=20261107-1", description:"Product listing",
+        sizes:["5 mg","10 mg"],
+        prices:{
+          "5 mg":{1:29.99,3:84.99},
+          "10 mg":{1:49.99,3:139.99}
+        }
+      },
+      {
+        id:"glow", name:"GLOW", image:"images/glow.jpeg?v=20261107-1", description:"Product listing",
+        sizes:["70 mg"],
+        prices:{"70 mg":{1:89.99,3:254.99}}
+      },
+      {
+        id:"ss31", name:"SS-31", image:"images/SS-31.jpeg?v=20261107-1", description:"Research listing",
+        sizes:["10 mg","50 mg"],
+        prices:{
+          "10 mg":{1:49.99,3:139.99},
+          "50 mg":{1:149.99,3:424.99}
+        }
+      },
+      {
+        id:"fox04dri", name:"FOXO4-DRI", image:"images/fox04-dri.jpeg?v=20261107-1",
+        description:"Research listing, Special Order Only",
+        sizes:["10 mg"],
+        prices:{"10 mg":{1:169.99,3:484.99}}
+      },
+      {
+        id:"bpc157", name:"BPC 157", image:"images/bpc-157.jpeg?v=20261107-1", description:"Product listing",
+        sizes:["5 mg","10 mg"],
+        prices:{
+          "5 mg":{1:29.99,3:84.99},
+          "10 mg":{1:49.99,3:139.99}
+        }
+      }
+    ];
+    // COAs are specific to the tested sample and lot, not all future batches.
+    const certificates = {
+      klow: { strength:"80 mg", purity:"99.72%", lot:"KLO-86196", date:"October 16, 2026", file:"coa/COA_KLOW80.pdf" },
+      glow: { strength:"70 mg", purity:"99.74%", lot:"GLO-81794", date:"October 17, 2026", file:"coa/COA_GLOW70.pdf" },
+      retatrutide: { strength:"5 mg", purity:"99.61%", lot:"RET-70520", date:"October 12, 2026", file:"coa/COA_Retatrutide.pdf" },
+      motsc: { strength:"10 mg", purity:"99.78%", lot:"MOT-18603", date:"November 2, 2026", file:"coa/COA_MOTS-C.pdf" },
+      ipamorelin: { strength:"2 mg", purity:"99.82%", lot:"IPA-12621", date:"November 4, 2026", file:"coa/COA_Ipamorelin.pdf" },
+      nadplus: { strength:"100 mg", purity:"99.83%", lot:"NAD-62036", date:"November 2, 2026", file:"coa/COA_NAD+.pdf" },
+      tesamorelin: { strength:"2 mg", purity:"99.58%", lot:"TES-10912", date:"November 4, 2026", file:"coa/COA_Tesamorelin.pdf" },
+      aod9604: { strength:"2 mg", purity:"99.77%", lot:"AOD-62514", date:"October 31, 2026", file:"coa/COA_AOD-9604.pdf" },
+      ss31: { strength:"10 mg", purity:"99.81%", lot:"SS-25457", date:"November 3, 2026", file:"coa/COA_SS-31.pdf" },
+      fox04dri: { strength:"10 mg", purity:"99.68%", lot:"FOX-24608", date:"November 3, 2026", file:"coa/COA_FOXO4-DRI.pdf" },
+      bpc157: { strength:"2 mg", purity:"99.81%", lot:"BPC-98114", date:"November 2, 2026", file:"coa/COA_BPC-157.pdf" }
+    };
+
+    function renderCOA(product, selectedSize) {
+      const coa = certificates[product.id];
+      if (!coa) return "";
+      const matches = selectedSize === coa.strength;
+      return `
+        <section class="coa-panel" aria-label="${product.name} certificate of analysis">
+          <h4 class="coa-heading">Certificate of Analysis</h4>
+          <div class="coa-details">
+            <span>Tested strength</span><strong>${coa.strength}</strong>
+            <span>Reported HPLC purity</span><strong>${coa.purity}</strong>
+            <span>Lot number</span><strong>${coa.lot}</strong>
+            <span>Laboratory</span><strong>Focus BioLabs</strong>
+            <span>Test date</span><strong>${coa.date}</strong>
+          </div>
+          <a class="coa-link" href="${coa.file}" data-coa-file="${coa.file}" data-coa-title="${product.name} — Certificate of Analysis">View COA (PDF)</a>
+          <p class="coa-note">Report applies only to the identified tested sample and lot.${matches ? " Confirm the vial lot matches this report." : " This report does not establish testing of the currently selected strength."}</p>
+        </section>`;
+    }
+
+    /* Replace this with the email address that should receive inquiries. */
+    const ORDER_EMAIL = "info@labortorimassakritikal.com";
+
+    /* Only 1-vial and 3-vial options are displayed. */
+    const quantities = [1, 3];
+    const selections = {};
+    const cart = [];
+
+    function money(value) {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+      }).format(value);
+    }
+
+    function getProduct(id) {
+      return products.find(product => product.id === id);
+    }
+
+    function getPrice(product, size, quantity) {
+      const value = product.prices?.[size]?.[quantity];
+      return typeof value === "number" && Number.isFinite(value) ? value : null;
+    }
+
+    function formatSize(size) {
+      return size === "Set size" ? "Standard listing" : size;
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById("productGrid");
+
+      grid.innerHTML = products.map(product => {
+        const defaultSize = product.sizes[0];
+
+        selections[product.id] = selections[product.id] || {
+          size: defaultSize,
+          quantity: 1
+        };
+
+        const current = selections[product.id];
+        const price = getPrice(product, current.size, current.quantity);
+
+        return `
+          <article class="product-card" data-product="${product.id}">
+            <div class="product-image-wrap">
+              <img class="product-image"
+                src="${product.image}"
+                alt="${product.name} product image"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+              <div class="image-fallback">
+                Image not found<br><small>${product.image}</small>
+              </div>
+            </div>
+
+            <h3>${product.name}</h3>
+            <p class="product-description">${product.description}</p>
+
+            <span class="field-label">
+              ${product.sizes.length > 1 ? "Choose size" : "Size"}
+            </span>
+
+            <div class="size-options" role="group" aria-label="${product.name} size">
+              ${product.sizes.map(size => `
+                <button type="button"
+                  class="option-button"
+                  data-action="size"
+                  data-size="${size}"
+                  aria-pressed="${current.size === size}">
+                  ${formatSize(size)}
+                </button>
+              `).join("")}
+            </div>
+
+            <span class="field-label">Quantity</span>
+
+            <div class="quantity-options" role="group" aria-label="${product.name} quantity">
+              ${quantities.map(quantity => `
+                <button type="button"
+                  class="option-button"
+                  data-action="quantity"
+                  data-quantity="${quantity}"
+                  aria-pressed="${current.quantity === quantity}">
+                  ${quantity} ${quantity === 1 ? "vial" : "vials"}
+                </button>
+              `).join("")}
+            </div>
+
+            <div class="price-line">
+              <span class="price-label">Selected total</span>
+              <span class="price-value">
+                ${price === null ? "Not configured" : money(price)}
+              </span>
+            </div>
+
+            <p class="price-note">
+              ${price === null
+                ? "Add this price in the code's pricing section."
+                : `${money(price / current.quantity)} per vial`}
+            </p>
+
+            <button type="button"
+              class="add-button"
+              data-action="add"
+              ${price === null ? "disabled" : ""}>
+              ${price === null ? "Set Price to Enable" : "Add to Summary"}
+            </button>
+            ${renderCOA(product, current.size)}
+          </article>
+        `;
+      }).join("");
+    }
+
+    document.getElementById("productGrid").addEventListener("click", event => {
+      const button = event.target.closest("button[data-action]");
+      if (!button) return;
+
+      const card = button.closest("[data-product]");
+      const product = getProduct(card.dataset.product);
+      const selection = selections[product.id];
+
+      if (button.dataset.action === "size") {
+        selection.size = button.dataset.size;
+        renderProducts();
+
+      } else if (button.dataset.action === "quantity") {
+        selection.quantity = Number(button.dataset.quantity);
+        renderProducts();
+
+      } else if (button.dataset.action === "add") {
+        const price = getPrice(
+          product,
+          selection.size,
+          selection.quantity
+        );
+
+        if (price === null) return;
+
+        cart.push({
+          key: `${product.id}|${selection.size}|${selection.quantity}|${Date.now()}|${Math.random()}`,
+          id: product.id,
+          name: product.name,
+          size: selection.size,
+          quantity: selection.quantity,
+          price
+        });
+
+        renderCart();
+      }
+    });
+
+    function renderCart() {
+      const container = document.getElementById("cartItems");
+
+      if (!cart.length) {
+        container.className = "cart-empty";
+        container.textContent = "No products added yet.";
+        document.getElementById("cartTotal").textContent =
+          "Price not configured";
+        return;
+      }
+
+      container.className = "";
+
+      container.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div>
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-detail">
+              ${formatSize(item.size)} · ${item.quantity}
+              ${item.quantity === 1 ? "vial" : "vials"}
+            </div>
+          </div>
+
+          <div class="cart-item-price">${money(item.price)}</div>
+
+          <button class="remove-button"
+            type="button"
+            data-remove="${item.key}"
+            aria-label="Remove ${item.name}">
+            Remove
+          </button>
+        </div>
+      `).join("");
+
+      document.getElementById("cartTotal").textContent =
+        money(cart.reduce((sum, item) => sum + item.price, 0));
+    }
+
+    document.getElementById("cartItems").addEventListener("click", event => {
+      const button = event.target.closest("[data-remove]");
+      if (!button) return;
+
+      const index = cart.findIndex(
+        item => item.key === button.dataset.remove
+      );
+
+      if (index >= 0) cart.splice(index, 1);
+
+      renderCart();
+    });
+
+    document.getElementById("inquiryForm").addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (!cart.length) {
+        alert(
+          "Please add at least one product with a configured price before preparing an inquiry."
+        );
+        return;
+      }
+
+      if (!ORDER_EMAIL || ORDER_EMAIL.includes("REPLACE_WITH")) {
+        alert(
+          "Please set ORDER_EMAIL in the code to the email address that should receive inquiries."
+        );
+        return;
+      }
+
+      const name = document.getElementById("customerName").value.trim();
+      const email = document.getElementById("customerEmail").value.trim();
+      const streetAddress = document.getElementById("streetAddress").value.trim();
+      const streetAddress2 = document.getElementById("streetAddress2").value.trim();
+      const city = document.getElementById("customerCity").value.trim();
+      const state = document.getElementById("customerState").value.trim().toUpperCase();
+      const zip = document.getElementById("customerZip").value.trim();
+      const notes = document.getElementById("customerNotes").value.trim();
+
+      const lines = cart.map(item =>
+        `- ${item.name} | ${formatSize(item.size)} | Quantity: ${item.quantity} | ${money(item.price)}`
+      );
+
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      const subject = encodeURIComponent("Product Catalog Inquiry");
+
+      const body = encodeURIComponent(
+    `Name: ${name}
+    Email: ${email}
+
+    Shipping Address:
+    ${streetAddress}
+    ${streetAddress2 ? streetAddress2 + "\n" : ""}${city}, ${state} ${zip}
+
+    Selected products:
+    ${lines.join("\n")}
+
+    Estimated total: ${money(total)}
+
+    Notes: ${notes || "None"}
+
+    This is an inquiry and does not include shipping costs or constitute a completed order. A representative will respond with a total estimate including shipping. Additional shipping costs may apply to Alaska, Hawaii, and U.S. territories.`
+      );
+
+      window.location.href =
+        `mailto:${ORDER_EMAIL}?subject=${subject}&body=${body}`;
+    });
+
+    renderProducts();
+    renderCart();
+        const coaViewer = document.getElementById("coaViewer");
+    const coaViewerFrame = document.getElementById("coaViewerFrame");
+    const coaViewerTitle = document.getElementById("coaViewerTitle");
+    const coaViewerClose = document.getElementById("coaViewerClose");
+    let previousCOAFocus = null;
+
+    document.addEventListener("click", function (event) {
+      const link = event.target.closest("a[data-coa-file]");
+      if (!link) return;
+      event.preventDefault();
+      previousCOAFocus = link;
+      coaViewerTitle.textContent = link.dataset.coaTitle || "Certificate of Analysis";
+      coaViewerFrame.src = link.getAttribute("data-coa-file");
+      coaViewer.hidden = false;
+      document.body.classList.add("coa-viewer-open");
+      coaViewerClose.focus();
+    });
+
+    function closeCOAViewer() {
+      coaViewer.hidden = true;
+      coaViewerFrame.removeAttribute("src");
+      document.body.classList.remove("coa-viewer-open");
+      if (previousCOAFocus && previousCOAFocus.isConnected) previousCOAFocus.focus();
+    }
+    coaViewerClose.addEventListener("click", closeCOAViewer);
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !coaViewer.hidden) closeCOAViewer();
+    });
+
+    renderProducts();
+    renderCart();
+    
+</script>
+    </body>
+    </html>
