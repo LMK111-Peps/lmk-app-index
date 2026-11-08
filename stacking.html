@@ -684,49 +684,30 @@ footer {
      </label>
      <textarea id="questions" maxlength="1500" placeholder="What scientific questions would you like the LMK team to research?"></textarea>
      <p class="small">
-      Do not include medical records, diagnoses, medication lists, or other sensitive personal health details in this email form.
+      Do not include medical records, diagnoses, medication lists, or other sensitive personal health details in this form.
      </p>
     </section>
     <section class="panel">
-     <h2>
-      5. Review &amp; prepare email
-     </h2>
-     <div aria-live="polite" class="summary" id="selectionSummary">
-      Select at least one research objective.
-     </div>
-     <label class="ack">
-      <input id="acknowledge" required="" type="checkbox"/>
-      <span>
-       I understand this request is for general scientific research information only, not individualized treatment, human-use stacking, injection schedules, or dosing instructions.
-      </span>
-     </label>
-     <div class="actions">
-      <button id="reviewButton" type="button">
-       Review Email
-      </button>
-      <button class="secondary" type="reset">
-       Clear Selections
-      </button>
-     </div>
-     <div hidden="" id="preview">
-      <h2>
-       Email preview
-      </h2>
-      <p class="small">
-       To: stack@labortorimassakritikal.com
-       <br/>
-       Subject: LMK Research Stack Consultation Request
-      </p>
-      <pre class="summary" id="emailPreview"></pre>
+      <h2>5. Review &amp; submit consultation</h2>
+      <p>Review your research request before submitting. LMK will email you a verification link, valid for 20 minutes. Your consultation number is assigned after verification.</p>
+      <div aria-live="polite" class="summary" id="selectionSummary">Select at least one research objective.</div>
+      <label class="ack">
+        <input id="acknowledge" required type="checkbox" />
+        <span>I understand this request is for general scientific research information only, not individualized treatment, human-use stacking, injection schedules, or dosing instructions.</span>
+      </label>
       <div class="actions">
-       <button id="emailButton" type="button">
-        Open Email Application
-       </button>
+        <button id="reviewButton" type="button">Review Request</button>
+        <button class="secondary" type="reset">Clear Selections</button>
       </div>
-      <p class="small">
-       Your email application will open with the draft populated. Review and press Send. This webpage does not automatically transmit or store your request.
-      </p>
-     </div>
+      <div id="preview" hidden>
+        <h2>Request preview</h2>
+        <pre class="summary" id="requestPreview"></pre>
+        <div class="actions">
+          <button id="submitButton" type="button">Submit &amp; Send Verification Email</button>
+        </div>
+      </div>
+      <p id="submissionStatus" class="small" role="status" aria-live="polite"></p>
+      <p class="small">Your submission is securely transmitted to LMK's Cloudflare consultation API. Do not include medical records, diagnoses, medication lists, personal dosing information, or other sensitive health details.</p>
     </section>
    </form>
   </main>
@@ -736,135 +717,218 @@ footer {
    Research information only. Not medical advice.
   </footer>
   <script>
-   (function () {
-    "use strict";
+    (function () {
+        "use strict";
 
-    // ============================================================
-    // CONFIGURATION — CHANGE THE DESTINATION EMAIL HERE
-    // ============================================================
-    const STACK_EMAIL = "stack@labortorimassakritikal.com";
-    const EMAIL_SUBJECT = "LMK Research Stack Consultation Request";
+        // ============================================================
+        // LMK CLOUDFLARE CONSULTATION API
+        // ============================================================
+        const CONSULTATION_API =
+            "https://lmk-consultation-api.wt68jg58z7.workers.dev/consultations";
 
-    // ============================================================
-    // FORM ELEMENTS
-    // ============================================================
-    const form = document.getElementById("stackForm");
-    const preview = document.getElementById("preview");
-    const summary = document.getElementById("selectionSummary");
-    const reviewButton = document.getElementById("reviewButton");
-    const emailButton = document.getElementById("emailButton");
-    const emailPreview = document.getElementById("emailPreview");
-    const reportType = document.getElementById("reportType");
+        const MAX_RESEARCH_GOALS_LENGTH = 3000;
 
-    let emailText = "";
+        // ============================================================
+        // FORM ELEMENTS AND CURRENT REQUEST
+        // ============================================================
+        const form = document.getElementById("stackForm");
+        const summary = document.getElementById("selectionSummary");
+        const preview = document.getElementById("preview");
+        const reviewButton = document.getElementById("reviewButton");
+        const submitButton = document.getElementById("submitButton");
+        const requestPreview = document.getElementById("requestPreview");
+        const reportType = document.getElementById("reportType");
+        const status = document.getElementById("submissionStatus");
 
-    // Collect selected research objectives or compounds.
-    function checked(name) {
-        return Array.from(
-            form.querySelectorAll('input[name="' + name + '"]:checked')
-        ).map(function (element) {
-            return element.value;
+        let reviewedRequest = null;
+        let submitting = false;
+
+        function checked(name) {
+            return Array.from(
+                form.querySelectorAll('input[name="' + name + '"]:checked')
+            ).map(function (element) {
+                return element.value;
+            });
+        }
+
+        function setStatus(message, isError) {
+            status.textContent = message;
+            status.style.color = isError ? "#ffb4a8" : "var(--light)";
+        }
+
+        function invalidateReview() {
+            reviewedRequest = null;
+            preview.hidden = true;
+            if (!submitting) {
+                setStatus("", false);
+            }
+        }
+
+        function updateSummary() {
+            const goals = checked("goals");
+            const compounds = checked("compounds");
+
+            summary.textContent =
+                "Research objectives (" + goals.length + "):\n" +
+                (goals.length ? goals.map(function (item) {
+                    return "• " + item;
+                }).join("\n") : "None selected") +
+                "\n\nCompounds (" + compounds.length + "):\n" +
+                (compounds.length ? compounds.map(function (item) {
+                    return "• " + item;
+                }).join("\n") : "Open literature review") +
+                "\n\nReport: " + (reportType.value || "Not selected");
+        }
+
+        // Keep the preview in sync with the current form selections.
+        form.addEventListener("change", function () {
+            invalidateReview();
+            updateSummary();
         });
-    }
 
-    // ============================================================
-    // UPDATE THE ON-SCREEN SELECTION SUMMARY
-    // ============================================================
-    function update() {
-        const goals = checked("goals");
-        const compounds = checked("compounds");
-
-        summary.textContent =
-            "Research objectives (" + goals.length + "):\n" +
-            (goals.length
-                ? goals.map(function (item) { return "• " + item; }).join("\n")
-                : "None selected") +
-            "\n\nCompounds (" + compounds.length + "):\n" +
-            (compounds.length
-                ? compounds.map(function (item) { return "• " + item; }).join("\n")
-                : "Open literature review") +
-            "\n\nReport: " + reportType.value;
-
-        preview.hidden = true;
-    }
-
-    form.addEventListener("change", update);
-
-    form.addEventListener("input", function () {
-        preview.hidden = true;
-    });
-
-    form.addEventListener("reset", function () {
-        setTimeout(update, 0);
-    });
-
-    // ============================================================
-    // BUILD AND REVIEW THE EMAIL DRAFT
-    // ============================================================
-    reviewButton.addEventListener("click", function () {
-        const goals = checked("goals");
-
-        if (!goals.length) {
-            alert("Please select at least one research objective.");
-            return;
-        }
-
-        if (!form.reportValidity()) {
-            return;
-        }
-
-        const compounds = checked("compounds");
-        const name = document.getElementById("customerName").value.trim();
-        const reply = document.getElementById("customerEmail").value.trim();
-        const questions = document.getElementById("questions").value.trim();
-
-        emailText =
-            "LABORATORI MASSA KRITIKAL\n" +
-            "RESEARCH STACK CONSULTATION REQUEST\n\n" +
-            "Name: " + name + "\n" +
-            "Reply email: " + reply + "\n\n" +
-            "Research objectives:\n" +
-            goals.map(function (item) { return "- " + item; }).join("\n") +
-            "\n\nCompounds of interest:\n" +
-            (compounds.length
-                ? compounds.map(function (item) { return "- " + item; }).join("\n")
-                : "Please identify relevant published research") +
-            "\n\nRequested report: " + reportType.value +
-            "\n\nAdditional scientific questions:\n" +
-            (questions || "None provided") +
-            "\n\nAcknowledgment: I understand that LMK provides scientific " +
-            "research information only, not personalized medical advice, " +
-            "human-use dosing, or stacking instructions." +
-            "\n\nPlease review the published evidence, limitations, " +
-            "potential interactions, and safety considerations.";
-
-        emailPreview.textContent = emailText;
-        preview.hidden = false;
-
-        preview.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+        form.addEventListener("input", function () {
+            invalidateReview();
+            updateSummary();
         });
-    });
 
-    // ============================================================
-    // OPEN THE USER'S EMAIL APP WITH A PRE-FILLED DRAFT
-    // ============================================================
-    emailButton.addEventListener("click", function () {
-        if (!emailText) {
-            return;
+        form.addEventListener("reset", function () {
+            invalidateReview();
+            window.setTimeout(updateSummary, 0);
+        });
+
+        // ============================================================
+        // BUILD THE THREE FIELDS EXPECTED BY THE WORKER
+        // ============================================================
+        function buildRequest() {
+            const goals = checked("goals");
+            const compounds = checked("compounds");
+            const questions = document.getElementById("questions").value.trim();
+
+            if (goals.length === 0) {
+                throw new Error("Please select at least one research objective.");
+            }
+
+            if (!form.reportValidity()) {
+                return null;
+            }
+
+            const researchGoals = [
+                "Research objectives: " + goals.join(", "),
+                "Compounds of interest: " +
+                    (compounds.length ? compounds.join(", ") : "Open literature review"),
+                "Requested report: " + reportType.value,
+                "Additional scientific questions: " + (questions || "None provided")
+            ].join("\n\n");
+
+            if (researchGoals.length > MAX_RESEARCH_GOALS_LENGTH) {
+                throw new Error(
+                    "Your research request is too long. Please shorten the additional questions."
+                );
+            }
+
+            return {
+                customer_name: document.getElementById("customerName").value.trim(),
+                customer_email: document.getElementById("customerEmail").value.trim(),
+                research_goals: researchGoals
+            };
         }
 
-        const emailURL =
-            "mailto:" + STACK_EMAIL +
-            "?subject=" + encodeURIComponent(EMAIL_SUBJECT) +
-            "&body=" + encodeURIComponent(emailText);
+        reviewButton.addEventListener("click", function () {
+            try {
+                const request = buildRequest();
+                if (!request) {
+                    return;
+                }
 
-        window.location.href = emailURL;
-    });
+                reviewedRequest = request;
+                requestPreview.textContent =
+                    "Name: " + request.customer_name + "\n" +
+                    "Email: " + request.customer_email + "\n\n" +
+                    request.research_goals;
 
-    update();
-})();
+                preview.hidden = false;
+                setStatus("Review your request, then submit to receive a verification email.", false);
+                preview.scrollIntoView({ behavior: "smooth", block: "start" });
+            } catch (error) {
+                setStatus(error.message, true);
+            }
+        });
+
+        // ============================================================
+        // SUBMIT DIRECTLY TO CLOUDFLARE (NO EMAIL APP REQUIRED)
+        // ============================================================
+        submitButton.addEventListener("click", async function () {
+            if (submitting || !reviewedRequest) {
+                return;
+            }
+
+            // Revalidate in case a browser or extension changed form values.
+            let currentRequest;
+            try {
+                currentRequest = buildRequest();
+            } catch (error) {
+                setStatus(error.message, true);
+                return;
+            }
+
+            if (!currentRequest ||
+                JSON.stringify(currentRequest) !== JSON.stringify(reviewedRequest)) {
+                invalidateReview();
+                setStatus("Your request changed. Please review it again.", true);
+                return;
+            }
+
+            submitting = true;
+            submitButton.disabled = true;
+            reviewButton.disabled = true;
+            setStatus("Submitting your research consultation…", false);
+
+            try {
+                const response = await fetch(CONSULTATION_API, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(currentRequest)
+                });
+
+                if (!response.ok) {
+                    throw new Error(
+                        "Submission could not be completed (HTTP " + response.status +
+                        "). Please try again later."
+                    );
+                }
+
+                // HTTP 202 means the provider accepted the verification email,
+                // not that the customer has verified or received a number yet.
+                if (response.status !== 202) {
+                    throw new Error("Unexpected server response. Please contact LMK support.");
+                }
+
+                setStatus(
+                    "Request received. Check your email (including Junk/Spam) for an " +
+                    "LMK verification link. It expires after 20 minutes. " +
+                    "Your tracking numbers will be assigned after verification.",
+                    false
+                );
+                preview.hidden = true;
+                reviewedRequest = null;
+            } catch (error) {
+                setStatus(
+                    error instanceof TypeError
+                        ? "Could not reach the consultation service. Please check your connection and try again."
+                        : error.message,
+                    true
+                );
+            } finally {
+                submitting = false;
+                submitButton.disabled = false;
+                reviewButton.disabled = false;
+            }
+        });
+
+        updateSummary();
+    })();
   </script>
  </body>
 </html>
