@@ -476,6 +476,19 @@ body.coa-viewer-open{overflow:hidden}
 .lmk-cjc-warning{margin:0 0 12px;padding:12px;border:1px solid #c9a653;border-radius:8px;background:rgba(201,166,83,.1);color:#e5cd91;font-size:12px;line-height:1.55}
 .lmk-cjc-warning strong{color:#f6f3ec}
 </style>
+<style>
+/* Native expandable cards work with keyboard, mouse, and touch. */
+.grid{align-items:start}
+.product-details{min-width:0}
+.product-details>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:48px;cursor:pointer;list-style:none}
+.product-details>summary::-webkit-details-marker{display:none}
+.product-details>summary h3{margin:0;line-height:1.35}
+.product-details>summary::after{content:'+';flex:0 0 30px;text-align:center;color:var(--gold-light);font:28px/1 Arial,sans-serif}
+.product-details[open]>summary::after{content:'−'}
+.product-details>summary:focus-visible{outline:2px solid var(--gold-light);outline-offset:4px;border-radius:4px}
+.product-details-body{border-top:1px solid var(--line);margin-top:14px;padding-top:16px}
+.product-details-body .product-description{min-height:0}
+</style>
 </head>
 <body>
     <div class="notice">Research Information Only | No Medical Advice</div>
@@ -497,7 +510,7 @@ body.coa-viewer-open{overflow:hidden}
     <main>
       <section class="intro">
         <h2>Product Catalog</h2>
-        <p>Choose a product, select a size and quantity, and review your selections before preparing an email inquiry.</p>
+        <p>Press the + beside a product name to view sizes, pricing, quantity options, and available COAs. Review your selections before preparing an email inquiry.</p>
         <p class="bulk-pricing-note">Need 4 or more vials? Bulk pricing is available upon request. Please include the product, strength, and quantity in your inquiry.</p>
         <p class="bulk-pricing-note">Shipping Restrictions – Alaska, Hawaii & U.S. Territories. Due to shipping distance and transit requirements, all shipments to Alaska, Hawaii, and U.S. territories are restricted to FedEx Standard Overnight or FedEx 2Day service only. Standard ground shipping is not available for these destinations.<br>
 Additional shipping charges will apply based on the destination, package weight, and selected service. Shipping costs will be calculated and confirmed before the order is finalized.
@@ -585,7 +598,7 @@ Please contact us for a shipping estimate before placing your inquiry.</p>
 <script>
     const products = [
       {
-        id:"klow", name:"KLOW", image:"images/klow.jpeg?v=20261107-1", description:"Product listing",
+        id:"klow", name:"KLOW", image:"images/klow.jpeg?v=20261107-1", description:"Blend: GHK-Cu, BPC-157, TB-500, and KPV.",
         sizes:["80 mg"],
         prices:{"80 mg":{1:99.99,3:284.99}}
       },
@@ -661,7 +674,7 @@ description:"Shorter-acting formulation for research.",
         }
       },
       {
-        id:"glow", name:"GLOW", image:"images/glow.jpeg?v=20261107-1", description:"Product listing",
+        id:"glow", name:"GLOW", image:"images/glow.jpeg?v=20261107-1", description:"Blend: GHK-Cu, BPC-157, and TB-500.",
         sizes:["70 mg"],
         prices:{"70 mg":{1:89.99,3:254.99}}
       },
@@ -680,13 +693,155 @@ description:"Shorter-acting formulation for research.",
         prices:{"10 mg":{1:169.99,3:484.99}}
       },
       {
-        id:"bpc157", name:"BPC 157", image:"images/bpc-157.jpeg?v=20261107-1", description:"Product listing",
+        id:"bpc157", name:"BPC-157", image:"images/bpc-157.jpeg?v=20261107-1", description:"Product listing",
         sizes:["5 mg","10 mg"],
-        prices:{
-          "5 mg":{1:29.99,3:84.99},
-          "10 mg":{1:49.99,3:139.99}
-        }
-      }
+        prices:{"5 mg":{1:19.99,3:54.99},"10 mg":{1:34.99,3:99.99}}
+      },
+{
+  "id": "selank",
+  "name": "Selank",
+  "image": "images/selank.jpeg",
+  "description": "Research catalog listing",
+  "sizes": [
+    "5 mg",
+    "10 mg"
+  ],
+  "prices": {
+    "5 mg": {
+      "1": 24.99,
+      "3": 69.99
+    },
+    "10 mg": {
+      "1": 39.99,
+      "3": 109.99
+    }
+  }
+},
+{
+  "id": "semax",
+  "name": "Semax",
+  "image": "images/semax.jpeg",
+  "description": "Research catalog listing",
+  "sizes": [
+    "5 mg",
+    "10 mg"
+  ],
+  "prices": {
+    "5 mg": {
+      "1": 24.99,
+      "3": 69.99
+    },
+    "10 mg": {
+      "1": 39.99,
+      "3": 109.99
+    }
+  }
+},
+{
+  "id": "glutathione",
+  "name": "Glutathione",
+  "image": "images/glutathione.jpeg",
+  "description": "Research catalog listing",
+  "sizes": [
+    "400 mg",
+    "600 mg",
+    "1500 mg"
+  ],
+  "prices": {
+    "400 mg": {
+      "1": 24.99,
+      "3": 69.99
+    },
+    "600 mg": {
+      "1": 34.99,
+      "3": 99.99
+    },
+    "1500 mg": {
+      "1": 64.99,
+      "3": 184.99
+    }
+  }
+},
+{
+  "id": "dsip",
+  "name": "DSIP",
+  "image": "images/disp.jpeg",
+  "description": "Research catalog listing",
+  "sizes": [
+    "5 mg",
+    "10 mg"
+  ],
+  "prices": {
+    "5 mg": {
+      "1": 29.99,
+      "3": 84.99
+    },
+    "10 mg": {
+      "1": 44.99,
+      "3": 124.99
+    }
+  }
+},
+{
+  "id": "epitalon",
+  "name": "Epitalon",
+  "image": "images/epitalon.jpeg",
+  "description": "Research catalog listing",
+  "sizes": [
+    "10 mg",
+    "50 mg"
+  ],
+  "prices": {
+    "10 mg": {
+      "1": 29.99,
+      "3": 84.99
+    },
+    "50 mg": {
+      "1": 79.99,
+      "3": 224.99
+    }
+  }
+},
+{
+  "id": "igf1lr3",
+  "name": "IGF-1 LR3",
+  "image": "images/igf-1 lr3.jpeg",
+  "description": "Research catalog listing",
+  "sizes": [
+    "100 mcg",
+    "1 mg"
+  ],
+  "prices": {
+    "100 mcg": {
+      "1": 39.99,
+      "3": 109.99
+    },
+    "1 mg": {
+      "1": 89.99,
+      "3": 254.99
+    }
+  }
+},
+{
+  "id": "wolverine",
+  "name": "Wolverine",
+  "image": "images/wolverine.jpeg",
+  "description": "Blend: BPC-157 and TB-500.",
+  "sizes": [
+    "5 mg",
+    "10 mg"
+  ],
+  "prices": {
+    "5 mg": {
+      "1": 29.99,
+      "3": 84.99
+    },
+    "10 mg": {
+      "1": 49.99,
+      "3": 139.99
+    }
+  }
+}
     ];
     // COAs are specific to the tested sample and lot, not all future batches.
     const certificates = {
@@ -705,7 +860,7 @@ description:"Shorter-acting formulation for research.",
 
     function renderCOA(product, selectedSize) {
       const coa = certificates[product.id];
-      if (!coa) return "";
+      if (!coa) return `<section class="coa-panel" aria-label="${product.name} certificate of analysis"><h4 class="coa-heading">Certificate of Analysis</h4><p class="coa-note">COA not yet available for this listing.</p></section>`;
       const matches = selectedSize === coa.strength;
       return `
         <section class="coa-panel" aria-label="${product.name} certificate of analysis">
@@ -753,6 +908,14 @@ description:"Shorter-acting formulation for research.",
     function renderProducts() {
       const grid = document.getElementById("productGrid");
 
+      // Preserve open cards and keyboard focus when options update the markup.
+      const expandedProducts = new Set(Array.from(grid.querySelectorAll(".product-details[open]"))
+        .map(details => details.closest("[data-product]").dataset.product));
+      const focused = document.activeElement;
+      const focusedCard = focused?.closest?.("[data-product]");
+      const focusInfo = focusedCard && focused.matches("button[data-action]")
+        ? {id: focusedCard.dataset.product, action: focused.dataset.action,
+           size: focused.dataset.size, quantity: focused.dataset.quantity} : null;
       grid.innerHTML = products.map(product => {
         const defaultSize = product.sizes[0];
 
@@ -772,11 +935,13 @@ description:"Shorter-acting formulation for research.",
                 alt="${product.name} product image"
                 onerror="this.style.display='none';this.nextElementSibling.style.display='block';">` : ''}
               <div class="image-fallback" style="${product.image ? '' : 'display:block;color:#e5cd91;font-family:Georgia,serif;font-size:1.15rem;'}">
-                ${product.image ? `Image not found<br><small>${product.image}</small>` : `CJC-1295<br>WITHOUT DAC<br><small style="color:#b7b2a7;font-family:Arial,sans-serif">Product image coming soon</small>`}
+                ${product.image ? `Image not found<br><small>${product.image}</small>` : `${product.name}<br><small style="color:#b7b2a7;font-family:Arial,sans-serif">Product image coming soon</small>`}
               </div>
             </div>
 
-            <h3>${product.name}</h3>
+            <details class="product-details" ${expandedProducts.has(product.id) ? "open" : ""}>
+            <summary><h3>${product.name}</h3></summary>
+            <div class="product-details-body">
             <p class="product-description">${product.description}</p>
             ${(product.id === "cjc1295dac" || product.id === "cjc1295nodac") ? `<div class="lmk-cjc-warning"><strong>Important Notice</strong> Laboratori Massa Kritikal recommends CJC-1295 without DAC for initial research due to its shorter duration of activity. If an adverse reaction occurs, the shorter exposure may limit prolonged effects compared with CJC-1295 with DAC, which remains active significantly longer. However, shorter exposure does not guarantee a shorter or less severe adverse reaction.</div>` : ""}
 
@@ -830,9 +995,19 @@ description:"Shorter-acting formulation for research.",
               ${price === null ? "Set Price to Enable" : "Add to Summary"}
             </button>
             ${renderCOA(product, current.size)}
+            </div>
+            </details>
           </article>
         `;
       }).join("");
+      if (focusInfo) {
+        const card = Array.from(grid.querySelectorAll("[data-product]"))
+          .find(node => node.dataset.product === focusInfo.id);
+        const control = card && Array.from(card.querySelectorAll("button[data-action]"))
+          .find(node => node.dataset.action === focusInfo.action &&
+            node.dataset.size === focusInfo.size && node.dataset.quantity === focusInfo.quantity);
+        if (control) control.focus({preventScroll:true});
+      }
     }
 
     document.getElementById("productGrid").addEventListener("click", event => {
