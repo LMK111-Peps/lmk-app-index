@@ -489,7 +489,24 @@ body.coa-viewer-open{overflow:hidden}
 .product-details-body{border-top:1px solid var(--line);margin-top:14px;padding-top:16px}
 .product-details-body .product-description{min-height:0}
 </style>
-</head>
+<style>
+/* Compact website catalog, grouped by research area. */
+#productGrid{display:block}
+.product-category{margin-bottom:34px}
+.product-category>h2{margin:0 0 14px;color:var(--gold-light);font:normal 24px/1.3 Georgia,serif}
+.product-category .grid{align-items:start}
+.product-details{min-width:0}
+.product-details>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:48px;cursor:pointer;list-style:none}
+.product-details>summary::-webkit-details-marker{display:none}
+.product-details>summary h3{margin:0;line-height:1.35}
+.product-details>summary::after{content:'+';flex:0 0 30px;text-align:center;color:var(--gold-light);font:28px/1 Arial,sans-serif}
+.product-details[open]>summary::after{content:'−'}
+.product-details>summary:focus-visible{outline:2px solid var(--gold-light);outline-offset:4px;border-radius:4px}
+.product-size-preview{display:block;margin-top:5px;color:var(--muted);font-size:12px;line-height:1.5}
+.product-details-body{border-top:1px solid var(--line);margin-top:14px;padding-top:16px}
+.product-details-body .product-description{min-height:0}
+@media(max-width:560px){.product-category>h2{font-size:21px}}
+</style></head>
 <body>
     <div class="notice">Research Information Only | No Medical Advice</div>
 <header class="lmk-site-header">
@@ -510,7 +527,7 @@ body.coa-viewer-open{overflow:hidden}
     <main>
       <section class="intro">
         <h2>Product Catalog</h2>
-        <p>Press the + beside a product name to view sizes, pricing, quantity options, and available COAs. Review your selections before preparing an email inquiry.</p>
+        <p>Browse by research area. Press + beside a product name to view its image, sizes, pricing, quantity options, and available COAs. Categories describe research topics, not recommended uses. Review your selections before preparing an email inquiry.</p>
         <p class="bulk-pricing-note">Need 4 or more vials? Bulk pricing is available upon request. Please include the product, strength, and quantity in your inquiry.</p>
         <p class="bulk-pricing-note">Shipping Restrictions – Alaska, Hawaii & U.S. Territories. Due to shipping distance and transit requirements, all shipments to Alaska, Hawaii, and U.S. territories are restricted to FedEx Standard Overnight or FedEx 2Day service only. Standard ground shipping is not available for these destinations.<br>
 Additional shipping charges will apply based on the destination, package weight, and selected service. Shipping costs will be calculated and confirmed before the order is finalized.
@@ -636,7 +653,7 @@ image:"images/CJC 1295 without DAC.jpeg",
 description:"Shorter-acting formulation for research.",
         sizes:["5 mg","10 mg"],
         prices:{
-	        "5 mg":{1:48.99,3:129.99},
+            "5 mg":{1:48.99,3:129.99},
             "10 mg":{1:79.99,3:212.99}
           }
       },
@@ -905,6 +922,77 @@ description:"Shorter-acting formulation for research.",
       return size === "Set size" ? "Standard listing" : size;
     }
 
+    const productGroups = [
+  {
+    "id": "metabolic",
+    "title": "Metabolic Research",
+    "products": [
+      "retatrutide",
+      "aod9604"
+    ]
+  },
+  {
+    "id": "growth",
+    "title": "Growth-Hormone Signaling",
+    "products": [
+      "tesamorelin",
+      "cjc1295dac",
+      "cjc1295nodac",
+      "ipamorelin",
+      "igf1lr3"
+    ]
+  },
+  {
+    "id": "mitochondrial",
+    "title": "Mitochondrial Research",
+    "products": [
+      "ss31",
+      "motsc"
+    ]
+  },
+  {
+    "id": "cellular-metabolism",
+    "title": "Cellular Metabolism",
+    "products": [
+      "nadplus",
+      "glutathione"
+    ]
+  },
+  {
+    "id": "cellular-aging",
+    "title": "Cellular Aging Research",
+    "products": [
+      "fox04dri",
+      "epitalon"
+    ]
+  },
+  {
+    "id": "combinations",
+    "title": "Combination Research Materials",
+    "products": [
+      "glow",
+      "klow",
+      "wolverine"
+    ]
+  },
+  {
+    "id": "tissue",
+    "title": "Tissue Research",
+    "products": [
+      "bpc157"
+    ]
+  },
+  {
+    "id": "neuro",
+    "title": "Neurobehavioral &amp; Sleep Research",
+    "products": [
+      "selank",
+      "semax",
+      "dsip"
+    ]
+  }
+];
+
     function renderProducts() {
       const grid = document.getElementById("productGrid");
 
@@ -916,7 +1004,8 @@ description:"Shorter-acting formulation for research.",
       const focusInfo = focusedCard && focused.matches("button[data-action]")
         ? {id: focusedCard.dataset.product, action: focused.dataset.action,
            size: focused.dataset.size, quantity: focused.dataset.quantity} : null;
-      grid.innerHTML = products.map(product => {
+      const renderedCards = new Map();
+      products.forEach(product => {
         const defaultSize = product.sizes[0];
 
         selections[product.id] = selections[product.id] || {
@@ -927,8 +1016,11 @@ description:"Shorter-acting formulation for research.",
         const current = selections[product.id];
         const price = getPrice(product, current.size, current.quantity);
 
-        return `
+        renderedCards.set(product.id, `
           <article class="product-card" data-product="${product.id}">
+            <details class="product-details" ${expandedProducts.has(product.id) ? "open" : ""}>
+            <summary><h3>${product.name}<span class="product-size-preview">${product.sizes.map(formatSize).join(" · ")}</span></h3></summary>
+            <div class="product-details-body">
             <div class="product-image-wrap">
               ${product.image ? `<img class="product-image"
                 src="${product.image}"
@@ -939,9 +1031,7 @@ description:"Shorter-acting formulation for research.",
               </div>
             </div>
 
-            <details class="product-details" ${expandedProducts.has(product.id) ? "open" : ""}>
-            <summary><h3>${product.name}</h3></summary>
-            <div class="product-details-body">
+            
             <p class="product-description">${product.description}</p>
             ${(product.id === "cjc1295dac" || product.id === "cjc1295nodac") ? `<div class="lmk-cjc-warning"><strong>Important Notice</strong> Laboratori Massa Kritikal recommends CJC-1295 without DAC for initial research due to its shorter duration of activity. If an adverse reaction occurs, the shorter exposure may limit prolonged effects compared with CJC-1295 with DAC, which remains active significantly longer. However, shorter exposure does not guarantee a shorter or less severe adverse reaction.</div>` : ""}
 
@@ -998,8 +1088,14 @@ description:"Shorter-acting formulation for research.",
             </div>
             </details>
           </article>
-        `;
-      }).join("");
+        `);
+      });
+      grid.innerHTML = productGroups.map(group => `
+        <section class="product-category" aria-labelledby="category-${group.id}">
+          <h2 id="category-${group.id}">${group.title}</h2>
+          <div class="grid">${group.products.map(id => renderedCards.get(id) || "").join("")}</div>
+        </section>
+      `).join("");
       if (focusInfo) {
         const card = Array.from(grid.querySelectorAll("[data-product]"))
           .find(node => node.dataset.product === focusInfo.id);
