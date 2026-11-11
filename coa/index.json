@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "certificates": {
+    "klow": {
+      "strength": "80 mg",
+      "purity": "99.72%",
+      "lot": "KLO-86196",
+      "date": "October 16, 2026",
+      "laboratory": "Focus BioLabs",
+      "file": "COA_KLOW80.pdf",
+      "revision": "bdf434884869857e90d9c3affbbe97023d1f353d"
+    },
+    "glow": {
+      "strength": "70 mg",
+      "purity": "99.74%",
+      "lot": "GLO-81794",
+      "date": "October 17, 2026",
+      "laboratory": "Focus BioLabs",
+      "file": "COA_GLOW70.pdf",
+      "revision": "bdf434884869857e90d9c3affbbe97023d1f353d"
+    },
+    "retatrutide": {
+      "strength": "5 mg",
+      "purity": "99.61%",
+      "lot": "RET-70520",
+      "date": "October 12, 2026",
+      "laboratory": "Focus BioLabs",
+      "file": "COA_Retatrutide.pdf",
+      "revision": "bdf434884869857e90d9c3affbbe97023d1f353d"
+    },
+    "motsc": {
+      "strength": "10 mg",
+      "purity": "99.78%",
+      "lot": "MOT-18603",
+      "date": "November 2, 2026",
+      "laboratory": "Focus BioLabs",
+      "file": "COA_MOTS-C.pdf",
+      "revision": "bdf434884869857e90d9c3affbbe97023d1f353d"
+    },
+    "ipamorelin": {
+      "strength": "2 mg",
+      "purity": "99.82%",
+      "lot": "IPA-12621",
+      "date": "November 4, 2026",
+      "laboratory": "Focus BioLabs",
+      "file": "COA_Ipamorelin.pdf",
+      "revision": "bdf434884869857e90d9c3affbbe97023d1f353d"
+    },
+    "nadplus": {
+      "strength": "100 mg",
+      "purity": "99.83%",
+      "lot": "NAD-62036",
+      "date": "November 2, 2026",
+      "laboratory": "Focus BioLabs",
+      "file": "COA_NAD+.pdf",
+      "revision": "bdf434884869857e90d9c3affbbe97023d1f353d"
+    },
+    "tesamorelin": {
+      "strength": "2 mg",
+      "purity": "99.58%",
+      "lot": "TES-10912",
+      "date": "November 4, 2026",
+      "laboratory": "Focus BioLabs",
+      "file": "COA_Tesamorelin.pdf",
+      "revision": "bdf434884869857e90d9c3affbbe97023d1f353d"
+    },
+    "aod9604": {
+      "strength": "2 mg",
+      "purity": "99.77%",
+      "lot": "AOD-62514",
+      "date": "October 31, 2026",
+      "laboratory": "Focus BioLabs",
+      "file": "COA_AOD-9604.pdf",
+      "revision": "bdf434884869857e90d9c3affbbe97023d1f353d"
+    },
+    "ss31": {
+      "strength": "10 mg",
+      "purity": "99.81%",
+      "lot": "SS-25457",
+      "date": "November 3, 2026",
+      "laboratory": "Focus BioLabs",
+      "file": "COA_SS-31.pdf",
+      "revision": "bdf434884869857e90d9c3affbbe97023d1f353d"
+    },
+    "fox04dri": {
+      "strength": "10 mg",
+      "purity": "99.68%",
+      "lot": "FOX-24608",
+      "date": "November 3, 2026",
+      "laboratory": "Focus BioLabs",
+      "file": "COA_FOXO4-DRI.pdf",
+      "revision": "bdf434884869857e90d9c3affbbe97023d1f353d"
+    },
+    "bpc157": {
+      "strength": "2 mg",
+      "purity": "99.81%",
+      "lot": "BPC-98114",
+      "date": "November 2, 2026",
+      "laboratory": "Focus BioLabs",
+      "file": "COA_BPC-157.pdf",
+      "revision": "bdf434884869857e90d9c3affbbe97023d1f353d"
+    }
+  }
+}
