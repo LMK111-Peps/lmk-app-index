@@ -187,6 +187,18 @@ article.research-card[hidden]{display:none!important}
 #lmk-entry-gate summary{cursor:pointer;color:#e5cd91}
 #lmk-gate-disclaimer{margin-top:14px}
 </style>
+<style>
+/* Competitive athlete notice */
+.lmk-athlete-notice{margin:0 0 28px;padding:20px 22px;border:1px solid var(--gold,#c9a653);border-left-width:4px;border-radius:8px;background:var(--panel,#191a1d);color:#d0cec8;text-align:left}
+.lmk-athlete-notice h2,.lmk-athlete-notice h3{margin:0 0 10px;color:var(--gold-light,#e5cd91);font:normal 22px/1.3 Georgia,serif}
+.lmk-athlete-notice p{margin:0;font-size:14px;line-height:1.65}
+.lmk-athlete-notice .lmk-athlete-links{margin:12px 0 0;font-size:13px}
+.lmk-athlete-notice a{color:var(--gold-light,#e5cd91);text-decoration:underline;text-underline-offset:3px}
+#lmk-entry-gate .lmk-athlete-notice{padding:16px;margin:20px 0}
+#lmk-entry-gate .lmk-athlete-notice p{margin:0;font-size:13px}
+#lmk-entry-gate .lmk-athlete-notice .lmk-athlete-links{margin-top:12px}
+@media(max-width:560px){.lmk-athlete-notice{padding:17px}.lmk-athlete-notice h2,.lmk-athlete-notice h3{font-size:20px}}
+</style>
 </head>
 <body>
 
@@ -194,6 +206,7 @@ article.research-card[hidden]{display:none!important}
 <section class="lmk-gate-panel"><h2 id="lmk-gate-heading">Age Confirmation &amp; Research Use Acknowledgment</h2>
 <p id="lmk-gate-intro">Please confirm all three statements before entering Laboratori Massa Kritikal.</p>
 <noscript><p>JavaScript is disabled or blocked. This acknowledgment needs JavaScript to continue. You can allow scripts for this website without enabling third-party cookies or tracking.</p></noscript>
+<aside class="lmk-athlete-notice" aria-labelledby="lmk-gate-athlete-title"><h3 id="lmk-gate-athlete-title">Competitive Athlete Notice</h3><p>Many peptides and related compounds listed on this website are prohibited under WADA, NCAA, or other sporting organizations’ anti-doping rules. Some are prohibited at all times, including outside competition. Professional, collegiate, and other tested athletes should verify each substance with their team’s medical staff and governing anti-doping organization before use. A substance does not have to be individually named on a prohibited list to fall within a banned class.</p><p class="lmk-athlete-links"><a href="https://www.wada-ama.org/en/prohibited-list" target="_blank" rel="noopener noreferrer">WADA Prohibited List</a> · <a href="https://www.ncaa.org/what-we-do/health-safety-and-performance/anti-doping-and-substance-misuse-prevention/banned-substances/" target="_blank" rel="noopener noreferrer">NCAA Banned Substances</a></p></aside>
 <form id="lmk-gate-form">
 <label><input type="checkbox" required name="age"/><span>I confirm that I am 18 years of age or older.</span></label>
 <label><input type="checkbox" required name="research"/><span>I understand that this website provides scientific research and educational information only. Any products offered are intended exclusively for laboratory research and are not for human consumption or administration.</span></label>
@@ -308,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 </div>
 </section>
+<div class="container"><aside class="lmk-athlete-notice" aria-labelledby="lmk-home-athlete-title"><h2 id="lmk-home-athlete-title">Competitive Athlete Notice</h2><p>Many peptides and related compounds listed on this website are prohibited under WADA, NCAA, or other sporting organizations’ anti-doping rules. Some are prohibited at all times, including outside competition. Professional, collegiate, and other tested athletes should verify each substance with their team’s medical staff and governing anti-doping organization before use. A substance does not have to be individually named on a prohibited list to fall within a banned class.</p><p class="lmk-athlete-links"><a href="https://www.wada-ama.org/en/prohibited-list" target="_blank" rel="noopener noreferrer">WADA Prohibited List</a> · <a href="https://www.ncaa.org/what-we-do/health-safety-and-performance/anti-doping-and-substance-misuse-prevention/banned-substances/" target="_blank" rel="noopener noreferrer">NCAA Banned Substances</a></p></aside></div>
 <section class="research" id="science">
 <div class="container">
 <div class="section-heading">
