@@ -3,6 +3,18 @@
 
 <html lang="en">
 <head>
+<script>
+// Check this tab's prior acceptance before the page is painted.
+try {
+  if (sessionStorage.getItem('lmkAcknowledgment-v2') === 'accepted') {
+    document.documentElement.classList.add('lmk-already-accepted');
+  }
+} catch (error) {
+  // Storage unavailable: keep the acknowledgment visible.
+}
+</script>
+<style>html.lmk-already-accepted #lmk-entry-gate{display:none}</style>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Laboratori Massa Kritikal | Peptide Science</title>
@@ -202,7 +214,7 @@ article.research-card[hidden]{display:none!important}
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
   // Increment this version whenever the acknowledgment wording changes.
-  var key = 'lmkAcknowledgment-v1';
+  var key = 'lmkAcknowledgment-v2';
   var gate = document.getElementById('lmk-entry-gate');
   var form = document.getElementById('lmk-gate-form');
   var confirm = document.getElementById('lmk-gate-confirm');
@@ -230,6 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
       unlockPage();
       return;
     }
+    document.documentElement.classList.remove('lmk-already-accepted');
     checks.forEach(function (checkbox) { checkbox.checked = false; });
     confirm.disabled = true;
     // Upgrade the initially visible screen to an accessible modal dialog.
