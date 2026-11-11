@@ -167,7 +167,7 @@ article.research-card[hidden]{display:none!important}
 @media(max-width:560px){.lmk-exp-title{font-size:23px}.lmk-exp-body{padding-top:12px}}
 </style>
 <style>
-#lmk-entry-gate{width:min(640px,calc(100% - 32px));max-height:calc(100dvh - 32px);margin:auto;padding:28px;background:#191a1d;color:#f5f4f0;border:1px solid #c9a653;border-radius:10px;font-family:Arial,sans-serif;line-height:1.6;overflow:auto}
+#lmk-entry-gate{position:fixed;inset:0;z-index:2147483647;box-shadow:0 0 0 100vmax rgba(0,0,0,.97);width:min(640px,calc(100% - 32px));max-height:calc(100dvh - 32px);margin:auto;padding:28px;background:#191a1d;color:#f5f4f0;border:1px solid #c9a653;border-radius:10px;font-family:Arial,sans-serif;line-height:1.6;overflow:auto}
 #lmk-entry-gate::backdrop{background:rgba(0,0,0,.9)}
 #lmk-entry-gate h2{color:#e5cd91;font:normal 28px/1.25 Georgia,serif;margin:0 0 16px}
 #lmk-entry-gate p{margin:0 0 18px}
@@ -186,15 +186,16 @@ article.research-card[hidden]{display:none!important}
 </head>
 <body>
 
-<dialog id="lmk-entry-gate" aria-labelledby="lmk-gate-heading" aria-describedby="lmk-gate-intro">
+<dialog open id="lmk-entry-gate" aria-labelledby="lmk-gate-heading" aria-describedby="lmk-gate-intro">
 <h2 id="lmk-gate-heading">Age Confirmation &amp; Research Use Acknowledgment</h2>
 <p id="lmk-gate-intro">Please confirm all three statements before entering Laboratori Massa Kritikal.</p>
+<noscript><p>JavaScript is disabled or blocked. This acknowledgment needs JavaScript to continue. You can allow scripts for this website without enabling third-party cookies or tracking.</p></noscript>
 <form id="lmk-gate-form">
 <label><input type="checkbox" required name="age"/><span>I confirm that I am 18 years of age or older.</span></label>
 <label><input type="checkbox" required name="research"/><span>I understand that this website provides scientific research and educational information only. Any products offered are intended exclusively for laboratory research and are not for human consumption or administration.</span></label>
 <label><input type="checkbox" required name="terms"/><span>I understand that this website does not provide medical advice, diagnosis, or treatment, and I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Use</a> and Research Use Disclaimer below.</span></label>
 <details><summary>Read the Research Use Disclaimer</summary><div id="lmk-gate-disclaimer"></div></details>
-<div class="lmk-gate-actions"><button id="lmk-gate-confirm" type="submit" disabled>Confirm and Enter</button><button class="lmk-exit" id="lmk-gate-exit" type="button">Exit</button></div>
+<div class="lmk-gate-actions"><button id="lmk-gate-confirm" type="submit" disabled>Confirm and Enter</button><a class="lmk-exit" href="https://www.google.com/">Exit</a></div>
 </form>
 </dialog>
 <script>
@@ -218,13 +219,23 @@ document.addEventListener('DOMContentLoaded', function () {
     try { return acceptedThisPage || sessionStorage.getItem(key) === 'accepted'; }
     catch (error) { return acceptedThisPage; }
   }
+  function unlockPage() {
+    var content = document.getElementById('lmk-page-content');
+    if (content) content.removeAttribute('inert');
+    document.documentElement.style.overflow = '';
+  }
   function showGate() {
-    if (!accepted() && !gate.open) {
-      checks.forEach(function (checkbox) { checkbox.checked = false; });
-      confirm.disabled = true;
-      gate.showModal();
-      document.documentElement.style.overflow = 'hidden';
+    if (accepted()) {
+      gate.close();
+      unlockPage();
+      return;
     }
+    checks.forEach(function (checkbox) { checkbox.checked = false; });
+    confirm.disabled = true;
+    // Upgrade the initially visible screen to an accessible modal dialog.
+    if (gate.open) gate.close();
+    gate.showModal();
+    document.documentElement.style.overflow = 'hidden';
   }
   // Escape cannot dismiss the required acknowledgment.
   gate.addEventListener('cancel', function (event) { event.preventDefault(); });
@@ -238,15 +249,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // If storage is blocked, acceptance lasts on this page only.
     try { sessionStorage.setItem(key, 'accepted'); } catch (error) {}
     gate.close();
-    document.documentElement.style.overflow = '';
-  });
-  document.getElementById('lmk-gate-exit').addEventListener('click', function () {
-    window.location.replace('https://www.google.com/');
+    unlockPage();
   });
   window.addEventListener('pageshow', showGate);
   showGate();
 });
 </script>
+<div id="lmk-page-content" inert>
 
 <div class="notice">Research Information Only | No Medical Advice</div>
 <header>
@@ -516,5 +525,5 @@ document.addEventListener('DOMContentLoaded', function () {
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
 </script>
-<script>(function(){const ds=[...document.querySelectorAll("#science details.lmk-expandable")];ds.forEach(d=>d.addEventListener("toggle",()=>{if(d.open)ds.forEach(o=>{if(o!==d)o.open=false})}));})();</script></body>
+<script>(function(){const ds=[...document.querySelectorAll("#science details.lmk-expandable")];ds.forEach(d=>d.addEventListener("toggle",()=>{if(d.open)ds.forEach(o=>{if(o!==d)o.open=false})}));})();</script></div></body>
 </html>
