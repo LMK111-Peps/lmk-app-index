@@ -3,17 +3,7 @@
 
 <html lang="en">
 <head>
-<script>
-// Check this tab's prior acceptance before the page is painted.
-try {
-  if (sessionStorage.getItem('lmkAcknowledgment-v2') === 'accepted') {
-    document.documentElement.classList.add('lmk-already-accepted');
-  }
-} catch (error) {
-  // Storage unavailable: keep the acknowledgment visible.
-}
-</script>
-<style>html.lmk-already-accepted #lmk-entry-gate{display:none}</style>
+
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -179,8 +169,10 @@ article.research-card[hidden]{display:none!important}
 @media(max-width:560px){.lmk-exp-title{font-size:23px}.lmk-exp-body{padding-top:12px}}
 </style>
 <style>
-#lmk-entry-gate{position:fixed;inset:0;z-index:2147483647;box-shadow:0 0 0 100vmax rgba(0,0,0,.97);width:min(640px,calc(100% - 32px));max-height:calc(100dvh - 32px);margin:auto;padding:28px;background:#191a1d;color:#f5f4f0;border:1px solid #c9a653;border-radius:10px;font-family:Arial,sans-serif;line-height:1.6;overflow:auto}
-#lmk-entry-gate::backdrop{background:rgba(0,0,0,.9)}
+#lmk-entry-gate{position:fixed;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:16px;background:#101113;color:#f5f4f0;font-family:Arial,sans-serif;line-height:1.6}
+#lmk-entry-gate[hidden]{display:none!important}
+#lmk-page-content[hidden]{display:none!important}
+.lmk-gate-panel{width:min(640px,100%);max-height:calc(100dvh - 32px);overflow:auto;padding:28px;background:#191a1d;border:1px solid #c9a653;border-radius:10px}
 #lmk-entry-gate h2{color:#e5cd91;font:normal 28px/1.25 Georgia,serif;margin:0 0 16px}
 #lmk-entry-gate p{margin:0 0 18px}
 #lmk-entry-gate label{display:flex;align-items:flex-start;gap:12px;margin:18px 0;font-size:14px;cursor:pointer}
@@ -198,8 +190,8 @@ article.research-card[hidden]{display:none!important}
 </head>
 <body>
 
-<dialog open id="lmk-entry-gate" aria-labelledby="lmk-gate-heading" aria-describedby="lmk-gate-intro">
-<h2 id="lmk-gate-heading">Age Confirmation &amp; Research Use Acknowledgment</h2>
+<div id="lmk-entry-gate" role="dialog" aria-modal="true" aria-labelledby="lmk-gate-heading" aria-describedby="lmk-gate-intro">
+<section class="lmk-gate-panel"><h2 id="lmk-gate-heading">Age Confirmation &amp; Research Use Acknowledgment</h2>
 <p id="lmk-gate-intro">Please confirm all three statements before entering Laboratori Massa Kritikal.</p>
 <noscript><p>JavaScript is disabled or blocked. This acknowledgment needs JavaScript to continue. You can allow scripts for this website without enabling third-party cookies or tracking.</p></noscript>
 <form id="lmk-gate-form">
@@ -209,66 +201,74 @@ article.research-card[hidden]{display:none!important}
 <details><summary>Read the Research Use Disclaimer</summary><div id="lmk-gate-disclaimer"></div></details>
 <div class="lmk-gate-actions"><button id="lmk-gate-confirm" type="submit" disabled>Confirm and Enter</button><a class="lmk-exit" href="https://www.google.com/">Exit</a></div>
 </form>
-</dialog>
+</section></div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
-  // Increment this version whenever the acknowledgment wording changes.
-  var key = 'lmkAcknowledgment-v2';
+  var key = 'lmkAcknowledgment-v3';
   var gate = document.getElementById('lmk-entry-gate');
+  var content = document.getElementById('lmk-page-content');
   var form = document.getElementById('lmk-gate-form');
   var confirm = document.getElementById('lmk-gate-confirm');
   var checks = Array.from(form.querySelectorAll('input[type="checkbox"]'));
+  var acceptedHere = false;
   var disclaimer = document.querySelector('#disclaimer .disclaimer-box');
   if (disclaimer) {
     var copy = disclaimer.cloneNode(true);
     copy.removeAttribute('class');
-    copy.querySelectorAll('[id]').forEach(function (element) { element.removeAttribute('id'); });
+    copy.querySelectorAll('[id]').forEach(function (node) { node.removeAttribute('id'); });
     document.getElementById('lmk-gate-disclaimer').appendChild(copy);
   }
-  var acceptedThisPage = false;
-  function accepted() {
-    try { return acceptedThisPage || sessionStorage.getItem(key) === 'accepted'; }
-    catch (error) { return acceptedThisPage; }
+  function storedAcceptance() {
+    try {
+      var record = JSON.parse(sessionStorage.getItem(key) || 'null');
+      return !!(record && record.version === 3 && record.age === true &&
+        record.research === true && record.terms === true &&
+        typeof record.acceptedAt === 'string');
+    } catch (error) { return false; }
   }
-  function unlockPage() {
-    var content = document.getElementById('lmk-page-content');
-    if (content) content.removeAttribute('inert');
-    document.documentElement.style.overflow = '';
-  }
-  function showGate() {
-    if (accepted()) {
-      gate.close();
-      unlockPage();
-      return;
+  function render() {
+    var allowed = acceptedHere || storedAcceptance();
+    // Content is hidden in the original HTML; only confirmed acceptance unlocks it.
+    content.hidden = !allowed;
+    if (allowed) content.removeAttribute('inert');
+    else content.setAttribute('inert', '');
+    gate.hidden = allowed;
+    document.documentElement.style.overflow = allowed ? '' : 'hidden';
+    if (!allowed) {
+      checks.forEach(function (box) { box.checked = false; });
+      confirm.disabled = true;
     }
-    document.documentElement.classList.remove('lmk-already-accepted');
-    checks.forEach(function (checkbox) { checkbox.checked = false; });
-    confirm.disabled = true;
-    // Upgrade the initially visible screen to an accessible modal dialog.
-    if (gate.open) gate.close();
-    gate.showModal();
-    document.documentElement.style.overflow = 'hidden';
   }
-  // Escape cannot dismiss the required acknowledgment.
-  gate.addEventListener('cancel', function (event) { event.preventDefault(); });
   form.addEventListener('change', function () {
-    confirm.disabled = !checks.every(function (checkbox) { return checkbox.checked; });
+    confirm.disabled = !checks.every(function (box) { return box.checked; });
   });
   form.addEventListener('submit', function (event) {
     event.preventDefault();
-    if (!checks.every(function (checkbox) { return checkbox.checked; })) return;
-    acceptedThisPage = true;
-    // If storage is blocked, acceptance lasts on this page only.
-    try { sessionStorage.setItem(key, 'accepted'); } catch (error) {}
-    gate.close();
-    unlockPage();
+    if (!checks.every(function (box) { return box.checked; })) return;
+    acceptedHere = true;
+    try {
+      sessionStorage.setItem(key, JSON.stringify({version:3, age:true,
+        research:true, terms:true, acceptedAt:new Date().toISOString()}));
+    } catch (error) { /* Acceptance lasts on this page when storage is blocked. */ }
+    render();
   });
-  window.addEventListener('pageshow', showGate);
-  showGate();
+  gate.addEventListener('keydown', function (event) {
+    if (event.key !== 'Tab' || gate.hidden) return;
+    var items = Array.from(gate.querySelectorAll('input, a, button, summary'))
+      .filter(function (node) { return !node.disabled && node.getClientRects().length; });
+    var first = items[0], last = items[items.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault(); first.focus();
+    }
+  });
+  window.addEventListener('pageshow', render);
+  render();
 });
 </script>
-<div id="lmk-page-content" inert>
+<div id="lmk-page-content" inert hidden>
 
 <div class="notice">Research Information Only | No Medical Advice</div>
 <header>
