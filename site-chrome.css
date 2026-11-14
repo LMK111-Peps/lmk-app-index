@@ -1,0 +1,36 @@
+/* Shared LMK warning and navigation. Keep the logo beside the company name. */
+body { margin: 0; }
+.lmk-research-notice {
+  box-sizing: border-box; width: 100%; margin: 0; background: #c9a653; color: #151515;
+  padding: 11px 15px; text-align: center; font: 800 11px/1.5 Arial, Helvetica, sans-serif;
+  letter-spacing: 1.4px; text-transform: uppercase;
+}
+.lmk-site-header { box-sizing: border-box; width: 100%; max-width: none; margin: 0; padding: 0; background: #101113; border-bottom: 1px solid rgba(201,166,83,.32); }
+.lmk-site-header .lmk-header-inner { box-sizing: border-box; width: min(1120px, calc(100% - 40px)); min-height: 76px; margin: 0 auto; padding: 10px 0; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 16px; }
+.lmk-site-header .lmk-brand-row { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: 12px; min-width: 0; flex: 0 1 auto; }
+.lmk-site-header .lmk-brand-row > a { display: flex; align-items: center; flex: 0 0 50px; }
+.lmk-site-header .lmk-brand-logo { display: block; width: 50px; height: 50px; max-width: none; margin: 0; flex-shrink: 0; object-fit: contain; }
+.lmk-site-header .lmk-brand-text { margin: 0; color: #f5f4f0; font: 400 17px/1.3 Georgia, 'Times New Roman', serif; letter-spacing: 2px; text-align: left; white-space: nowrap; }
+.lmk-site-header .lmk-brand-text span { display: block; margin-top: 5px; color: #c9a653; font: 400 9px/1.5 Arial, Helvetica, sans-serif; letter-spacing: 2px; white-space: nowrap; }
+.lmk-site-header nav.lmk-nav-links { display: flex; flex-direction: row; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 6px 14px; width: auto; min-height: 0; margin: 0; padding: 0; font: 400 10px/1.4 Arial, Helvetica, sans-serif; letter-spacing: .5px; text-transform: uppercase; }
+.lmk-site-header nav.lmk-nav-links a { display: inline-block; margin: 0; padding: 8px 0; color: #f5f4f0; font: inherit; letter-spacing: inherit; text-decoration: none; white-space: nowrap; }
+.lmk-site-header nav.lmk-nav-links a:hover, .lmk-site-header nav.lmk-nav-links a.active { color: #e5cd91; }
+.lmk-site-header nav.lmk-nav-links a.active { text-decoration: underline; text-decoration-color: #c9a653; text-underline-offset: 4px; }
+.lmk-site-header a:focus-visible { outline: 3px solid #e5cd91; outline-offset: 4px; }
+@media (max-width: 1000px) {
+  .lmk-site-header .lmk-header-inner { align-items: flex-start; flex-direction: column; gap: 12px; padding: 12px 0; }
+  .lmk-site-header nav.lmk-nav-links { justify-content: flex-start; gap: 8px 14px; }
+}
+@media (max-width: 560px) {
+  .lmk-site-header .lmk-header-inner { width: calc(100% - 28px); min-height: auto; gap: 10px; padding: 10px 0; }
+  .lmk-site-header .lmk-brand-row { gap: 9px; }
+  .lmk-site-header .lmk-brand-row > a { flex-basis: 42px; }
+  .lmk-site-header .lmk-brand-logo { width: 42px; height: 42px; }
+  .lmk-site-header .lmk-brand-text { font-size: 14px; letter-spacing: 1px; }
+  .lmk-site-header .lmk-brand-text span { font-size: 8px; letter-spacing: 1px; }
+  .lmk-site-header nav.lmk-nav-links { gap: 7px 12px; font-size: 10px; letter-spacing: .3px; }
+}
+@media (max-width: 360px) {
+  .lmk-site-header .lmk-brand-text { font-size: 12px; letter-spacing: .5px; }
+  .lmk-site-header .lmk-brand-text span { font-size: 7px; letter-spacing: .7px; }
+}

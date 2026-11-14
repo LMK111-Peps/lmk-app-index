@@ -199,6 +199,7 @@ article.research-card[hidden]{display:none!important}
 #lmk-entry-gate .lmk-athlete-notice .lmk-athlete-links{margin-top:12px}
 @media(max-width:560px){.lmk-athlete-notice{padding:17px}.lmk-athlete-notice h2,.lmk-athlete-notice h3{font-size:20px}}
 </style>
+<link rel="stylesheet" href="/site-chrome.css">
 </head>
 <body>
 
@@ -283,27 +284,22 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <div id="lmk-page-content" inert hidden>
 
-<div class="notice">Research Information Only | No Medical Advice</div>
-<header>
-<div class="container">
-<nav>
-<div class="brand-row">
-<img alt="Laboratori Massa Kritikal logo" class="brand-logo" src="images/logo.jpeg"/>
-<div class="brand">
-          LABORATORI MASSA KRITIKAL
-          <span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span>
-</div>
-</div>
-<div class="nav-links">
-<a class="active" href="index.html">Home</a>
-<a href="products.html">Catalog</a>
-<a href="dosing.html">Dosing Information</a>
-<a href="research.html">Research Library</a> <a href="https://research.labortorimassakritikal.com/">LMK-Peps AI Research</a>
-<a href="perspective.html">Our Perspective</a>
-<a href="#disclaimer">Disclaimer</a>
-</div>
-</nav>
-</div>
+<div class="lmk-research-notice" role="note">Research Information Only | No Medical Advice</div>
+<header class="lmk-site-header">
+  <div class="lmk-header-inner">
+    <div class="lmk-brand-row">
+      <a href="/index.html" aria-label="Laboratori Massa Kritikal home"><img class="lmk-brand-logo" src="/images/logo.jpeg" alt="Laboratori Massa Kritikal logo" width="50" height="50"></a>
+      <div class="lmk-brand-text">LABORATORI MASSA KRITIKAL<span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span></div>
+    </div>
+    <nav class="lmk-nav-links" aria-label="Main navigation">
+      <a href="/index.html" class="active" aria-current="page">Home</a>
+      <a href="/products.html">Catalog</a>
+      <a href="/dosing.html">Dosing</a>
+      <a href="/research.html">Research</a>
+      <a href="https://research.labortorimassakritikal.com/">LMK-Peps AI</a>
+      <a href="/perspective.html">Our Perspective</a>
+    </nav>
+  </div>
 </header>
 <main>
 <section class="hero" id="home">
@@ -554,3 +550,4 @@ document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 <script>(function(){const ds=[...document.querySelectorAll("#science details.lmk-expandable")];ds.forEach(d=>d.addEventListener("toggle",()=>{if(d.open)ds.forEach(o=>{if(o!==d)o.open=false})}));})();</script></div></body>
 </html>
+

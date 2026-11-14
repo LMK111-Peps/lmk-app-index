@@ -817,23 +817,25 @@ p {
 .perspective-accordion-content{padding:30px 0 48px}
 .perspective-accordion-content>.container{width:min(1180px,calc(100% - 48px));margin:auto}
 @media(max-width:600px){.perspective-toggle{padding:20px 18px}.perspective-accordion-content{padding:22px 0 35px}}
-</style></head>
+</style><link rel="stylesheet" href="/site-chrome.css">
+</head>
 <body>
-<div class="notice">Research Information Only | No Medical Advice</div>
+<div class="lmk-research-notice" role="note">Research Information Only | No Medical Advice</div>
 <header class="lmk-site-header">
-<div class="lmk-header-inner">
-<div class="lmk-brand-row">
-<a aria-label="Laboratori Massa Kritikal home" href="index.html"><img alt="Laboratori Massa Kritikal logo" class="lmk-brand-logo" src="images/logo.jpeg"/></a>
-<div class="lmk-brand-text">LABORATORI MASSA KRITIKAL<span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span></div>
-</div>
-<nav aria-label="Main navigation" class="lmk-nav-links">
-<a href="index.html">Home</a>
-<a href="products.html">Catalog</a>
-<a href="dosing.html">Dosing</a>
-<a href="research.html">Research</a>
-<a aria-current="page" class="active" href="perspective.html">Our Perspective</a>
-</nav>
-</div>
+  <div class="lmk-header-inner">
+    <div class="lmk-brand-row">
+      <a href="/index.html" aria-label="Laboratori Massa Kritikal home"><img class="lmk-brand-logo" src="/images/logo.jpeg" alt="Laboratori Massa Kritikal logo" width="50" height="50"></a>
+      <div class="lmk-brand-text">LABORATORI MASSA KRITIKAL<span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span></div>
+    </div>
+    <nav class="lmk-nav-links" aria-label="Main navigation">
+      <a href="/index.html">Home</a>
+      <a href="/products.html">Catalog</a>
+      <a href="/dosing.html">Dosing</a>
+      <a href="/research.html">Research</a>
+      <a href="https://research.labortorimassakritikal.com/">LMK-Peps AI</a>
+      <a href="/perspective.html" class="active" aria-current="page">Our Perspective</a>
+    </nav>
+  </div>
 </header>
 <main>
 <!-- HERO -->
@@ -1307,3 +1309,4 @@ document.getElementById("current-year").textContent =
 </script>
 </body>
 </html>
+

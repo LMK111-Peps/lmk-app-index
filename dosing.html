@@ -528,7 +528,8 @@ article.research-card[hidden]{display:none!important}
 #lmk-study-gate button{border:1px solid #c9a653;padding:14px 20px;background:#c9a653;color:#151515;font:700 14px Arial,sans-serif;cursor:pointer}
 #lmk-study-gate button:disabled{opacity:.45;cursor:not-allowed}
 #lmk-study-gate :focus-visible{outline:3px solid #e5cd91;outline-offset:4px}
-</style></head>
+</style><link rel="stylesheet" href="/site-chrome.css">
+</head>
 <body><div id="lmk-study-gate" role="dialog" aria-modal="true" aria-labelledby="lmk-study-title" aria-describedby="lmk-study-intro"><section class="lmk-study-panel">
 <h2 id="lmk-study-title">Peptide Dosing &amp; Regimen References</h2>
 <p id="lmk-study-intro">This page compares source-reported community protocols, calculation examples, and published study doses. These details apply to the specific study materials, populations, and conditions investigated. They are not instructions for preparing or administering LMK products.</p>
@@ -537,22 +538,23 @@ article.research-card[hidden]{display:none!important}
 <form id="lmk-study-form"><label><input id="lmk-study-check" type="checkbox" required/><span>I understand that published study doses do not establish a safe or appropriate dose for me or demonstrate that an LMK product is suitable for human use.</span></label>
 <div class="lmk-study-actions"><button id="lmk-study-confirm" type="submit" disabled>View Research References</button><a href="index.html">Return to Home</a></div></form>
 </section></div><div id="lmk-study-content" inert hidden>
-<div class="notice">Research Information Only | No Medical Advice</div>
+<div class="lmk-research-notice" role="note">Research Information Only | No Medical Advice</div>
 <!-- SHARED SITE HEADER: DOSING PAGE -->
 <header class="lmk-site-header">
-<div class="lmk-header-inner">
-<div class="lmk-brand-row">
-<a aria-label="Laboratori Massa Kritikal home" href="index.html"><img alt="Laboratori Massa Kritikal logo" class="lmk-brand-logo" src="images/logo.jpeg"/></a>
-<div class="lmk-brand-text">LABORATORI MASSA KRITIKAL<span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span></div>
-</div>
-<nav aria-label="Main navigation" class="lmk-nav-links">
-<a href="index.html">Home</a>
-<a href="products.html">Catalog</a>
-<a aria-current="page" class="active" href="dosing.html">Study References</a>
-<a href="research.html">Research</a>
-<a href="perspective.html">Our Perspective</a>
-</nav>
-</div>
+  <div class="lmk-header-inner">
+    <div class="lmk-brand-row">
+      <a href="/index.html" aria-label="Laboratori Massa Kritikal home"><img class="lmk-brand-logo" src="/images/logo.jpeg" alt="Laboratori Massa Kritikal logo" width="50" height="50"></a>
+      <div class="lmk-brand-text">LABORATORI MASSA KRITIKAL<span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span></div>
+    </div>
+    <nav class="lmk-nav-links" aria-label="Main navigation">
+      <a href="/index.html">Home</a>
+      <a href="/products.html">Catalog</a>
+      <a href="/dosing.html" class="active" aria-current="page">Dosing</a>
+      <a href="/research.html">Research</a>
+      <a href="https://research.labortorimassakritikal.com/">LMK-Peps AI</a>
+      <a href="/perspective.html">Our Perspective</a>
+    </nav>
+  </div>
 </header>
 <main class="container">
 <section class="hero">
@@ -1358,3 +1360,4 @@ gate.addEventListener('keydown',function(event){if(event.key!=='Tab'||gate.hidde
 window.addEventListener('pageshow',function(event){if(event.persisted)acceptedHere=false;render();});render();
 });</script></body>
 </html>
+
