@@ -261,15 +261,31 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   function render() {
     var allowed = acceptedHere || storedAcceptance();
-    // Content is hidden in the original HTML; only confirmed acceptance unlocks it.
-    content.hidden = !allowed;
-    if (allowed) content.removeAttribute('inert');
-    else content.setAttribute('inert', '');
+
+    // Keep the homepage content in the document.
+    // The age acknowledgment still controls visitor access.
+
+    content.hidden = false;
+
+    if (allowed) {
+        content.removeAttribute('inert');
+    } else {
+        content.setAttribute('inert', '');
+    }
+
+    // Show the age-verification screen until accepted.
     gate.hidden = allowed;
-    document.documentElement.style.overflow = allowed ? '' : 'hidden';
+
+    // Prevent scrolling until the visitor accepts.
+    document.documentElement.style.overflow =
+        allowed ? '' : 'hidden';
+
     if (!allowed) {
-      checks.forEach(function (box) { box.checked = false; });
-      confirm.disabled = true;
+        checks.forEach(function (box) {
+            box.checked = false;
+        });
+
+        confirm.disabled = true;
     }
   }
   form.addEventListener('change', function () {
@@ -300,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
   render();
 });
 </script>
-<div id="lmk-page-content" inert hidden>
+<div id="lmk-page-content" inert>
 
 <div class="lmk-research-notice" role="note">Research Information Only | No Medical Advice</div>
 <header class="lmk-site-header">
