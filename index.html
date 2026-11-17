@@ -2,8 +2,6 @@
 
 <html lang="en">
 <head>
-
-
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Laboratori Massa Kritikal | Peptide Science</title>
@@ -166,12 +164,11 @@ footer{padding:35px 0;background:#0b0b0b}
 #lmkResearchSearch:focus{outline:2px solid #c9a653;outline-offset:2px}
 article.research-card[hidden]{display:none!important}
 @media(max-width:560px){.lmk-exp-title{font-size:23px}.lmk-exp-body{padding-top:12px}}
+</style></head>
 </style>
 <style>
-#lmk-entry-gate{position:fixed;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:16px;background:#101113;color:#f5f4f0;font-family:Arial,sans-serif;line-height:1.6}
-#lmk-entry-gate[hidden]{display:none!important}
-#lmk-page-content[hidden]{display:none!important}
-.lmk-gate-panel{width:min(640px,100%);max-height:calc(100dvh - 32px);overflow:auto;padding:28px;background:#191a1d;border:1px solid #c9a653;border-radius:10px}
+#lmk-entry-gate{width:min(640px,calc(100% - 32px));max-height:calc(100dvh - 32px);margin:auto;padding:28px;background:#191a1d;color:#f5f4f0;border:1px solid #c9a653;border-radius:10px;font-family:Arial,sans-serif;line-height:1.6;overflow:auto}
+#lmk-entry-gate::backdrop{background:rgba(0,0,0,.9)}
 #lmk-entry-gate h2{color:#e5cd91;font:normal 28px/1.25 Georgia,serif;margin:0 0 16px}
 #lmk-entry-gate p{margin:0 0 18px}
 #lmk-entry-gate label{display:flex;align-items:flex-start;gap:12px;margin:18px 0;font-size:14px;cursor:pointer}
@@ -186,102 +183,70 @@ article.research-card[hidden]{display:none!important}
 #lmk-entry-gate summary{cursor:pointer;color:#e5cd91}
 #lmk-gate-disclaimer{margin-top:14px}
 </style>
-<style>
-/* Competitive athlete notice */
-.lmk-athlete-notice{margin:0 0 28px;padding:20px 22px;border:1px solid var(--gold,#c9a653);border-left-width:4px;border-radius:8px;background:var(--panel,#191a1d);color:#d0cec8;text-align:left}
-.lmk-athlete-notice h2,.lmk-athlete-notice h3{margin:0 0 10px;color:var(--gold-light,#e5cd91);font:normal 22px/1.3 Georgia,serif}
-.lmk-athlete-notice p{margin:0;font-size:14px;line-height:1.65}
-.lmk-athlete-notice .lmk-athlete-links{margin:12px 0 0;font-size:13px}
-.lmk-athlete-notice a{color:var(--gold-light,#e5cd91);text-decoration:underline;text-underline-offset:3px}
-#lmk-entry-gate .lmk-athlete-notice{padding:16px;margin:20px 0}
-#lmk-entry-gate .lmk-athlete-notice p{margin:0;font-size:13px}
-#lmk-entry-gate .lmk-athlete-notice .lmk-athlete-links{margin-top:12px}
-@media(max-width:560px){.lmk-athlete-notice{padding:17px}.lmk-athlete-notice h2,.lmk-athlete-notice h3{font-size:20px}}
-</style>
-<link rel="stylesheet" href="/site-chrome.css">
 </head>
 <body>
 
-<div id="lmk-entry-gate" role="dialog" aria-modal="true" aria-labelledby="lmk-gate-heading" aria-describedby="lmk-gate-intro">
-<section class="lmk-gate-panel"><h2 id="lmk-gate-heading">Age Confirmation &amp; Research Use Acknowledgment</h2>
+<dialog id="lmk-entry-gate" aria-labelledby="lmk-gate-heading" aria-describedby="lmk-gate-intro">
+<h2 id="lmk-gate-heading">Age Confirmation &amp; Research Use Acknowledgment</h2>
 <p id="lmk-gate-intro">Please confirm all three statements before entering Laboratori Massa Kritikal.</p>
-<noscript><p>JavaScript is disabled or blocked. This acknowledgment needs JavaScript to continue. You can allow scripts for this website without enabling third-party cookies or tracking.</p></noscript>
-<aside class="lmk-athlete-notice" aria-labelledby="lmk-gate-athlete-title"><h3 id="lmk-gate-athlete-title">Competitive Athlete Notice</h3><p>Many peptides and related compounds listed on this website are prohibited under WADA, NCAA, or other sporting organizations’ anti-doping rules. Some are prohibited at all times, including outside competition. Professional, collegiate, and other tested athletes should verify each substance with their team’s medical staff and governing anti-doping organization before use. A substance does not have to be individually named on a prohibited list to fall within a banned class.</p><p class="lmk-athlete-links"><a href="https://www.wada-ama.org/en/prohibited-list" target="_blank" rel="noopener noreferrer">WADA Prohibited List</a> · <a href="https://www.ncaa.org/what-we-do/health-safety-and-performance/anti-doping-and-substance-misuse-prevention/banned-substances/" target="_blank" rel="noopener noreferrer">NCAA Banned Substances</a></p></aside>
 <form id="lmk-gate-form">
 <label><input type="checkbox" required name="age"/><span>I confirm that I am 18 years of age or older.</span></label>
 <label><input type="checkbox" required name="research"/><span>I understand that this website provides scientific research and educational information only. Any products offered are intended exclusively for laboratory research and are not for human consumption or administration.</span></label>
 <label><input type="checkbox" required name="terms"/><span>I understand that this website does not provide medical advice, diagnosis, or treatment, and I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Use</a> and Research Use Disclaimer below.</span></label>
 <details><summary>Read the Research Use Disclaimer</summary><div id="lmk-gate-disclaimer"></div></details>
-<div class="lmk-gate-actions"><button id="lmk-gate-confirm" type="submit" disabled>Confirm and Enter</button><a class="lmk-exit" href="https://www.google.com/">Exit</a></div>
+<div class="lmk-gate-actions"><button id="lmk-gate-confirm" type="submit" disabled>Confirm and Enter</button><button class="lmk-exit" id="lmk-gate-exit" type="button">Exit</button></div>
 </form>
-</section></div>
+</dialog>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
-  var key = 'lmkAcknowledgment-v3';
+  // Increment this version whenever the acknowledgment wording changes.
+  var key = 'lmkAcknowledgment-v1';
   var gate = document.getElementById('lmk-entry-gate');
-  var content = document.getElementById('lmk-page-content');
   var form = document.getElementById('lmk-gate-form');
   var confirm = document.getElementById('lmk-gate-confirm');
   var checks = Array.from(form.querySelectorAll('input[type="checkbox"]'));
-  var acceptedHere = false;
   var disclaimer = document.querySelector('#disclaimer .disclaimer-box');
   if (disclaimer) {
     var copy = disclaimer.cloneNode(true);
     copy.removeAttribute('class');
-    copy.querySelectorAll('[id]').forEach(function (node) { node.removeAttribute('id'); });
+    copy.querySelectorAll('[id]').forEach(function (element) { element.removeAttribute('id'); });
     document.getElementById('lmk-gate-disclaimer').appendChild(copy);
   }
-  function storedAcceptance() {
-    try {
-      var record = JSON.parse(sessionStorage.getItem(key) || 'null');
-      return !!(record && record.version === 3 && record.age === true &&
-        record.research === true && record.terms === true &&
-        typeof record.acceptedAt === 'string');
-    } catch (error) { return false; }
+  var acceptedThisPage = false;
+  function accepted() {
+    try { return acceptedThisPage || sessionStorage.getItem(key) === 'accepted'; }
+    catch (error) { return acceptedThisPage; }
   }
-  function render() {
-    var allowed = acceptedHere || storedAcceptance();
-    // Content is hidden in the original HTML; only confirmed acceptance unlocks it.
-    content.hidden = !allowed;
-    if (allowed) content.removeAttribute('inert');
-    else content.setAttribute('inert', '');
-    gate.hidden = allowed;
-    document.documentElement.style.overflow = allowed ? '' : 'hidden';
-    if (!allowed) {
-      checks.forEach(function (box) { box.checked = false; });
+  function showGate() {
+    if (!accepted() && !gate.open) {
+      checks.forEach(function (checkbox) { checkbox.checked = false; });
       confirm.disabled = true;
+      gate.showModal();
+      document.documentElement.style.overflow = 'hidden';
     }
   }
+  // Escape cannot dismiss the required acknowledgment.
+  gate.addEventListener('cancel', function (event) { event.preventDefault(); });
   form.addEventListener('change', function () {
-    confirm.disabled = !checks.every(function (box) { return box.checked; });
+    confirm.disabled = !checks.every(function (checkbox) { return checkbox.checked; });
   });
   form.addEventListener('submit', function (event) {
     event.preventDefault();
-    if (!checks.every(function (box) { return box.checked; })) return;
-    acceptedHere = true;
-    try {
-      sessionStorage.setItem(key, JSON.stringify({version:3, age:true,
-        research:true, terms:true, acceptedAt:new Date().toISOString()}));
-    } catch (error) { /* Acceptance lasts on this page when storage is blocked. */ }
-    render();
+    if (!checks.every(function (checkbox) { return checkbox.checked; })) return;
+    acceptedThisPage = true;
+    // If storage is blocked, acceptance lasts on this page only.
+    try { sessionStorage.setItem(key, 'accepted'); } catch (error) {}
+    gate.close();
+    document.documentElement.style.overflow = '';
   });
-  gate.addEventListener('keydown', function (event) {
-    if (event.key !== 'Tab' || gate.hidden) return;
-    var items = Array.from(gate.querySelectorAll('input, a, button, summary'))
-      .filter(function (node) { return !node.disabled && node.getClientRects().length; });
-    var first = items[0], last = items[items.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault(); last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault(); first.focus();
-    }
+  document.getElementById('lmk-gate-exit').addEventListener('click', function () {
+    window.location.replace('https://www.google.com/');
   });
-  window.addEventListener('pageshow', render);
-  render();
+  window.addEventListener('pageshow', showGate);
+  showGate();
 });
 </script>
-<div id="lmk-page-content" inert hidden>
 
 <div class="notice">Research Information Only | No Medical Advice</div>
 <header>
@@ -298,28 +263,12 @@ document.addEventListener('DOMContentLoaded', function () {
 <a class="active" href="index.html">Home</a>
 <a href="products.html">Catalog</a>
 <a href="dosing.html">Dosing Information</a>
-<a href="research.html">Research Library</a> <a href="https://research.labortorimassakritikal.com/">LMK-Peps AI Research</a>
+<a href="research.html">Research Library</a>
 <a href="perspective.html">Our Perspective</a>
 <a href="#disclaimer">Disclaimer</a>
 </div>
 </nav>
 </div>
-<div class="lmk-research-notice" role="note">Research Information Only | No Medical Advice</div>
-<header class="lmk-site-header">
-  <div class="lmk-header-inner">
-    <div class="lmk-brand-row">
-      <a href="/index.html" aria-label="Laboratori Massa Kritikal home"><img class="lmk-brand-logo" src="/images/logo.jpeg" alt="Laboratori Massa Kritikal logo" width="50" height="50"></a>
-      <div class="lmk-brand-text">LABORATORI MASSA KRITIKAL<span>DRIVEN BY SCIENCE. DEFINED BY PRECISION.</span></div>
-    </div>
-    <nav class="lmk-nav-links" aria-label="Main navigation">
-      <a href="/index.html" class="active" aria-current="page">Home</a>
-      <a href="/products.html">Catalog</a>
-      <a href="/dosing.html">Dosing</a>
-      <a href="/research.html">Research</a>
-      <a href="https://research.labortorimassakritikal.com/">LMK-Peps AI</a>
-      <a href="/perspective.html">Our Perspective</a>
-    </nav>
-  </div>
 </header>
 <main>
 <section class="hero" id="home">
@@ -337,7 +286,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 </div>
 </section>
-<div class="container"><aside class="lmk-athlete-notice" aria-labelledby="lmk-home-athlete-title"><h2 id="lmk-home-athlete-title">Competitive Athlete Notice</h2><p>Many peptides and related compounds listed on this website are prohibited under WADA, NCAA, or other sporting organizations’ anti-doping rules. Some are prohibited at all times, including outside competition. Professional, collegiate, and other tested athletes should verify each substance with their team’s medical staff and governing anti-doping organization before use. A substance does not have to be individually named on a prohibited list to fall within a banned class.</p><p class="lmk-athlete-links"><a href="https://www.wada-ama.org/en/prohibited-list" target="_blank" rel="noopener noreferrer">WADA Prohibited List</a> · <a href="https://www.ncaa.org/what-we-do/health-safety-and-performance/anti-doping-and-substance-misuse-prevention/banned-substances/" target="_blank" rel="noopener noreferrer">NCAA Banned Substances</a></p></aside></div>
 <section class="research" id="science">
 <div class="container">
 <div class="section-heading">
@@ -568,5 +516,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
 </script>
-<script>(function(){const ds=[...document.querySelectorAll("#science details.lmk-expandable")];ds.forEach(d=>d.addEventListener("toggle",()=>{if(d.open)ds.forEach(o=>{if(o!==d)o.open=false})}));})();</script></div></body>
+<script>(function(){const ds=[...document.querySelectorAll("#science details.lmk-expandable")];ds.forEach(d=>d.addEventListener("toggle",()=>{if(d.open)ds.forEach(o=>{if(o!==d)o.open=false})}));})();</script></body>
+</html>
 </html>
