@@ -549,9 +549,8 @@ article.research-card[hidden]{display:none!important}
     <nav class="lmk-nav-links" aria-label="Main navigation">
       <a href="/index.html">LMK Home</a>
       <a href="/products.html">Products</a>
-      <a href="/research.html">Research</a>
+      <details class="lmk-research-menu"><summary>Research</summary><div class="lmk-research-submenu"><a href="/research.html">Research Library</a><a href="/stacking.html">Consultation</a></div></details>
       <a href="/perspective.html">Perspective</a>
-      <a href="/stacking.html">Stacking</a>
       <a href="https://research.labortorimassakritikal.com/">LMK-Peps AI</a>
     </nav>
   </div>
@@ -1360,5 +1359,6 @@ gate.addEventListener('keydown',function(event){if(event.key!=='Tab'||gate.hidde
 window.addEventListener('pageshow',function(event){if(event.persisted)acceptedHere=false;render();});render();
 });</script></body>
 </html>
+
 
 

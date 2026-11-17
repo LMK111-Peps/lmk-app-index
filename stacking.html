@@ -355,8 +355,123 @@ footer {
 }
   </style>
  <link rel="stylesheet" href="/site-chrome.css">
+<style>
+#lmk-entry-gate{position:fixed;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:16px;background:#101113;color:#f5f4f0;font-family:Arial,sans-serif;line-height:1.6}
+#lmk-entry-gate[hidden]{display:none!important}
+#lmk-page-content[hidden]{display:none!important}
+.lmk-gate-panel{width:min(640px,100%);max-height:calc(100dvh - 32px);overflow:auto;padding:28px;background:#191a1d;border:1px solid #c9a653;border-radius:10px}
+#lmk-entry-gate h2{color:#e5cd91;font:normal 28px/1.25 Georgia,serif;margin:0 0 16px}
+#lmk-entry-gate p{margin:0 0 18px}
+#lmk-entry-gate label{display:flex;align-items:flex-start;gap:12px;margin:18px 0;font-size:14px;cursor:pointer}
+#lmk-entry-gate input{flex:0 0 auto;width:20px;height:20px;margin-top:3px;accent-color:#c9a653}
+#lmk-entry-gate a{color:#e5cd91;text-decoration:underline}
+#lmk-entry-gate .lmk-gate-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+#lmk-entry-gate button{padding:13px 20px;border:1px solid #c9a653;border-radius:4px;background:#c9a653;color:#151515;font:700 14px Arial,sans-serif;cursor:pointer}
+#lmk-entry-gate button:disabled{opacity:.45;cursor:not-allowed}
+#lmk-entry-gate button.lmk-exit{background:transparent;color:#e5cd91}
+#lmk-entry-gate :focus-visible{outline:3px solid #e5cd91;outline-offset:4px}
+#lmk-entry-gate details{margin:16px 0;font-size:13px;border-top:1px solid #665632;padding-top:12px}
+#lmk-entry-gate summary{cursor:pointer;color:#e5cd91}
+#lmk-gate-disclaimer{margin-top:14px}
+</style>
 </head>
  <body>
+<div id="lmk-entry-gate" role="dialog" aria-modal="true" aria-labelledby="lmk-gate-heading" aria-describedby="lmk-gate-intro">
+<section class="lmk-gate-panel"><h2 id="lmk-gate-heading">Age Confirmation &amp; Research Use Acknowledgment</h2>
+<p id="lmk-gate-intro">Please confirm all three statements before entering Laboratori Massa Kritikal.</p>
+<noscript><p>JavaScript is disabled or blocked. This acknowledgment needs JavaScript to continue. You can allow scripts for this website without enabling third-party cookies or tracking.</p></noscript>
+<aside class="lmk-athlete-notice" aria-labelledby="lmk-gate-athlete-title"><h3 id="lmk-gate-athlete-title">Competitive Athlete Notice</h3><p>Many peptides and related compounds listed on this website are prohibited under WADA, NCAA, or other sporting organizations’ anti-doping rules. Some are prohibited at all times, including outside competition. Professional, collegiate, and other tested athletes should verify each substance with their team’s medical staff and governing anti-doping organization before use. A substance does not have to be individually named on a prohibited list to fall within a banned class.</p><p class="lmk-athlete-links"><a href="https://www.wada-ama.org/en/prohibited-list" target="_blank" rel="noopener noreferrer">WADA Prohibited List</a> · <a href="https://www.ncaa.org/what-we-do/health-safety-and-performance/anti-doping-and-substance-misuse-prevention/banned-substances/" target="_blank" rel="noopener noreferrer">NCAA Banned Substances</a></p></aside>
+<form id="lmk-gate-form">
+<label><input type="checkbox" required name="age"/><span>I confirm that I am 18 years of age or older.</span></label>
+<label><input type="checkbox" required name="research"/><span>I understand that this website provides scientific research and educational information only. Any products offered are intended exclusively for laboratory research and are not for human consumption or administration.</span></label>
+<label><input type="checkbox" required name="terms"/><span>I understand that this website does not provide medical advice, diagnosis, or treatment, and I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Use</a> and Research Use Disclaimer below.</span></label>
+<details><summary>Read the Research Use Disclaimer</summary><div id="lmk-gate-disclaimer"></div></details>
+<div class="lmk-gate-actions"><button id="lmk-gate-confirm" type="submit" disabled>Confirm and Enter</button><a class="lmk-exit" href="https://www.google.com/">Exit</a></div>
+</form>
+</section></div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+  var key = 'lmkConsultationAcknowledgment-v3';
+  var gate = document.getElementById('lmk-entry-gate');
+  var content = document.getElementById('lmk-page-content');
+  var form = document.getElementById('lmk-gate-form');
+  var confirm = document.getElementById('lmk-gate-confirm');
+  var checks = Array.from(form.querySelectorAll('input[type="checkbox"]'));
+  var acceptedHere = false;
+  var disclaimer = document.querySelector('#disclaimer .disclaimer-box');
+  if (disclaimer) {
+    var copy = disclaimer.cloneNode(true);
+    copy.removeAttribute('class');
+    copy.querySelectorAll('[id]').forEach(function (node) { node.removeAttribute('id'); });
+    document.getElementById('lmk-gate-disclaimer').appendChild(copy);
+  }
+  function storedAcceptance() {
+    try {
+      var record = JSON.parse(sessionStorage.getItem(key) || 'null');
+      return !!(record && record.version === 3 && record.age === true &&
+        record.research === true && record.terms === true &&
+        typeof record.acceptedAt === 'string');
+    } catch (error) { return false; }
+  }
+  function render() {
+    var allowed = acceptedHere || storedAcceptance();
+
+    // Keep the homepage content in the document.
+    // The age acknowledgment still controls visitor access.
+
+    content.hidden = false;
+
+    if (allowed) {
+        content.removeAttribute('inert');
+    } else {
+        content.setAttribute('inert', '');
+    }
+
+    // Show the age-verification screen until accepted.
+    gate.hidden = allowed;
+
+    // Prevent scrolling until the visitor accepts.
+    document.documentElement.style.overflow =
+        allowed ? '' : 'hidden';
+
+    if (!allowed) {
+        checks.forEach(function (box) {
+            box.checked = false;
+        });
+
+        confirm.disabled = true;
+    }
+  }
+  form.addEventListener('change', function () {
+    confirm.disabled = !checks.every(function (box) { return box.checked; });
+  });
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (!checks.every(function (box) { return box.checked; })) return;
+    acceptedHere = true;
+    try {
+      sessionStorage.setItem(key, JSON.stringify({version:3, age:true,
+        research:true, terms:true, acceptedAt:new Date().toISOString()}));
+    } catch (error) { /* Acceptance lasts on this page when storage is blocked. */ }
+    render();
+  });
+  gate.addEventListener('keydown', function (event) {
+    if (event.key !== 'Tab' || gate.hidden) return;
+    var items = Array.from(gate.querySelectorAll('input, a, button, summary'))
+      .filter(function (node) { return !node.disabled && node.getClientRects().length; });
+    var first = items[0], last = items[items.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault(); first.focus();
+    }
+  });
+  window.addEventListener('pageshow', render);
+  render();
+});
+</script>
+<div id="lmk-page-content" inert>
   <div class="lmk-research-notice" role="note">Research Information Only | No Medical Advice</div>
   <header class="lmk-site-header">
   <div class="lmk-header-inner">
@@ -367,9 +482,8 @@ footer {
     <nav class="lmk-nav-links" aria-label="Main navigation">
       <a href="/index.html">LMK Home</a>
       <a href="/products.html">Products</a>
-      <a href="/research.html">Research</a>
+      <details class="lmk-research-menu" open><summary class="active">Research</summary><div class="lmk-research-submenu"><a href="/research.html">Research Library</a><a href="/stacking.html" class="active" aria-current="page">Consultation</a></div></details>
       <a href="/perspective.html">Perspective</a>
-      <a href="/stacking.html" class="active" aria-current="page">Stacking</a>
       <a href="https://research.labortorimassakritikal.com/">LMK-Peps AI</a>
     </nav>
   </div>
@@ -700,7 +814,84 @@ footer {
       <p class="small">Your submission is securely transmitted to LMK's Cloudflare consultation API. Do not include medical records, diagnoses, medication lists, personal dosing information, or other sensitive health details.</p>
     </section>
    </form>
-  </main>
+  <section class="disclaimer" id="disclaimer">
+<div class="container">
+<div class="disclaimer-box">
+<h2>Important Research Disclaimer</h2>
+<p><strong>
+        The information presented on this website is provided for scientific
+        and educational information purposes only. It is not medical advice
+        and is not intended to diagnose, treat, cure, or prevent any disease.
+      </strong></p>
+<h2>Scientific Evidence and Research Findings</h2>
+<p>
+        Scientific information discussed on this website may derive from
+        in vitro laboratory studies, animal research, observational studies,
+        or human clinical trials. These forms of evidence have different
+        limitations and are not interchangeable. Findings observed in
+        laboratory or animal studies do not establish safety or effectiveness
+        in humans, and preliminary research should not be interpreted as
+        proof of a clinical benefit.
+      </p>
+<h2>Investigational Compounds and Regulatory Status</h2>
+<p>
+        Compounds discussed or listed on this website may be investigational
+        and may not be approved by the U.S. Food and Drug Administration (FDA)
+        or other applicable regulatory authorities for any medical indication.
+        The inclusion of a compound in scientific literature, a product
+        catalog, or a research summary does not establish that it is safe,
+        effective, approved, or appropriate for human or veterinary use.
+        No claim of therapeutic benefit should be inferred unless adequately
+        supported and legally authorized for the specific product and
+        intended use.
+      </p>
+<h2>Product Quality and Intended Use</h2>
+<p>
+        Product descriptions, stated specifications, and available
+        documentation should be evaluated on an individual product basis.
+        Listing a compound or describing published research does not
+        independently verify its identity, purity, potency, sterility,
+        stability, or suitability for any particular application. No product
+        should be assumed to meet a particular quality standard without
+        appropriate supporting documentation.
+      </p>
+<p>
+        Research materials are not represented as medicines for personal use.
+        Do not use research-only materials for self-treatment or veterinary
+        treatment. Decisions concerning diagnosis or treatment should be made
+        with a qualified healthcare professional using appropriately
+        authorized products and evidence-based medical guidance.
+      </p>
+<h2>Regulatory Compliance and Responsible Research</h2>
+<p>
+        A research-use designation does not exempt any product, seller,
+        manufacturer, distributor, or marketing claim from applicable
+        federal, state, or local laws and regulations. The lawful status of a
+        compound or product depends on its specific identity, formulation,
+        intended use, labeling, marketing, distribution, and other relevant
+        circumstances. Product eligibility and regulatory requirements must
+        be assessed individually.
+      </p>
+<h2>Commitment to Scientific Integrity</h2>
+<p>
+        Laboratori Massa Kritikal encourages critical thinking, transparent
+        communication, and responsible engagement with scientific research.
+        We distinguish established evidence from preliminary findings and
+        acknowledge that scientific understanding evolves. Website content
+        is provided for general informational purposes and should not be
+        relied upon as a substitute for independent verification of scientific
+        findings, product documentation, or applicable legal requirements.
+      </p>
+<p>
+        By accessing this website, you acknowledge that scientific information
+        has limitations and that you are responsible for evaluating the
+        relevance and lawful use of any information or materials in accordance
+        with applicable requirements.
+      </p>
+</div>
+</div>
+</section>
+</main>
   <footer>
    LABORATORI MASSA KRITIKAL · Driven by Science. Defined by Precision.
    <br/>
@@ -920,8 +1111,10 @@ footer {
         updateSummary();
     })();
   </script>
- </body>
+ </div>
+</body>
 </html>
+
 
 
 

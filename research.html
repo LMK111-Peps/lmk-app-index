@@ -183,9 +183,8 @@ article.research-card[hidden]{display:none!important}
     <nav class="lmk-nav-links" aria-label="Main navigation">
       <a href="/index.html">LMK Home</a>
       <a href="/products.html">Products</a>
-      <a href="/research.html" class="active" aria-current="page">Research</a>
+      <details class="lmk-research-menu"><summary class="active">Research</summary><div class="lmk-research-submenu"><a href="/research.html" class="active" aria-current="page">Research Library</a><a href="/stacking.html">Consultation</a></div></details>
       <a href="/perspective.html">Perspective</a>
-      <a href="/stacking.html">Stacking</a>
       <a href="https://research.labortorimassakritikal.com/">LMK-Peps AI</a>
     </nav>
   </div>
@@ -208,7 +207,7 @@ article.research-card[hidden]{display:none!important}
 <a class="button primary" href="#research-index">Explore Research</a>
 <a class="button secondary" href="#references">Scientific References</a>
 <a class="button secondary" href="#evidence-guide">Understanding the Evidence</a>
-<a class="button secondary" href="stacking.html">Research Stack Consultation</a>
+<a class="button secondary" href="stacking.html">Consultation</a>
 </div>
 </div>
 </section>
@@ -1873,4 +1872,5 @@ article.research-card[hidden]{display:none!important}
 </script>
 <script>(function(){const cards=[...document.querySelectorAll("article.research-card[id]")];const input=document.getElementById("lmkResearchSearch");function openHash(){const id=decodeURIComponent(location.hash.slice(1));const card=document.getElementById(id);if(card&&card.matches("article.research-card")){card.hidden=false;const d=card.querySelector("details.lmk-expandable");if(d)d.open=true;}}cards.forEach(c=>{const d=c.querySelector("details.lmk-expandable");if(d)d.addEventListener("toggle",()=>{if(d.open)cards.forEach(other=>{if(other!==c){const od=other.querySelector("details.lmk-expandable");if(od)od.open=false;}})});});if(input)input.addEventListener("input",()=>{const q=input.value.trim().toLocaleLowerCase();cards.forEach(c=>{c.hidden=!!q&&!c.textContent.toLocaleLowerCase().includes(q)});if(q){const matches=cards.filter(c=>!c.hidden);if(matches.length===1)matches[0].querySelector("details").open=true;}});window.addEventListener("hashchange",openHash);openHash();})();</script></body>
 </html>
+
 
