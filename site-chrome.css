@@ -34,3 +34,9 @@ body { margin: 0; }
   .lmk-site-header .lmk-brand-text { font-size: 12px; letter-spacing: .5px; }
   .lmk-site-header .lmk-brand-text span { font-size: 7px; letter-spacing: .7px; }
 }
+
+/* Allow long branding to wrap without horizontal overflow on small screens. */
+.lmk-site-header .lmk-brand-text, .lmk-site-header .lmk-brand-text span { white-space: normal; overflow-wrap: anywhere; }
+.lmk-site-header nav.lmk-nav-links a { min-height: 44px; display: inline-flex; align-items: center; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
