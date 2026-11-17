@@ -353,6 +353,7 @@ article.research-card[hidden]{display:none!important}
 <div class="toc-card"><div class="number">19 / GROWTH-FACTOR RESEARCH</div><h3><a href="#igf1lr3">IGF-1 LR3</a></h3><p>Long R3 IGF-I, a modified IGF-I analogue investigated in receptor and binding-protein research.</p></div>
 <div class="toc-card"><div class="number">20 / COMBINATION RESEARCH</div><h3><a href="#wolverine">Wolverine</a></h3><p>LMK identifies Wolverine as a blend of BPC-157 and TB-500. The blend name is not a standardized molecular identity.</p></div>
 <div class="toc-card">
+<div class="number">12 / SAFETY &amp; SOURCES</div>
 <div class="number">21 / SAFETY &amp; SOURCES</div>
 <h3><a href="#evidence-guide">Evidence Limitations</a></h3>
 <p>Interpretation, quality, regulatory status, and safety.</p>
@@ -1869,5 +1870,6 @@ article.research-card[hidden]{display:none!important}
   document.getElementById("current-year").textContent =
     new Date().getFullYear();
 </script>
-<script>(function(){const cards=[...document.querySelectorAll("article.research-card[id]")];const input=document.getElementById("lmkResearchSearch");function openHash(){const id=decodeURIComponent(location.hash.slice(1));const card=document.getElementById(id);if(card&&card.matches("article.research-card")){card.hidden=false;const d=card.querySelector("details.lmk-expandable");if(d)d.open=true;}}cards.forEach(c=>{const d=c.querySelector("details.lmk-expandable");if(d)d.addEventListener("toggle",()=>{if(d.open)cards.forEach(other=>{if(other!==c){const od=other.querySelector("details.lmk-expandable");if(od)od.open=false;}})});});if(input)input.addEventListener("input",()=>{const q=input.value.trim().toLocaleLowerCase();cards.forEach(c=>{c.hidden=!!q&&!c.textContent.toLocaleLowerCase().includes(q)});if(q){const matches=cards.filter(c=>!c.hidden);if(matches.length===1)matches[0].querySelector("details").open=true;}});window.addEventListener("hashchange",openHash);openHash();})();</script></body>
-</html>
+<script>(function(){const cards=[...document.querySelectorAll("article.research-card[id]")];const input=document.getElementById("lmkResearchSearch");function openHash(){const id=decodeURIComponent(location.hash.slice(1));const card=document.getElementById(id);if(card&&card.matches("article.research-card")){card.hidden=false;const d=card.querySelector("details.lmk-expandable");if(d)d.open=true;}}cards.forEach(c=>{const d=c.querySelector("details.lmk-expandable");if(d)d.addEventListener("toggle",()=>{if(d.open)cards.forEach(other=>{if(other!==c){const od=other.querySelector("details.lmk-expandable");if(od)od.open=false;}})});});if(input)input.addEventListener("input",()=>{const q=input.value.trim().toLocaleLowerCase();cards.forEach(c=>{c.hidden=!!q&&!c.textContent.toLocaleLowerCase().includes(q)});if(q){const matches=cards.filter(c=>!c.hidden);if(matches.length===1)matches[0].querySelector("details").open=true;}});window.addEventListener("hashchange",openHash);openHash();})();
+</script>
+</body>
