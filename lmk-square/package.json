@@ -1,0 +1,16 @@
+{
+  "name": "lmk-square",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "esbuild test/worker.test.ts --bundle --platform=node --format=esm --outfile=.wrangler/test.mjs --log-level=warning && node --test .wrangler/test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "wrangler": "^3.90.0",
+    "esbuild": "^0.24.0"
+  }
+}

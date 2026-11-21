@@ -1,0 +1,27 @@
+name = "lmk-square"
+main = "src/index.ts"
+compatibility_date = "2025-01-15"
+
+# Full catalog + inventory resync every 15 minutes (webhooks handle real-time stock).
+[triggers]
+crons = ["*/15 * * * *"]
+
+# Create with: npx wrangler kv namespace create LMK_STORE  (then paste the id below)
+[[kv_namespaces]]
+binding = "LMK_STORE"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[vars]
+SQUARE_ENV = "sandbox"
+SQUARE_LOCATION_ID = "REPLACE_WITH_SANDBOX_LOCATION_ID"
+ALLOWED_ORIGINS = "https://REPLACE-WITH-YOUR-DOMAIN"
+CHECKOUT_REDIRECT_URL = "https://REPLACE-WITH-YOUR-DOMAIN/order-complete"
+SQUARE_WEBHOOK_URL = "https://lmk-square.REPLACE.workers.dev/api/square/webhook"
+# Payment safety switches. Leave both "false" until Square confirms catalog eligibility in writing.
+CHECKOUT_ENABLED = "false"
+LIVE_PAYMENTS_APPROVED = "false"
+
+# Secrets: never put these in this file or in GitHub.
+#   npx wrangler secret put SQUARE_ACCESS_TOKEN
+#   npx wrangler secret put SQUARE_WEBHOOK_SIGNATURE_KEY
+#   npx wrangler secret put ADMIN_TOKEN
