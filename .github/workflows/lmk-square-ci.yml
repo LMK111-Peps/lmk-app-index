@@ -1,0 +1,32 @@
+name: LMK Square sandbox tests (no deploy)
+
+on:
+  pull_request:
+    paths:
+      - 'lmk-square/**'
+      - '.github/workflows/lmk-square-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Offline safety and sync unit tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lmk-square
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install package dependencies (no deployment)
+        run: npm install --no-audit --no-fund
+      - name: Type check
+        run: npm run typecheck
+      - name: Run offline tests
+        run: npm test
