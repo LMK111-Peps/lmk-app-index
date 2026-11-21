@@ -44,14 +44,8 @@ export interface Env {
 
 export const isProduction = (env: Env): boolean => (env.SQUARE_ENV ?? 'sandbox').toLowerCase() === 'production';
 
-export function checkoutState(env: Env): { enabled: boolean; reason: string | null } {
-  // Fail closed: sync-only is the default until a separate reviewed release.
-  if (env.SYNC_ONLY_MODE !== 'false') return { enabled: false, reason: 'sync_only_mode' };
-  if (env.CHECKOUT_ENABLED !== 'true') {
-    return { enabled: false, reason: 'checkout_disabled' };
-  }
-  if (isProduction(env) && env.LIVE_PAYMENTS_APPROVED !== 'true') {
-    return { enabled: false, reason: 'live_payments_not_approved' };
-  }
-  return { enabled: true, reason: null };
+export function checkoutState(_env: Env): { enabled: boolean; reason: string | null } {
+  // Phase 1 permanent lock: changing deployment variables cannot enable checkout.
+  // A reviewed code change and separate release are required for any commerce routes.
+  return { enabled: false, reason: 'sync_only_mode' };
 }
