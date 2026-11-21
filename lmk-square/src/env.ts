@@ -25,6 +25,8 @@ export interface Env {
   ADMIN_TOKEN?: string;
   /** Comma-separated origins allowed to call the API, e.g. https://www.example.com */
   ALLOWED_ORIGINS?: string;
+  /** Phase-one hard stop: all deployments must run sandbox-only, sync-only. */
+  SYNC_ONLY_MODE?: string;
   /** "true" turns on checkout sessions. Off by default. */
   CHECKOUT_ENABLED?: string;
   /**
@@ -43,6 +45,8 @@ export interface Env {
 export const isProduction = (env: Env): boolean => (env.SQUARE_ENV ?? 'sandbox').toLowerCase() === 'production';
 
 export function checkoutState(env: Env): { enabled: boolean; reason: string | null } {
+  // Fail closed: sync-only is the default until a separate reviewed release.
+  if (env.SYNC_ONLY_MODE !== 'false') return { enabled: false, reason: 'sync_only_mode' };
   if (env.CHECKOUT_ENABLED !== 'true') {
     return { enabled: false, reason: 'checkout_disabled' };
   }
