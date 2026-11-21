@@ -9,19 +9,22 @@ crons = ["*/15 * * * *"]
 # Create with: npx wrangler kv namespace create LMK_STORE  (then paste the id below)
 [[kv_namespaces]]
 binding = "LMK_STORE"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "9efa5ee158694995ac3100c47212b261"
+
 
 [vars]
 SQUARE_ENV = "sandbox"
-SQUARE_LOCATION_ID = "REPLACE_WITH_SANDBOX_LOCATION_ID"
-ALLOWED_ORIGINS = "https://REPLACE-WITH-YOUR-DOMAIN"
-CHECKOUT_REDIRECT_URL = "https://REPLACE-WITH-YOUR-DOMAIN/order-complete"
+SYNC_ONLY_MODE = "true"
+SQUARE_LOCATION_ID = "L4W08STADYAXB"
+ALLOWED_ORIGINS = "https://labortorimassakritikal.com"
+CHECKOUT_REDIRECT_URL = "https://labortorimassakritikal.com/order-complete"
 SQUARE_WEBHOOK_URL = "https://lmk-square.REPLACE.workers.dev/api/square/webhook"
-# Payment safety switches. Leave both "false" until Square confirms catalog eligibility in writing.
+# Payment safety switches
 CHECKOUT_ENABLED = "false"
 LIVE_PAYMENTS_APPROVED = "false"
 
-# Secrets: never put these in this file or in GitHub.
-#   npx wrangler secret put SQUARE_ACCESS_TOKEN
-#   npx wrangler secret put SQUARE_WEBHOOK_SIGNATURE_KEY
-#   npx wrangler secret put ADMIN_TOKEN
+# Cloudflare Worker secrets — never place actual values here:
+# SQUARE_ACCESS_TOKEN
+# SQUARE_WEBHOOK_SIGNATURE_KEY
+# ADMIN_TOKEN
+
