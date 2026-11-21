@@ -87,7 +87,7 @@ test('admin sync requires token; unknown routes 404; cross-origin quote blocked'
   assert.equal((await worker.fetch(new Request('https://w.example/api/admin/sync', { method: 'POST' }), env, ctx)).status, 401);
   assert.equal((await worker.fetch(new Request('https://w.example/api/nope'), env, ctx)).status, 404);
   const q = await worker.fetch(new Request('https://w.example/api/cart/quote', { method: 'POST', headers: { Origin: 'https://evil.example' }, body: '{}' }), env, ctx);
-  assert.equal(q.status, 403);
+  assert.equal(q.status, 503, 'sync-only mode blocks quoting before cross-origin handling');
 });
 
 test('catalog endpoint serves cached snapshot with checkout state and never exposes the token', async () => {
