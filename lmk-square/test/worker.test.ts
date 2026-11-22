@@ -45,10 +45,10 @@ test('snapshot maps strengths, prices, overrides, stock and images', () => {
 });
 
 test('checkout is off by default and production needs the second switch', () => {
-  assert.deepEqual(checkoutState(baseEnv()), { enabled: false, reason: 'checkout_disabled' });
-  assert.equal(checkoutState(baseEnv({ CHECKOUT_ENABLED: 'true' })).enabled, true, 'sandbox may test checkout');
-  assert.deepEqual(checkoutState(baseEnv({ CHECKOUT_ENABLED: 'true', SQUARE_ENV: 'production' })), { enabled: false, reason: 'live_payments_not_approved' });
-  assert.equal(checkoutState(baseEnv({ CHECKOUT_ENABLED: 'true', SQUARE_ENV: 'production', LIVE_PAYMENTS_APPROVED: 'true' })).enabled, true);
+  assert.deepEqual(checkoutState(baseEnv()), { enabled: false, reason: 'sync_only_mode' });
+  assert.equal(checkoutState(baseEnv({ CHECKOUT_ENABLED: 'true' })).enabled, false, 'sandbox must remain sync-only');
+  assert.equal(checkoutState(baseEnv({ CHECKOUT_ENABLED: 'true', SQUARE_ENV: 'production' })).enabled, false);
+  assert.equal(checkoutState(baseEnv({ CHECKOUT_ENABLED: 'true', SQUARE_ENV: 'production', LIVE_PAYMENTS_APPROVED: 'true' })).enabled, false);
 });
 
 test('cart parser ignores prices and rejects bad input', () => {
@@ -76,7 +76,7 @@ test('checkout endpoint refuses while disabled, without calling Square', async (
   try {
     const res = await worker.fetch(new Request('https://w.example/api/checkout', { method: 'POST', body: '{"lines":[{"variationId":"V5","quantity":1}]}' }), baseEnv({ SQUARE_ENV: 'production', CHECKOUT_ENABLED: 'true' }), { waitUntil() {} });
     assert.equal(res.status, 503);
-    assert.equal((await res.json()).reason, 'live_payments_not_approved');
+    assert.equal((await res.json()).error, 'SANDBOX_ONLY');
     assert.equal(called, false);
   } finally { globalThis.fetch = orig; }
 });
@@ -87,7 +87,7 @@ test('admin sync requires token; unknown routes 404; cross-origin quote blocked'
   assert.equal((await worker.fetch(new Request('https://w.example/api/admin/sync', { method: 'POST' }), env, ctx)).status, 401);
   assert.equal((await worker.fetch(new Request('https://w.example/api/nope'), env, ctx)).status, 404);
   const q = await worker.fetch(new Request('https://w.example/api/cart/quote', { method: 'POST', headers: { Origin: 'https://evil.example' }, body: '{}' }), env, ctx);
-  assert.equal(q.status, 403);
+  assert.equal(q.status, 503, 'sync-only mode blocks quoting before cross-origin handling');
 });
 
 test('catalog endpoint serves cached snapshot with checkout state and never exposes the token', async () => {
@@ -98,4 +98,21 @@ test('catalog endpoint serves cached snapshot with checkout state and never expo
   assert.equal(res.status, 200);
   assert.ok(!text.includes('SECRET_TOKEN_VALUE'));
   assert.equal(JSON.parse(text).checkout.enabled, false);
+});
+
+
+test('sandbox sync-only mode denies purchase and order routes without calling Square', async () => {
+  const orig = globalThis.fetch;
+  let called = false;
+  globalThis.fetch = (async () => { called = true; throw new Error('network disallowed'); }) as any;
+  try {
+    const env = baseEnv({ SQUARE_ENV: 'sandbox', CHECKOUT_ENABLED: 'true', LIVE_PAYMENTS_APPROVED: 'true' });
+    const ctx = { waitUntil() {} };
+    for (const [path, method] of [['/api/checkout','POST'], ['/api/cart/quote','POST'], ['/api/orders/anything','GET']]) {
+      const res = await worker.fetch(new Request('https://w.example' + path, { method }), env, ctx);
+      assert.equal(res.status, 503);
+      assert.equal((await res.json()).error, 'SYNC_ONLY_MODE');
+    }
+    assert.equal(called, false);
+  } finally { globalThis.fetch = orig; }
 });

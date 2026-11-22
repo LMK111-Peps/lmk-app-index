@@ -1,30 +1,49 @@
+
+# LMK-Square Cloudflare Worker
+# Sandbox configuration
+
 name = "lmk-square"
 main = "src/index.ts"
 compatibility_date = "2025-01-15"
 
-# Full catalog + inventory resync every 15 minutes (webhooks handle real-time stock).
+# Inventory synchronization every 15 minutes
+
 [triggers]
 crons = ["*/15 * * * *"]
 
-# Create with: npx wrangler kv namespace create LMK_STORE  (then paste the id below)
+# Cloudflare KV storage
+
 [[kv_namespaces]]
 binding = "LMK_STORE"
 id = "9efa5ee158694995ac3100c47212b261"
 
+# Sandbox environment
 
 [vars]
 SQUARE_ENV = "sandbox"
 SYNC_ONLY_MODE = "true"
 SQUARE_LOCATION_ID = "L4W08STADYAXB"
-ALLOWED_ORIGINS = "https://labortorimassakritikal.com"
-CHECKOUT_REDIRECT_URL = "https://labortorimassakritikal.com/order-complete"
-SQUARE_WEBHOOK_URL = "https://lmk-square.REPLACE.workers.dev/api/square/webhook"
-# Payment safety switches
+
+# Authorized website origins
+
+ALLOWED_ORIGINS = "https://labortorimassakritikal.com,https://www.labortorimassakritikal.com,https://d893d21f.lmk111-website.pages.dev,https://square-sandbox-sync-only.lmk111-website.pages.dev"
+
+# Checkout redirect
+
+CHECKOUT_REDIRECT_URL = "https://labortorimassakritikal.com/order-complete.html"
+
+# Square webhook
+
+SQUARE_WEBHOOK_URL = "https://lmk-square.wt68jg58z7.workers.dev/api/square/webhook"
+
+# Checkout safety restrictions
+
 CHECKOUT_ENABLED = "false"
 LIVE_PAYMENTS_APPROVED = "false"
 
-# Cloudflare Worker secrets — never place actual values here:
+# Secrets must be stored in Cloudflare,
+# not in GitHub:
+#
 # SQUARE_ACCESS_TOKEN
 # SQUARE_WEBHOOK_SIGNATURE_KEY
 # ADMIN_TOKEN
-

@@ -43,6 +43,17 @@ export default {
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: h });
 
     try {
+      // During phase one, absolutely no production Square API access is permitted.
+      if (isProduction(env)) return json({ error: 'SANDBOX_ONLY' }, 503, h);
+      // Allow Sandbox tax calculations.
+      // Continue blocking checkout and order access.
+      if (
+        url.pathname === '/api/checkout' ||
+        url.pathname.startsWith('/api/orders/')
+      ) {
+        return json({ error: 'SYNC_ONLY_MODE' }, 503, h);
+      }
+
       if (url.pathname === '/api/square/webhook' && request.method === 'POST') return handleWebhook(request, env, ctx);
 
       if (url.pathname === '/api/catalog' && request.method === 'GET') {
@@ -95,6 +106,7 @@ export default {
 
   /** Cron trigger: full catalog + inventory resync as a safety net behind webhooks. */
   async scheduled(_event: unknown, env: Env, ctx: ExecutionContext): Promise<void> {
+    if (isProduction(env)) return;
     ctx.waitUntil(syncCatalog(env).then(() => undefined));
   },
 };
