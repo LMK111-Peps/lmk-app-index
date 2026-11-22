@@ -1,28 +1,57 @@
-name = "lmk-square"
-main = "src/index.ts"
-compatibility_date = "2025-01-15"
 
-# Full catalog + inventory resync every 15 minutes (webhooks handle real-time stock).
-[triggers]
-crons = ["*/15 * * * *"]
+/**
+ * Calculate cart totals using Square's Orders API.
+ *
+ * Prices come from the Square catalog.
+ * Square automatically applies catalog taxes.
+ * This function does not create an order or payment.
+ */
+export async function quoteCart(
+  env: Env,
+  lines: CartLine[]
+): Promise<{
+  lines: CheckedLine[];
+  total: Money;
+  tax: Money;
+  checkout: ReturnType<typeof checkoutState>;
+}> {
 
-# Create with: npx wrangler kv namespace create LMK_STORE  (then paste the id below)
-[[kv_namespaces]]
-binding = "LMK_STORE"
-id = "9efa5ee158694995ac3100c47212b261"
+  // Validate products and current inventory.
+  const checked = await validateCart(env, lines);
 
-[vars]
-SQUARE_ENV = "sandbox"
-SYNC_ONLY_MODE = "true"
-SQUARE_LOCATION_ID = "L4W08STADYAXB"
-ALLOWED_ORIGINS = "https://REPLACE-WITH-YOUR-DOMAIN"
-CHECKOUT_REDIRECT_URL = "https://REPLACE-WITH-YOUR-DOMAIN/order-complete"
-SQUARE_WEBHOOK_URL = "https://lmk-square.REPLACE.workers.dev/api/square/webhook"
-# Payment safety switches. Leave both "false" until Square confirms catalog eligibility in writing.
-CHECKOUT_ENABLED = "false"
-LIVE_PAYMENTS_APPROVED = "false"
+  // Calculate the order using Square.
+  const res = await square<{
+    order: {
+      total_money: Money;
+      total_tax_money: Money;
+    };
+  }>(
+    env,
+    'POST',
+    '/v2/orders/calculate',
+    {
+      order: {
+        location_id: env.SQUARE_LOCATION_ID,
 
-# Secrets: never put these in this file or in GitHub.
-#   npx wrangler secret put SQUARE_ACCESS_TOKEN
-#   npx wrangler secret put SQUARE_WEBHOOK_SIGNATURE_KEY
-#   npx wrangler secret put ADMIN_TOKEN
+        line_items: checked.map((line) => ({
+          catalog_object_id: line.variationId,
+          quantity: String(line.quantity),
+        })),
+
+        // Automatically calculate catalog taxes.
+        pricing_options: {
+          auto_apply_taxes: true,
+        },
+      },
+    }
+  );
+
+  // Return the calculated totals.
+  return {
+    lines: checked,
+    total: res.order.total_money,
+    tax: res.order.total_tax_money,
+    checkout: checkoutState(env),
+  };
+}
+

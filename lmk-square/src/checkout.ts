@@ -170,6 +170,7 @@ export async function quoteCart(
   // Request Square's calculated cart totals.
   const res = await square<{
     order: {
+
       total_money: Money;
       total_tax_money: Money;
     };
@@ -199,6 +200,7 @@ export async function quoteCart(
     tax: res.order.total_tax_money,
     checkout: checkoutState(env),
   };
+
 }
 
 /**
