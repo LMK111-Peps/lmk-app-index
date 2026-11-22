@@ -45,12 +45,15 @@ export default {
     try {
       // During phase one, absolutely no production Square API access is permitted.
       if (isProduction(env)) return json({ error: 'SANDBOX_ONLY' }, 503, h);
-      // Even in sandbox, purchasing, quotes, and order lookup are unavailable.
-      if (url.pathname === '/api/cart/quote' ||
-          url.pathname === '/api/checkout' ||
-          url.pathname.startsWith('/api/orders/')) {
+      // Allow Sandbox tax calculations.
+      // Continue blocking checkout and order access.
+      if (
+        url.pathname === '/api/checkout' ||
+        url.pathname.startsWith('/api/orders/')
+      ) {
         return json({ error: 'SYNC_ONLY_MODE' }, 503, h);
       }
+
       if (url.pathname === '/api/square/webhook' && request.method === 'POST') return handleWebhook(request, env, ctx);
 
       if (url.pathname === '/api/catalog' && request.method === 'GET') {
