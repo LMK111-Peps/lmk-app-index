@@ -1,0 +1,12 @@
+# Separate, read-only production inventory reader for prelaunch verification.
+# Never attach this Worker to the existing lmk-square Sandbox deployment.
+name = "lmk-square-inventory"
+main = "src/index.js"
+compatibility_date = "2025-01-15"
+workers_dev = true
+
+# Set SQUARE_PRODUCTION_LOCATION_ID after fetching /api/locations.
+# Do not put production access tokens in this file.
+# Cloudflare Worker secrets required:
+#   SQUARE_PRODUCTION_ACCESS_TOKEN
+#   INVENTORY_READ_TOKEN (random 32+ character string)
