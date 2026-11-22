@@ -68,8 +68,13 @@ export async function quoteCart(env: Env, lines: CartLine[]): Promise<{ lines: C
   const checked = await validateCart(env, lines);
   const res = await square<{ order: { total_money: Money; total_tax_money: Money } }>(env, 'POST', '/v2/orders/calculate', {
     order: {
-      location_id: env.SQUARE_LOCATION_ID,
-      line_items: checked.map((l) => ({ catalog_object_id: l.variationId, quantity: String(l.quantity) })),
+  location_id: env.SQUARE_LOCATION_ID,
+  line_items: checked.map(l => ({
+    catalog_object_id: l.variationId,
+    quantity: String(l.quantity)
+  })),
+  pricing_options: {
+    auto_apply_taxes: true })),
     },
   });
   return { lines: checked, total: res.order.total_money, tax: res.order.total_tax_money, checkout: checkoutState(env) };
