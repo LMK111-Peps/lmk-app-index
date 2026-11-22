@@ -1,57 +1,49 @@
 
-/**
- * Calculate cart totals using Square's Orders API.
- *
- * Prices come from the Square catalog.
- * Square automatically applies catalog taxes.
- * This function does not create an order or payment.
- */
-export async function quoteCart(
-  env: Env,
-  lines: CartLine[]
-): Promise<{
-  lines: CheckedLine[];
-  total: Money;
-  tax: Money;
-  checkout: ReturnType<typeof checkoutState>;
-}> {
+# LMK-Square Cloudflare Worker
+# Sandbox configuration
 
-  // Validate products and current inventory.
-  const checked = await validateCart(env, lines);
+name = "lmk-square"
+main = "src/index.ts"
+compatibility_date = "2025-01-15"
 
-  // Calculate the order using Square.
-  const res = await square<{
-    order: {
-      total_money: Money;
-      total_tax_money: Money;
-    };
-  }>(
-    env,
-    'POST',
-    '/v2/orders/calculate',
-    {
-      order: {
-        location_id: env.SQUARE_LOCATION_ID,
+# Inventory synchronization every 15 minutes
 
-        line_items: checked.map((line) => ({
-          catalog_object_id: line.variationId,
-          quantity: String(line.quantity),
-        })),
+[triggers]
+crons = ["*/15 * * * *"]
 
-        // Automatically calculate catalog taxes.
-        pricing_options: {
-          auto_apply_taxes: true,
-        },
-      },
-    }
-  );
+# Cloudflare KV storage
 
-  // Return the calculated totals.
-  return {
-    lines: checked,
-    total: res.order.total_money,
-    tax: res.order.total_tax_money,
-    checkout: checkoutState(env),
-  };
-}
+[[kv_namespaces]]
+binding = "LMK_STORE"
+id = "9efa5ee158694995ac3100c47212b261"
 
+# Sandbox environment
+
+[vars]
+SQUARE_ENV = "sandbox"
+SYNC_ONLY_MODE = "true"
+SQUARE_LOCATION_ID = "L4W08STADYAXB"
+
+# Authorized website origins
+
+ALLOWED_ORIGINS = "https://labortorimassakritikal.com,https://www.labortorimassakritikal.com"
+
+# Checkout redirect
+
+CHECKOUT_REDIRECT_URL = "https://labortorimassakritikal.com/order-complete.html"
+
+# Square webhook
+
+SQUARE_WEBHOOK_URL = "https://lmk-square.wt68jg58z7.workers.dev/api/square/webhook"
+
+# Checkout safety restrictions
+
+CHECKOUT_ENABLED = "false"
+LIVE_PAYMENTS_APPROVED = "false"
+
+# Secrets must be stored in Cloudflare,
+# not in GitHub:
+#
+# SQUARE_ACCESS_TOKEN
+# SQUARE_WEBHOOK_SIGNATURE_KEY
+# ADMIN_TOKEN
