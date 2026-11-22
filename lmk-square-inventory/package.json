@@ -1,0 +1,12 @@
+{
+  "name": "lmk-square-inventory",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler versions upload",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
