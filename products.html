@@ -610,7 +610,7 @@ body.coa-viewer-open{overflow:hidden}
     <main>
       <section class="intro">
         <h2>Product Catalog</h2>
-        <p>Browse by research area. Press + beside a product name to view its image, sizes, pricing, quantity options, and available COAs. Categories describe research topics, not recommended uses. Review your selections before preparing an email inquiry.</p>
+        <p>Browse by research area. Press + beside a product name to view its image, sizes, pricing, quantity options, and available COAs. Categories describe research topics, not recommended uses. Review your selections in the shopping cart. Secure checkout is being configured.</p>
         <p class="bulk-pricing-note">Need 4 or more vials? Bulk pricing is available upon request. Please include the product, strength, and quantity in your inquiry.</p>
         <p class="bulk-pricing-note">Shipping Restrictions – Alaska, Hawaii & U.S. Territories. Due to shipping distance and transit requirements, all shipments to Alaska, Hawaii, and U.S. territories are restricted to FedEx Standard Overnight or FedEx 2Day service only. Standard ground shipping is not available for these destinations.<br>
 Additional shipping charges will apply based on the destination, package weight, and selected service. Shipping costs will be calculated and confirmed before the order is finalized.
@@ -620,66 +620,97 @@ Please contact us for a shipping estimate before placing your inquiry.</p>
 
       <section class="grid" id="productGrid" aria-label="Catalog"></section>
 
-      <section class="cart" id="orderSummary">
-        <h2>Selection Summary</h2>
-        <div id="cartItems" class="cart-empty">No products added yet.</div>
-        <div class="cart-total">
-          <span>Estimated total</span>
-          <strong id="cartTotal">Price not configured</strong>
-        </div>
 
-        <form class="checkout-form" id="inquiryForm">
-          <label>
-            Name
-            <input type="text" id="customerName" name="name" autocomplete="name" required>
-          </label>
+<!-- ======================================
+     LMK SQUARE SHOPPING CART
+     ====================================== -->
 
-          <div class="full-width" style="color:var(--gold-light);font-weight:700;margin-top:8px">
-            Shipping Address
-          </div>
+<section
+  class="cart"
+  id="orderSummary"
+  aria-labelledby="cartHeading">
 
-          <label class="full-width">
-            Street Address
-            <input type="text" id="streetAddress" name="streetAddress" autocomplete="address-line1" placeholder="Street address" required>
-          </label>
+  <h2 id="cartHeading">
+    Shopping Cart
+  </h2>
 
-          <label class="full-width">
-            Second Street Address (Optional)
-            <input type="text" id="streetAddress2" name="streetAddress2" autocomplete="address-line2" placeholder="Apartment, suite, unit, etc.">
-          </label>
+  <p class="square-cart-note">
+    Review your selected products and quantities.
+    Applicable sales taxes and shipping charges
+    will be confirmed during secure checkout.
+  </p>
 
-          <label>
-            City
-            <input type="text" id="customerCity" name="city" autocomplete="address-level2" placeholder="City" required>
-          </label>
+  <div id="cartItems" class="cart-empty">
+    No products added yet.
+  </div>
 
-          <label>
-            State (2 letters)
-            <input type="text" id="customerState" name="state" autocomplete="address-level1"
-              maxlength="2" pattern="[A-Za-z]{2}" title="Enter the two-letter state abbreviation, such as FL."
-              autocapitalize="characters" oninput="this.value=this.value.toUpperCase().slice(0,2)" required>
-          </label>
+  <div class="square-summary" aria-live="polite">
 
-          <label>
-            ZIP Code
-            <input type="text" id="customerZip" name="zip" autocomplete="postal-code" inputmode="numeric"
-              pattern="[0-9]{5}(-[0-9]{4})?" title="Enter a 5-digit ZIP code or ZIP+4." required>
-          </label>
+    <div class="square-summary-line">
+      <span>Subtotal</span>
+      <strong id="cartTotal">$0.00</strong>
+    </div>
 
-          <label>
-            Email
-            <input type="email" id="customerEmail" name="email" autocomplete="email" required>
-          </label>
+    <div class="square-summary-line">
+      <span>Sales Tax</span>
+      <strong id="squareTax">
+        Calculated at checkout
+      </strong>
+    </div>
 
-          <label class="full-width">
-            Notes or questions
-            <textarea id="customerNotes" name="notes" placeholder="Optional notes or questions"></textarea>
-          </label>
+    <div class="square-summary-line">
+      <span>Shipping</span>
+      <strong id="squareShipping">
+        Calculated at checkout
+      </strong>
+    </div>
 
-          <div class="full-width">
-            <button class="order-button" type="submit">Prepare Email Inquiry</button>
-            <p class="small-print">This opens an email draft for you to review and send. Please include your shipping address for a complete estimate including shipping costs. No order is transmitted automatically.</p>
-          </div>
+    <div class="square-summary-line">
+      <span>Final Total</span>
+      <strong id="squareFinalTotal">
+        Confirmed at checkout
+      </strong>
+    </div>
+
+  </div>
+
+  <div
+    id="squareStatus"
+    class="square-status"
+    role="status">
+
+    Square checkout setup is in progress.
+    Payments are currently disabled.
+
+  </div>
+
+  <button
+    id="squareCheckoutButton"
+    class="square-checkout-button"
+    type="button"
+    disabled>
+
+    Secure Square Checkout — Coming Soon
+
+  </button>
+
+  <p class="square-smallprint">
+    No payment will be collected until Square
+    checkout has been verified and enabled.
+    Products, inventory, taxes, and shipping
+    remain subject to final confirmation.
+  </p>
+
+  <div
+    id="squareSandboxInfo"
+    class="square-test-result"
+    hidden>
+  </div>
+
+</section>
+
+<!-- END LMK SHOPPING CART -->
+
         </form>
       </section>
     </main>
@@ -1177,7 +1208,7 @@ description:"Shorter-acting formulation for research.",
               class="add-button"
               data-action="add"
               ${price === null ? "disabled" : ""}>
-              ${price === null ? "Set Price to Enable" : "Add to Summary"}
+              ${price === null ? "Set Price to Enable" : "Add to Cart"}
             </button>
             ${renderCOA(product, current.size)}
             </div>
@@ -1246,7 +1277,7 @@ description:"Shorter-acting formulation for research.",
         container.className = "cart-empty";
         container.textContent = "No products added yet.";
         document.getElementById("cartTotal").textContent =
-          "Price not configured";
+          "$0.00";
         return;
       }
 
@@ -1290,60 +1321,6 @@ description:"Shorter-acting formulation for research.",
       renderCart();
     });
 
-    document.getElementById("inquiryForm").addEventListener("submit", event => {
-      event.preventDefault();
-
-      if (!cart.length) {
-        alert(
-          "Please add at least one product with a configured price before preparing an inquiry."
-        );
-        return;
-      }
-
-      if (!ORDER_EMAIL || ORDER_EMAIL.includes("REPLACE_WITH")) {
-        alert(
-          "Please set ORDER_EMAIL in the code to the email address that should receive inquiries."
-        );
-        return;
-      }
-
-      const name = document.getElementById("customerName").value.trim();
-      const email = document.getElementById("customerEmail").value.trim();
-      const streetAddress = document.getElementById("streetAddress").value.trim();
-      const streetAddress2 = document.getElementById("streetAddress2").value.trim();
-      const city = document.getElementById("customerCity").value.trim();
-      const state = document.getElementById("customerState").value.trim().toUpperCase();
-      const zip = document.getElementById("customerZip").value.trim();
-      const notes = document.getElementById("customerNotes").value.trim();
-
-      const lines = cart.map(item =>
-        `- ${item.name} | ${formatSize(item.size)} | Quantity: ${item.quantity} | ${money(item.price)}`
-      );
-
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-      const subject = encodeURIComponent("Product Catalog Inquiry");
-
-      const body = encodeURIComponent(
-    `Name: ${name}
-    Email: ${email}
-
-    Shipping Address:
-    ${streetAddress}
-    ${streetAddress2 ? streetAddress2 + "\n" : ""}${city}, ${state} ${zip}
-
-    Selected products:
-    ${lines.join("\n")}
-
-    Estimated total: ${money(total)}
-
-    Notes: ${notes || "None"}
-
-    This is an inquiry and does not include shipping costs or constitute a completed order. A representative will respond with a total estimate including shipping. Additional shipping costs may apply to Alaska, Hawaii, and U.S. territories.`
-      );
-
-      window.location.href =
-        `mailto:${ORDER_EMAIL}?subject=${subject}&body=${body}`;
-    });
 
     renderProducts();
     renderCart();
@@ -1380,5 +1357,190 @@ description:"Shorter-acting formulation for research.",
     renderCart();
     
 </script>
+
+<!-- ==========================================
+     LMK SQUARE INVENTORY CONNECTION
+     READ-ONLY SANDBOX MODE
+     ========================================== -->
+
+<script>
+(function () {
+  "use strict";
+
+  const SQUARE_CATALOG_URL =
+    "https://lmk-square.wt68jg58z7.workers.dev/api/catalog";
+
+  const REFRESH_INTERVAL = 60000;
+
+  let squareSnapshot = null;
+
+  const checkoutButton =
+    document.getElementById("squareCheckoutButton");
+
+  const statusBox =
+    document.getElementById("squareStatus");
+
+  const testPanel =
+    document.getElementById("squareSandboxInfo");
+
+  function setStatus(message, connected) {
+    if (!statusBox) return;
+
+    statusBox.textContent = message;
+    statusBox.dataset.state =
+      connected ? "ok" : "waiting";
+  }
+
+  function updateCheckoutButton() {
+    if (!checkoutButton) return;
+
+    // Checkout remains disabled until the
+    // backend is independently verified.
+
+    checkoutButton.disabled = true;
+
+    checkoutButton.textContent =
+      "Secure Square Checkout — Coming Soon";
+  }
+
+  async function refreshSquareInventory() {
+
+    try {
+
+      const response = await fetch(
+        SQUARE_CATALOG_URL,
+        {
+          method: "GET",
+          cache: "no-store"
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          "Catalog HTTP " + response.status
+        );
+      }
+
+      const data = await response.json();
+
+      if (!Array.isArray(data.products)) {
+        throw new Error(
+          "Square catalog response is invalid"
+        );
+      }
+
+      squareSnapshot = data;
+
+      const isSandbox =
+        data.environment === "sandbox";
+
+      if (isSandbox) {
+
+        setStatus(
+          "Square Sandbox inventory connected. " +
+          "Checkout remains disabled during testing.",
+          true
+        );
+
+      } else {
+
+        setStatus(
+          "Square catalog connected. " +
+          "Checkout is not yet enabled.",
+          true
+        );
+
+      }
+
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+      if (
+        params.get("square-test") === "1" &&
+        testPanel
+      ) {
+
+        testPanel.hidden = false;
+
+        if (isSandbox) {
+
+          const variations =
+            data.products.flatMap(
+              product => product.variations || []
+            );
+
+          const testItem =
+            variations.find(
+              item => item.sku === "TEST-A-001"
+            );
+
+          if (testItem) {
+
+            testPanel.textContent =
+              "SQUARE SANDBOX TEST | " +
+              "SKU: " + testItem.sku +
+              " | Available Stock: " +
+              testItem.stock +
+              " | Last Sync: " +
+              (data.syncedAt || "Unknown");
+
+          } else {
+
+            testPanel.textContent =
+              "Square Sandbox connected. " +
+              "TEST-A-001 not found.";
+
+          }
+
+        } else {
+
+          testPanel.textContent =
+            "Square catalog connected. " +
+            "Environment: " +
+            (data.environment || "Unknown");
+
+        }
+
+      }
+
+      updateCheckoutButton();
+
+    } catch (error) {
+
+      console.error(
+        "LMK Square inventory error:",
+        error
+      );
+
+      squareSnapshot = null;
+
+      setStatus(
+        "Square inventory is temporarily unavailable. " +
+        "Checkout remains disabled.",
+        false
+      );
+
+      updateCheckoutButton();
+
+    }
+
+  }
+
+  updateCheckoutButton();
+
+  refreshSquareInventory();
+
+  setInterval(
+    refreshSquareInventory,
+    REFRESH_INTERVAL
+  );
+
+})();
+</script>
+
+<!-- END LMK SQUARE INVENTORY CONNECTION -->
+
     </body>
     </html>
