@@ -1025,6 +1025,25 @@ description:"Shorter-acting formulation for research.",
     const quantities = [1, 3];
     const selections = {};
     const cart = [];
+    // Do not use local/stale prices for shopping-cart preparation.
+    let productionFeedReady = false;
+    const productionVariations = new Map();
+    const productNameAliases = {
+      klow:"KLOW", retatrutide:"Retatrutide", motsc:"MOTS-c",
+      cjc1295dac:"CJC 1295 with DAC",
+      cjc1295nodac:"CJC 1295 Without DAC",
+      "cjc1295-ipamorelin":"CJC-1295 with Ipamorelin",
+      tesamorelin:"Tesamorelin", fox04dri:"FOX04-DRI"
+    };
+    const standardize = value => String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    const keyFor = (name, size) => standardize(name) + ":" + standardize(size);
+    const variationFor = (product, size) =>
+      productionVariations.get(keyFor(productNameAliases[product.id] || product.name, size));
+    const stockPermits = (product, size, quantity) => {
+      const v = variationFor(product, size);
+      return productionFeedReady && v && v.available && v.priceCents !== null &&
+        (v.stock === null || v.stock >= quantity);
+    };
 
     function money(value) {
       return new Intl.NumberFormat("en-US", {
@@ -1038,8 +1057,42 @@ description:"Shorter-acting formulation for research.",
     }
 
     function getPrice(product, size, quantity) {
-      const value = product.prices?.[size]?.[quantity];
-      return typeof value === "number" && Number.isFinite(value) ? value : null;
+      if (!stockPermits(product, size, quantity)) return null;
+      const v = variationFor(product, size);
+      // Square defines per-vial pricing. Do not silently apply old 3-vial discounts.
+      return Math.round(v.priceCents * quantity) / 100;
+    }
+
+    async function refreshProductionCatalog() {
+      try {
+        const response = await fetch("/api/square-production", {cache:"no-store"});
+        if (!response.ok) throw new Error("Production feed HTTP " + response.status);
+        const data = await response.json();
+        if (data.environment !== "production" ||
+            data.locationId !== "LRXAGC9EFSD9N" ||
+            data.checkout?.enabled !== false ||
+            !Array.isArray(data.products)) throw new Error("Production feed verification failed");
+        const incoming = new Map();
+        for (const product of data.products) {
+          for (const v of product.variations || []) {
+            incoming.set(keyFor(product.name, v.size), v);
+          }
+        }
+        productionVariations.clear();
+        incoming.forEach((v,k) => productionVariations.set(k,v));
+        productionFeedReady = true;
+        // Clear previously prepared carts when prices or stock change.
+        cart.length = 0;
+        renderProducts();
+        renderCart();
+      } catch (error) {
+        console.error("Square Production synchronization unavailable", error);
+        productionFeedReady = false;
+        productionVariations.clear();
+        cart.length = 0;
+        renderProducts();
+        renderCart();
+      }
     }
 
     function formatSize(size) {
@@ -1198,16 +1251,22 @@ description:"Shorter-acting formulation for research.",
             </div>
 
             <p class="price-note">
-              ${price === null
-                ? "Add this price in the code's pricing section."
-                : `${money(price / current.quantity)} per vial`}
+              ${!productionFeedReady
+                ? "Connecting to Square Production — selection temporarily unavailable."
+                : !variationFor(product, current.size)
+                ? "No matching Square Production variation."
+                : !variationFor(product, current.size).available
+                ? "Unavailable in Square Production."
+                : !stockPermits(product, current.size, current.quantity)
+                ? "Insufficient Square Production stock for this quantity."
+                : `${money(price / current.quantity)} per vial · Square stock: ${variationFor(product, current.size).stock === null ? "not tracked" : variationFor(product, current.size).stock}`}
             </p>
 
             <button type="button"
               class="add-button"
               data-action="add"
               ${price === null ? "disabled" : ""}>
-              ${price === null ? "Set Price to Enable" : "Add to Cart"}
+              ${price === null ? "Unavailable — Square Production" : "Add to Cart"}
             </button>
             ${renderCOA(product, current.size)}
             </div>
@@ -1323,6 +1382,8 @@ description:"Shorter-acting formulation for research.",
 
     renderProducts();
     renderCart();
+    refreshProductionCatalog();
+    setInterval(refreshProductionCatalog, 5 * 60 * 1000);
         const coaViewer = document.getElementById("coaViewer");
     const coaViewerFrame = document.getElementById("coaViewerFrame");
     const coaViewerTitle = document.getElementById("coaViewerTitle");
