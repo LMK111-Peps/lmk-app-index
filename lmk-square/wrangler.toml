@@ -26,7 +26,7 @@ SQUARE_LOCATION_ID = "L4W08STADYAXB"
 
 # Authorized website origins
 
-ALLOWED_ORIGINS = "https://labortorimassakritikal.com,https://www.labortorimassakritikal.com"
+ALLOWED_ORIGINS = "https://labortorimassakritikal.com,https://www.labortorimassakritikal.com,https://d893d21f.lmk111-website.pages.dev,https://square-sandbox-sync-only.lmk111-website.pages.dev"
 
 # Checkout redirect
 
