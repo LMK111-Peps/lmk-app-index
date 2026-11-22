@@ -637,7 +637,7 @@ Please contact us for a shipping estimate before placing your inquiry.</p>
   <p class="square-cart-note">
     Review your selected products and quantities.
     Applicable sales taxes and shipping charges
-    will be confirmed during secure checkout.
+    are not finalized. Online sales are unavailable before January 1, 2027.
   </p>
 
   <div id="cartItems" class="cart-empty">
@@ -679,8 +679,8 @@ Please contact us for a shipping estimate before placing your inquiry.</p>
     class="square-status"
     role="status">
 
-    Square checkout setup is in progress.
-    Payments are currently disabled.
+    Square Sandbox testing is in progress.
+    Checkout and payments are disabled. Commercial launch is no earlier than January 1, 2027.
 
   </div>
 
@@ -690,13 +690,12 @@ Please contact us for a shipping estimate before placing your inquiry.</p>
     type="button"
     disabled>
 
-    Secure Square Checkout — Coming Soon
+    Checkout Unavailable — Prelaunch Testing
 
   </button>
 
   <p class="square-smallprint">
-    No payment will be collected until Square
-    checkout has been verified and enabled.
+    No orders or payments are accepted during prelaunch testing.
     Products, inventory, taxes, and shipping
     remain subject to final confirmation.
   </p>
@@ -1367,8 +1366,12 @@ description:"Shorter-acting formulation for research.",
 (function () {
   "use strict";
 
-  const SQUARE_CATALOG_URL =
-    "https://lmk-square.wt68jg58z7.workers.dev/api/catalog";
+  const SQUARE_BASE_URL =
+    "https://lmk-square.wt68jg58z7.workers.dev";
+  const SQUARE_CATALOG_URL = SQUARE_BASE_URL + "/api/catalog";
+  const SQUARE_QUOTE_URL = SQUARE_BASE_URL + "/api/cart/quote";
+  const SQUARE_TEST_VARIATION_ID = "SZFVQNGUZCNHKN7KCJ2TUDX4";
+  const isTestView = new URLSearchParams(window.location.search).get("square-test") === "1";
 
   const REFRESH_INTERVAL = 60000;
 
@@ -1382,6 +1385,37 @@ description:"Shorter-acting formulation for research.",
 
   const testPanel =
     document.getElementById("squareSandboxInfo");
+
+  async function runSandboxQuoteTest() {
+    if (!testPanel || !squareSnapshot || squareSnapshot.environment !== "sandbox") return;
+    const result = document.getElementById("squareQuoteResult");
+    const button = document.getElementById("squareQuoteTestButton");
+    if (!result || !button) return;
+    button.disabled = true;
+    result.textContent = "Calculating a quote for Sandbox Test Item A…";
+    try {
+      const response = await fetch(SQUARE_QUOTE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lines: [{ variationId: SQUARE_TEST_VARIATION_ID, quantity: 1 }] })
+      });
+      const quote = await response.json();
+      if (!response.ok) throw new Error(quote.error || "Quote unavailable");
+      if (quote.checkout?.enabled !== false) throw new Error("Checkout is not safely disabled");
+      const item = quote.lines?.[0];
+      if (item?.variationId !== SQUARE_TEST_VARIATION_ID) throw new Error("Unexpected test item");
+      const subtotal = (item.unitPrice.amount * item.quantity / 100).toFixed(2);
+      const tax = (quote.tax.amount / 100).toFixed(2);
+      const total = (quote.total.amount / 100).toFixed(2);
+      result.textContent = "SANDBOX TEST ONLY — Subtotal: $" + subtotal +
+        " | Tax: $" + tax + " | Total: $" + total +
+        " | Checkout disabled. Not an LMK product quote.";
+    } catch (error) {
+      result.textContent = "Sandbox quote unavailable: " + (error.message || "Unknown error");
+    } finally {
+      button.disabled = false;
+    }
+  }
 
   function setStatus(message, connected) {
     if (!statusBox) return;
@@ -1400,7 +1434,7 @@ description:"Shorter-acting formulation for research.",
     checkoutButton.disabled = true;
 
     checkoutButton.textContent =
-      "Secure Square Checkout — Coming Soon";
+      "Checkout Unavailable — Prelaunch Testing";
   }
 
   async function refreshSquareInventory() {
@@ -1463,6 +1497,19 @@ description:"Shorter-acting formulation for research.",
       ) {
 
         testPanel.hidden = false;
+        if (isSandbox && !document.getElementById("squareQuoteTestButton")) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.id = "squareQuoteTestButton";
+          button.textContent = "Test Square Sandbox Tax Quote";
+          button.style.marginTop = "12px";
+          button.style.padding = "10px";
+          button.addEventListener("click", runSandboxQuoteTest);
+          const output = document.createElement("div");
+          output.id = "squareQuoteResult";
+          output.style.marginTop = "10px";
+          testPanel.after(button, output);
+        }
 
         if (isSandbox) {
 
