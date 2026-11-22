@@ -62,23 +62,59 @@ export async function validateCart(env: Env, lines: CartLine[]): Promise<Checked
     };
   });
 }
-
-/** Orders API: Square calculates totals (taxes, discounts) from catalog prices. No order is saved. */
-export async function quoteCart(env: Env, lines: CartLine[]): Promise<{ lines: CheckedLine[]; total: Money; tax: Money; checkout: ReturnType<typeof checkoutState> }> {
+/**
+ * Calculate cart totals using Square's Orders API.
+ * Automatically applies catalog taxes.
+ * Does not create an order or process a payment.
+ */
+export async function quoteCart(
+  env: Env,
+  lines: CartLine[]
+): Promise<{
+  lines: CheckedLine[];
+  total: Money;
+  tax: Money;
+  checkout: ReturnType<typeof checkoutState>;
+}> {
+  // Validate cart items and available inventory.
   const checked = await validateCart(env, lines);
-  const res = await square<{ order: { total_money: Money; total_tax_money: Money } }>(env, 'POST', '/v2/orders/calculate', {
+
+  // Ask Square to calculate the order total.
+  const res = await square<{
     order: {
-  location_id: env.SQUARE_LOCATION_ID,
-  line_items: checked.map(l => ({
-    catalog_object_id: l.variationId,
-    quantity: String(l.quantity)
-  })),
-  pricing_options: {
-    auto_apply_taxes: true })),
-    },
-  });
-  return { lines: checked, total: res.order.total_money, tax: res.order.total_tax_money, checkout: checkoutState(env) };
+      total_money: Money;
+      total_tax_money: Money;
+    };
+  }>(
+    env,
+    'POST',
+    '/v2/orders/calculate',
+    {
+      order: {
+        location_id: env.SQUARE_LOCATION_ID,
+
+        line_items: checked.map((line) => ({
+          catalog_object_id: line.variationId,
+          quantity: String(line.quantity),
+        })),
+
+        // Apply taxes associated with catalog items.
+        pricing_options: {
+          auto_apply_taxes: true,
+        },
+      },
+    }
+  );
+
+  // Return Square's calculated amounts.
+  return {
+    lines: checked,
+    total: res.order.total_money,
+    tax: res.order.total_tax_money,
+    checkout: checkoutState(env),
+  };
 }
+
 
 function randomToken(bytes = 18): string {
   const a = new Uint8Array(bytes);
