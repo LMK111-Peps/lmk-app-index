@@ -77,41 +77,36 @@ export async function quoteCart(
   checkout: ReturnType<typeof checkoutState>;
 }> {
   // Validate cart items and available inventory.
+  
   const checked = await validateCart(env, lines);
 
-  // Ask Square to calculate the order total.
   const res = await square<{
     order: {
       total_money: Money;
       total_tax_money: Money;
     };
-  }>(
-    env,
-    'POST',
-    '/v2/orders/calculate',
-    {
-      order: {
-        location_id: env.SQUARE_LOCATION_ID,
+  }>(env, 'POST', '/v2/orders/calculate', {
+    order: {
+      location_id: env.SQUARE_LOCATION_ID,
 
-        line_items: checked.map((line) => ({
-          catalog_object_id: line.variationId,
-          quantity: String(line.quantity),
-        })),
+      line_items: checked.map((l) => ({
+        catalog_object_id: l.variationId,
+        quantity: String(l.quantity),
+      })),
 
-        // Apply taxes associated with catalog items.
-        pricing_options: {
-          auto_apply_taxes: true,
-        },
+      pricing_options: {
+        auto_apply_taxes: true,
       },
-    }
-  );
+    },
+  });
 
-  // Return Square's calculated amounts.
   return {
     lines: checked,
     total: res.order.total_money,
     tax: res.order.total_tax_money,
     checkout: checkoutState(env),
+  };
+
   };
 }
 
