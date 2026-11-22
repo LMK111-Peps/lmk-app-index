@@ -1081,6 +1081,11 @@ description:"Shorter-acting formulation for research.",
         productionVariations.clear();
         incoming.forEach((v,k) => productionVariations.set(k,v));
         productionFeedReady = true;
+        const status = document.getElementById("squareStatus");
+        if (status) {
+          status.textContent = "Square Production prices and inventory connected. Checkout remains disabled during prelaunch.";
+          status.dataset.state = "ok";
+        }
         // Clear previously prepared carts when prices or stock change.
         cart.length = 0;
         renderProducts();
@@ -1088,6 +1093,11 @@ description:"Shorter-acting formulation for research.",
       } catch (error) {
         console.error("Square Production synchronization unavailable", error);
         productionFeedReady = false;
+        const status = document.getElementById("squareStatus");
+        if (status) {
+          status.textContent = "Square Production feed is not configured or temporarily unavailable. Product selections and checkout are disabled.";
+          status.dataset.state = "waiting";
+        }
         productionVariations.clear();
         cart.length = 0;
         renderProducts();
@@ -1425,6 +1435,9 @@ description:"Shorter-acting formulation for research.",
 
 <script>
 (function () {
+  // Sandbox diagnostics are available only with ?square-test=1.
+  // Normal prelaunch visitors use the protected Square Production Pages Function instead.
+  if (new URLSearchParams(window.location.search).get("square-test") !== "1") return;
   "use strict";
 
   const SQUARE_BASE_URL =
