@@ -506,6 +506,89 @@ body.coa-viewer-open{overflow:hidden}
 .product-details-body{border-top:1px solid var(--line);margin-top:14px;padding-top:16px}
 .product-details-body .product-description{min-height:0}
 @media(max-width:560px){.product-category>h2{font-size:21px}}
+
+
+/* =========================================
+   LMK SQUARE SHOPPING CART
+   Matches existing black-and-gold design
+   ========================================= */
+
+.square-cart-note {
+  color: var(--muted);
+  font-size: 0.87rem;
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+
+.square-summary {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.square-summary-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  color: var(--muted);
+}
+
+.square-summary-line strong {
+  color: var(--white);
+  text-align: right;
+}
+
+.square-status {
+  padding: 12px 14px;
+  margin: 15px 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.square-status[data-state="ok"] {
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.square-checkout-button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 18px;
+  background: var(--gold);
+  border: 0;
+  border-radius: 7px;
+  color: #17130a;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.square-checkout-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.square-smallprint {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 12px;
+  line-height: 1.55;
+}
+
+.square-test-result {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
 </style></head>
 <body>
     <div class="notice">Research Information Only | No Medical Advice</div>
